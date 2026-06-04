@@ -4,10 +4,9 @@ import {
   MapPin, RefreshCw, Volume2, ArrowDown, HelpCircle, CheckCircle 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-
-const birthdayCakeImg = "/src/assets/images/birthday_cake_26_1780576134041.png";
-const loveLetterImg = "/src/assets/images/romantic_love_letter_1780576148270.png";
-const polaroidImg = "/src/assets/images/memories_polaroid_path_1780576163187.png";
+import birthdayCakeImg from "./assets/images/birthday_cake_26_1780576134041.png";
+import loveLetterImg from "./assets/images/romantic_love_letter_1780576148270.png";
+import polaroidImg from "./assets/images/memories_polaroid_path_1780576163187.png";
 
 import Jukebox from "./components/Jukebox";
 import Timeline from "./components/Timeline";
