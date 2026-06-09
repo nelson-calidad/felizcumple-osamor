@@ -19,7 +19,7 @@ import { FloatingHeart, Memory, Song } from "./types";
 /*
   Guia para subir tus propias canciones:
   1. Guarda el mp3 en la carpeta public.
-  2. Cambia el audioUrl de la cancion por "/nombre-del-archivo.mp3".
+  2. Cambia el audioUrl de la cancion por `${import.meta.env.BASE_URL}nombre-del-archivo.mp3`.
   3. Vuelve a hacer push y GitHub Pages lo publica junto con la app.
 */
 const MUSIC_PLAYLIST: Song[] = [
@@ -28,7 +28,7 @@ const MUSIC_PLAYLIST: Song[] = [
     title: "La Correcta",
     artist: "Morat y Nabalez",
     duration: "3:15",
-    audioUrl: "/la-correcta.mp3",
+    audioUrl: `${import.meta.env.BASE_URL}la-correcta.mp3`,
     coverIndex: 1,
   },
 ];

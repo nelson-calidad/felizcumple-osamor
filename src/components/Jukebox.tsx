@@ -27,6 +27,7 @@ export default function Jukebox({
 
   const currentSong = songs[currentSongIndex];
   const hasMultipleSongs = songs.length > 1;
+  const currentSongUrl = new URL(currentSong.audioUrl, window.location.href).href;
 
   const getCoverImage = (index: number) => {
     if (index === 0) return birthdayCakeImg;
@@ -38,20 +39,20 @@ export default function Jukebox({
     let active = true;
 
     if (!audioRef.current) {
-      audioRef.current = new Audio(currentSong.audioUrl);
+      audioRef.current = new Audio(currentSongUrl);
       audioRef.current.loop = true;
     }
 
     const audio = audioRef.current;
 
-    if (audio.src !== currentSong.audioUrl) {
+    if (audio.src !== currentSongUrl) {
       if (playPromiseRef.current) {
         playPromiseRef.current.then(() => active && audio.pause()).catch(() => active && audio.pause());
       } else {
         audio.pause();
       }
 
-      audio.src = currentSong.audioUrl;
+      audio.src = currentSongUrl;
       audio.load();
       setProgress(0);
     }
@@ -96,7 +97,7 @@ export default function Jukebox({
       audio.removeEventListener("timeupdate", updateProgress);
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
     };
-  }, [currentSong, isPlaying]);
+  }, [currentSong, currentSongUrl, isPlaying]);
 
   useEffect(() => {
     return () => {
