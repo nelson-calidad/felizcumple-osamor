@@ -271,8 +271,8 @@ export default function Jukebox({
           </div>
 
           <p className="mt-4 text-[11px] text-gray-500 font-mono leading-relaxed">
-            Si quieres subir tu propio tema, pon el mp3 en <b>public</b> y cambia el
-            <b> audioUrl </b> de la cancion en <b>src/App.tsx</b>.
+            Esta canción quedó acá para acompañarte mientras recorrés todo este regalo
+            hecho con amor.
           </p>
         </div>
       </div>
