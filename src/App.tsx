@@ -24,35 +24,11 @@ import { FloatingHeart, Memory, Song } from "./types";
 */
 const MUSIC_PLAYLIST: Song[] = [
   {
-    id: "s_bday",
-    title: "Feliz Cumpleanos (Version Perrito Malvado)",
-    artist: "Novio del Ano y El Perrito Malvado",
-    duration: "2:10",
-    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-    coverIndex: 0,
-  },
-  {
     id: "s1",
     title: "La Correcta",
     artist: "Morat y Nabalez",
     duration: "3:15",
     audioUrl: "/la-correcta.mp3",
-    coverIndex: 1,
-  },
-  {
-    id: "s2",
-    title: "No Se Va (Acustico)",
-    artist: "Morat",
-    duration: "3:40",
-    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-    coverIndex: 2,
-  },
-  {
-    id: "s3",
-    title: "Aprender a Querer",
-    artist: "Morat",
-    duration: "3:49",
-    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
     coverIndex: 1,
   },
 ];

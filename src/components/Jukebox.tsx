@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Heart, Pause, Play, SkipBack, SkipForward, Volume2 } from "lucide-react";
+import { Heart, Pause, Play, Volume2 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { Song } from "../types";
 
@@ -26,6 +26,7 @@ export default function Jukebox({
   const playPromiseRef = useRef<Promise<void> | null>(null);
 
   const currentSong = songs[currentSongIndex];
+  const hasMultipleSongs = songs.length > 1;
 
   const getCoverImage = (index: number) => {
     if (index === 0) return birthdayCakeImg;
@@ -230,13 +231,15 @@ export default function Jukebox({
           </div>
 
           <div className="flex items-center justify-center sm:justify-start md:justify-center lg:justify-start gap-4">
-            <button
-              onClick={handlePrev}
-              className="p-2 rounded-full bg-white text-[#1B4D43] hover:bg-[#EAFDF9] border border-gray-200 shadow-sm active:scale-95 transition-all cursor-pointer"
-              title="Anterior"
-            >
-              <SkipBack className="w-4 h-4 fill-[#1B4D43]" />
-            </button>
+            {hasMultipleSongs && (
+              <button
+                onClick={handlePrev}
+                className="p-2 rounded-full bg-white text-[#1B4D43] hover:bg-[#EAFDF9] border border-gray-200 shadow-sm active:scale-95 transition-all cursor-pointer"
+                title="Anterior"
+              >
+                {"<<"}
+              </button>
+            )}
 
             <button
               onClick={togglePlay}
@@ -250,13 +253,15 @@ export default function Jukebox({
               )}
             </button>
 
-            <button
-              onClick={handleNext}
-              className="p-2 rounded-full bg-white text-[#1B4D43] hover:bg-[#EAFDF9] border border-gray-200 shadow-sm active:scale-95 transition-all cursor-pointer"
-              title="Siguiente"
-            >
-              <SkipForward className="w-4 h-4 fill-[#1B4D43]" />
-            </button>
+            {hasMultipleSongs && (
+              <button
+                onClick={handleNext}
+                className="p-2 rounded-full bg-white text-[#1B4D43] hover:bg-[#EAFDF9] border border-gray-200 shadow-sm active:scale-95 transition-all cursor-pointer"
+                title="Siguiente"
+              >
+                {">>"}
+              </button>
+            )}
 
             <div className="hidden lg:flex items-center gap-1.5 text-gray-400 ml-2 font-mono text-[10px]">
               <Volume2 className="w-3.5 h-3.5 text-gray-400" />
