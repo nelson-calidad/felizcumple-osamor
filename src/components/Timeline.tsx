@@ -35,7 +35,10 @@ export default function Timeline({
       ? memories
       : memories.filter((memory) => memory.category === selectedCategory);
 
-  const getCategoryImage = (index: number) => {
+  const getMemoryImage = (memory: Memory) => {
+    if (memory.imageSrc) return memory.imageSrc;
+
+    const index = memory.imageIndex ?? 2;
     if (index === 0) return birthdayCakeImg;
     if (index === 1) return loveLetterImg;
     return polaroidImg;
@@ -62,38 +65,47 @@ export default function Timeline({
 
   const getSecretText = (id: string) => {
     if (id === "1") {
-      return "Lagunas de Yala. Estaba maravillado de estar con vos ahi y de ver lo bien que nos quedaba empezar algo tan lindo juntos.";
+      return "Lagunas de Yala. Estaba maravillado de estar con vos ahí y de ver lo bien que nos quedaba empezar algo tan lindo juntos.";
     }
     if (id === "2") {
-      return "Cordoba. Ese viaje marco un antes y un despues. Mate, ruta, charla y esa alegria de sentir que con vos todo fluye.";
+      return "Esa sorpresa con flores y tu sonrisa me pueden por completo. Verte feliz me llena y me hace querer seguir mimándote siempre.";
     }
     if (id === "3") {
-      return "Verte recibirte me lleno de orgullo. Me encanta admirarte y escucharte hablar con pasion de lo que amas.";
+      return "Córdoba. Ese viaje marcó un antes y un después. Mate, ruta, charla y esa alegría de sentir que con vos todo fluye.";
     }
-    return "Nuestras tardes de series, comida rica y charla larga son mi refugio favorito. Ahí tambien vive una parte enorme de mi felicidad.";
+    if (id === "4") {
+      return "Verte recibirte me llenó de orgullo. Me encanta admirarte y escucharte hablar con pasión de lo que amás.";
+    }
+    if (id === "5") {
+      return "Nuestra salida al cine fue una de esas citas que parecen simples, pero conmigo se quedan enormes porque estabas preciosa y feliz al lado mío.";
+    }
+    if (id === "6") {
+      return "Ese cumple tan nuestro me encanta recordarlo por todo: tu sonrisa, la torta, el momento compartido y lo hermosa que estabas ese día.";
+    }
+    return "Esta otra foto tuya me derrite. Me encanta mirarte y volver a sentir lo afortunado que soy de tenerte en mi vida.";
   };
 
   return (
     <div
       id="memories-section"
-      className="bg-white/50 backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-xl border border-[#4DB6A3]/25 shadow-glow"
+      className="rounded-3xl border border-[#4DB6A3]/25 bg-white/50 p-6 shadow-xl shadow-glow backdrop-blur-md md:p-8"
     >
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+      <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
         <div>
-          <span className="text-xs font-semibold bg-[#EAFDF9] text-[#1B4D43] px-3 py-1 rounded-full uppercase tracking-wider font-mono border border-[#4DB6A3]/20">
+          <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#1B4D43]">
             Nuestros Momentos Juntos
           </span>
-          <h2 className="text-3xl font-extrabold text-gray-800 tracking-tight font-sans mt-2">
+          <h2 className="mt-2 font-sans text-3xl font-extrabold tracking-tight text-gray-800">
             Polaroids de Nuestros Recuerdos
           </h2>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="mt-1 text-sm text-gray-500">
             Un pequeño escritorio de recuerdos para ir pasando foto por foto y revivir lo
             lindo que construimos.
           </p>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2.5 mb-8">
+      <div className="mb-8 flex flex-wrap gap-2.5">
         {categories.map((category) => (
           <button
             key={category.id}
@@ -101,10 +113,10 @@ export default function Timeline({
               setSelectedCategory(category.id);
               setDeckIndex(0);
             }}
-            className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 transform active:scale-95 cursor-pointer ${
+            className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all duration-300 active:scale-95 ${
               selectedCategory === category.id
-                ? "bg-[#4DB6A3] text-white font-bold shadow-md shadow-[#4DB6A3]/20 scale-105"
-                : "bg-white text-gray-500 hover:bg-[#EAFDF9] hover:text-[#1B4D43] border border-gray-100"
+                ? "scale-105 bg-[#4DB6A3] font-bold text-white shadow-md shadow-[#4DB6A3]/20"
+                : "border border-gray-100 bg-white text-gray-500 hover:bg-[#EAFDF9] hover:text-[#1B4D43]"
             }`}
           >
             {category.label}
@@ -127,42 +139,45 @@ export default function Timeline({
                 key={filteredMemories[deckIndex].id}
                 initial={{ rotate: -4, scale: 0.9, opacity: 0 }}
                 animate={{ rotate: deckIndex % 2 === 0 ? 1 : -2, scale: 1, opacity: 1 }}
-                className="bg-white p-4 pb-12 rounded-lg shadow-xl border border-gray-100 relative group"
+                className="group relative rounded-lg border border-gray-100 bg-white p-4 pb-12 shadow-xl"
               >
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-red-400 opacity-60 flex items-center justify-center">
-                  <div className="w-1 h-1 bg-gray-900 rounded-full" />
+                <div className="absolute left-1/2 top-2 flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-red-400 opacity-60">
+                  <div className="h-1 w-1 rounded-full bg-gray-900" />
                 </div>
 
-                <div className="aspect-square bg-gray-50 rounded-md overflow-hidden border border-gray-100 relative mb-4">
+                <div className="relative mb-4 aspect-square overflow-hidden rounded-md border border-gray-100 bg-gray-50">
                   <img
-                    src={getCategoryImage(filteredMemories[deckIndex].imageIndex)}
+                    src={getMemoryImage(filteredMemories[deckIndex])}
                     alt="memoria_foto"
-                    className="w-full h-full object-cover select-none"
+                    className="h-full w-full select-none object-cover"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = polaroidImg;
+                    }}
                   />
-                  <div className="absolute bottom-2 right-2 bg-black/40 text-white rounded-full p-2 text-xs backdrop-blur-sm">
+                  <div className="absolute bottom-2 right-2 rounded-full bg-black/40 p-2 text-xs text-white backdrop-blur-sm">
                     {filteredMemories[deckIndex].emoji}
                   </div>
                 </div>
 
-                <div className="font-serif text-center mt-2 px-1">
-                  <span className="text-[11px] text-[#1B4D43] bg-[#EAFDF9] font-mono uppercase px-2.5 py-0.5 rounded-full font-bold">
+                <div className="mt-2 px-1 text-center font-serif">
+                  <span className="rounded-full bg-[#EAFDF9] px-2.5 py-0.5 font-mono text-[11px] font-bold uppercase text-[#1B4D43]">
                     {filteredMemories[deckIndex].date}
                   </span>
-                  <h5 className="font-extrabold text-lg text-gray-800 tracking-tight mt-1.5 leading-snug">
+                  <h5 className="mt-1.5 text-lg font-extrabold leading-snug tracking-tight text-gray-800">
                     {filteredMemories[deckIndex].title}
                   </h5>
-                  <p className="text-xs text-gray-500 italic mt-1 leading-relaxed">
+                  <p className="mt-1 text-xs italic leading-relaxed text-gray-500">
                     "{filteredMemories[deckIndex].description}"
                   </p>
                 </div>
 
-                <div className="text-center mt-4">
+                <div className="mt-4 text-center">
                   <button
                     onClick={(e) => toggleSecret(filteredMemories[deckIndex].id, e)}
-                    className="inline-flex items-center gap-1 text-[10px] bg-teal-100 hover:bg-teal-200 text-teal-700 px-3 py-1 rounded-full font-bold transition-all cursor-pointer"
+                    className="inline-flex cursor-pointer items-center gap-1 rounded-full bg-teal-100 px-3 py-1 text-[10px] font-bold text-teal-700 transition-all hover:bg-teal-200"
                   >
-                    <Sparkles className="w-3 h-3" />
+                    <Sparkles className="h-3 w-3" />
                     {revealedSecrets[filteredMemories[deckIndex].id]
                       ? "Ocultar secreto"
                       : "Revelar secreto"}
@@ -174,7 +189,7 @@ export default function Timeline({
                         initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 5 }}
-                        className="mt-3 bg-teal-50 p-2.5 rounded-lg text-[11px] text-[#1B4D43] italic border border-teal-100 text-left"
+                        className="mt-3 rounded-lg border border-teal-100 bg-teal-50 p-2.5 text-left text-[11px] italic text-[#1B4D43]"
                       >
                         "{getSecretText(filteredMemories[deckIndex].id)}"
                       </motion.div>
@@ -183,26 +198,26 @@ export default function Timeline({
                 </div>
               </motion.div>
 
-              <div className="flex justify-between items-center mt-6">
+              <div className="mt-6 flex items-center justify-between">
                 <button
                   onClick={handlePrevDeck}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-xl shadow-sm border text-xs text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-semibold"
+                  className="flex items-center gap-1.5 rounded-xl border bg-white px-3 py-1.5 text-xs font-semibold text-gray-600 shadow-sm hover:bg-gray-50 hover:text-gray-900"
                 >
                   Anterior
                 </button>
-                <span className="text-xs font-mono font-bold text-gray-500">
+                <span className="font-mono text-xs font-bold text-gray-500">
                   {deckIndex + 1} de {filteredMemories.length}
                 </span>
                 <button
                   onClick={handleNextDeck}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-xl shadow-sm border text-xs text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-semibold"
+                  className="flex items-center gap-1.5 rounded-xl border bg-white px-3 py-1.5 text-xs font-semibold text-gray-600 shadow-sm hover:bg-gray-50 hover:text-gray-900"
                 >
                   Siguiente
                 </button>
               </div>
             </div>
           ) : (
-            <div className="text-center text-gray-500 py-10 font-mono text-xs">
+            <div className="py-10 text-center font-mono text-xs text-gray-500">
               No hay recuerdos cargados en esta categoria aun.
             </div>
           )}

@@ -5,7 +5,8 @@ export interface Memory {
   description: string;
   category: "romance" | "adventure" | "daily" | "milestone";
   emoji: string;
-  imageIndex: number; // Index to map to our generated beautiful watercolor images
+  imageSrc?: string;
+  imageIndex?: number;
 }
 
 export interface Song {
