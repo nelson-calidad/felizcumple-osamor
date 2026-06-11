@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Coffee, Sparkles, Heart, Utensils, Smile, RefreshCw, CalendarDays, Timer, CheckCircle, Zap } from "lucide-react";
+import React, { useState } from "react";
+import { Coffee, Smile, RefreshCw, CalendarDays, CheckCircle, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 interface RomanticRefugeProps {
@@ -7,22 +7,20 @@ interface RomanticRefugeProps {
 }
 
 export default function RomanticRefuge({ onTriggerFloating }: RomanticRefugeProps) {
-  // --- MATE CEBADOR DIGITAL STATE ---
-  const [mateWaterTemp, setMateWaterTemp] = useState(80);
-  const [mateStatus, setMateStatus] = useState<"vacío" | "cebando" | "lleno" | "tomando">("vacío");
+  const mateWaterTemp = 80;
+  const [mateStatus, setMateStatus] = useState<"vacio" | "cebando" | "lleno" | "tomando">("vacio");
   const [totalMatesCebados, setTotalMatesCebados] = useState(0);
   const [mateThought, setMateThought] = useState("");
 
   const mateThoughts = [
-    "¡Mates calentitos y charlas eternas! Gracias por cebar la paz de mi vida. 🧉💚",
-    "Cada sorbo de mate con vos borra cualquier examen difícil de Hemoterapia o cansancio laboral. 🧬🩸",
-    "Un mate amargo con tu mirada dulce es mi combinación favorita en el universo entero.",
-    "El mate está en su punto perfecto: 80°C de calor y 100% de amor eterno. 🌡️✨",
-    "¿Un matecito más charlando de nuestros próximos proyectos y metas juntos? Sí, siempre.",
-    "Me encanta acariciar tu mano fría mientras sostenés el mate calentito. ¡Somos la dupla perfecta! 🧸🤝"
+    "Mates calentitos y charlas eternas. Gracias por cebar la paz de mi vida.",
+    "Cada sorbo de mate con vos borra cualquier cansancio.",
+    "Un mate amargo con tu mirada dulce es mi combinacion favorita.",
+    "El mate esta en su punto perfecto: 80 grados de calor y 100 por ciento de amor.",
+    "Un matecito mas, mientras hablamos de todo lo que se nos venga al corazon.",
+    "Me encanta acariciarte la mano mientras sostenes el mate calentito.",
   ];
 
-  // --- CREADOR DE CITAS PERFECTAS ---
   const [spinning, setSpinning] = useState(false);
   const [datePlan, setDatePlan] = useState<{
     food: string;
@@ -31,51 +29,51 @@ export default function RomanticRefuge({ onTriggerFloating }: RomanticRefugeProp
   } | null>(null);
 
   const foods = [
-    "🍔 Una hamburguesa gigante doble con queso y muchas papás fritas ricas.",
-    "🥩 Un lomito espectacular calentito y bien completo para salvar la noche.",
-    "🍕 Una pizza mitad y mitad con mate helado o gaseosa en el sillón.",
-    "🥐 Unas ricas medialunas dulces tostadas con un mate amargo bien cebado."
+    "Una hamburguesa gigante con papas bien ricas.",
+    "Un lomito calentito y completo para salvar la noche.",
+    "Una pizza mitad y mitad para comer en el sillon.",
+    "Unas medialunas dulces con mate amargo bien cebado.",
   ];
 
   const activities = [
-    "📺 Maratón de series coreanas o de tu Kdrama del momento sin distracciones.",
-    "💆‍♀️ Noche relajante de skincare completo con mascarillas y masajes suaves.",
-    "🚶‍♂️ Caminar despacito de la mano al atardecer sin prisa por ningún lado.",
-    "🗺️ Planificar e imaginar juntos nuestro próximo viaje de aventuras."
+    "Maraton de series coreanas o del kdrama que tengas ganas de ver.",
+    "Noche relajante de skincare con masajes suaves.",
+    "Caminar despacito de la mano al atardecer.",
+    "Imaginar juntos nuestro proximo viaje o inventarnos uno nuevo.",
   ];
 
   const mimos = [
-    "🧸 Dormir bien juntitos y abrazados en el pecho de tu novio sintiendo su paz.",
-    "💫 Promesa del novio de escucharte hablar una hora entera sobre Hemoterapia con mate de por medio.",
-    "💐 Besos suaves ilimitados en la frente y mimos relajantes de cabeza.",
-    "💌 Un mensaje reflexivo e íntimo directo de mi corazón recordándote tu valor."
+    "Dormir bien juntitos y abrazados.",
+    "Escucharte hablar una hora entera de lo que amas con un mate de por medio.",
+    "Besos suaves en la frente y mimos de cabeza.",
+    "Un mensajito intimo recordandote lo valiosa que sos.",
   ];
 
   const handleCebarMate = (e: React.MouseEvent) => {
     if (mateStatus === "cebando" || mateStatus === "tomando") return;
-    
+
     setMateStatus("cebando");
-    onTriggerFloating(e.clientX, e.clientY, "💧 Cebando mate calentito... 🧉");
-    
+    onTriggerFloating(e.clientX, e.clientY, "Cebando un matecito");
+
     setTimeout(() => {
       setMateStatus("lleno");
       setTotalMatesCebados((prev) => prev + 1);
       const randomIdx = Math.floor(Math.random() * mateThoughts.length);
       setMateThought(mateThoughts[randomIdx]);
-      onTriggerFloating(e.clientX, e.clientY, "✨ ¡Mate listo para tomar! 🧉💖");
+      onTriggerFloating(e.clientX, e.clientY, "Mate listo para vos");
     }, 1800);
   };
 
   const handleTomarMate = (e: React.MouseEvent) => {
     if (mateStatus !== "lleno") return;
-    
+
     setMateStatus("tomando");
-    onTriggerFloating(e.clientX, e.clientY, "😋 ¡Matecito tomado con amor! 🌱");
-    
+    onTriggerFloating(e.clientX, e.clientY, "Un sorbito con amor");
+
     setTimeout(() => {
-      setMateStatus("vacío");
+      setMateStatus("vacio");
       setMateThought("");
-      onTriggerFloating(e.clientX, e.clientY, "🧉 El mate quedó vacío. ¡Cebá otro!");
+      onTriggerFloating(e.clientX, e.clientY, "Cuando quieras te cebo otro");
     }, 1500);
   };
 
@@ -83,14 +81,14 @@ export default function RomanticRefuge({ onTriggerFloating }: RomanticRefugeProp
     if (spinning) return;
     setSpinning(true);
     setDatePlan(null);
-    onTriggerFloating(e.clientX, e.clientY, "🎰 ¡Combinando ingredientes de amor! 💫");
+    onTriggerFloating(e.clientX, e.clientY, "Pensando algo lindo para nosotros");
 
     let counter = 0;
     const interval = setInterval(() => {
       setDatePlan({
         food: foods[Math.floor(Math.random() * foods.length)],
         activity: activities[Math.floor(Math.random() * activities.length)],
-        mimo: mimos[Math.floor(Math.random() * mimos.length)]
+        mimo: mimos[Math.floor(Math.random() * mimos.length)],
       });
       counter++;
       if (counter > 8) {
@@ -101,103 +99,90 @@ export default function RomanticRefuge({ onTriggerFloating }: RomanticRefugeProp
   };
 
   return (
-    <div id="refuge-section" className="bg-white/60 backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-xl border border-[#4DB6A3]/25 relative overflow-hidden shadow-glow">
-      
+    <div id="refuge-section" className="relative overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/60 p-6 shadow-xl shadow-glow backdrop-blur-md md:p-8">
       <div className="mb-6 text-center md:text-left">
-        <span className="text-xs font-semibold bg-[#EAFDF9] text-[#1B4D43] px-3 py-1 rounded-full uppercase tracking-wider font-mono border border-[#4DB6A3]/20">
-          Refugio de Mates y Citas 🧉💫
+        <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#1B4D43]">
+          Nuestro rinconcito
         </span>
-        <h2 className="text-2xl font-extrabold text-gray-800 tracking-tight mt-2 font-sans">
-          Nuestro Rincón Cotidiano Estilo "Vos y Yo"
+        <h2 className="mt-2 font-sans text-2xl font-extrabold tracking-tight text-gray-800">
+          Mates, planes y esa paz que me das
         </h2>
-        <p className="text-xs text-gray-500 mt-1">
-          Un espacio interactivo diseñado para simular nuestras tardes perfectas. Cebá un mate caliente, creá planes de citas instantáneos o relajate con las ocurrencias de nuestra rutina.
+        <p className="mt-1 max-w-2xl text-sm text-gray-500">
+          Todo lo simple que con vos se vuelve mi parte favorita del dia.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        {/* LEFT COLUMN: EL MATE CEBADOR INTERACTIVO */}
-        <div className="bg-white/70 p-5 rounded-2xl border border-teal-50 flex flex-col justify-between shadow-sm">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="flex flex-col justify-between rounded-[1.8rem] border border-teal-50 bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(248,255,253,0.96))] p-5 shadow-sm">
           <div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-xs font-mono font-bold text-teal-800 flex items-center gap-1">
-                <Coffee className="w-3.5 h-3.5" /> CEBADOR VIRTUAL DE MATES
+            <div className="mb-4 flex items-center justify-between">
+              <span className="flex items-center gap-1 font-mono text-xs font-bold text-teal-800">
+                <Coffee className="h-3.5 w-3.5" /> Un mate para vos
               </span>
-              <span className="text-[10px] font-mono text-gray-400"> Temp: {mateWaterTemp}°C (Ideal)</span>
+              <span className="font-mono text-[10px] text-gray-400">Temp: {mateWaterTemp}C</span>
             </div>
-            
-            <p className="text-xs text-gray-650 leading-relaxed mb-4 text-left">
-              ¿Estás cansada de estudiar Hemoterapia o de un día largo? Cebate un mate digital. Presioná para cebar, esperá que esté listo y tomátelo charlando conmigo.
+
+            <p className="mb-4 text-left text-sm leading-relaxed text-gray-600">
+              Para esas tardes nuestras en las que alcanza con un matecito y estar cerquita.
             </p>
 
-            {/* Mate Visual Container */}
-            <div className="h-44 flex items-center justify-center relative my-4">
-              
-              {/* Vapor animation when full or pouring */}
+            <div className="relative my-4 flex h-44 items-center justify-center">
               <AnimatePresence>
                 {(mateStatus === "cebando" || mateStatus === "lleno") && (
-                  <div className="absolute top-1 flex gap-1 justify-center z-10">
-                    <motion.span 
+                  <div className="absolute top-1 z-10 flex justify-center gap-1">
+                    <motion.span
                       animate={{ y: [-10, -40], opacity: [0, 0.8, 0], scale: [1, 1.3] }}
                       transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
-                      className="w-1.5 h-6 bg-teal-100/40 rounded-full filter blur-[2px]"
+                      className="h-6 w-1.5 rounded-full bg-teal-100/40 blur-[2px]"
                     />
-                    <motion.span 
+                    <motion.span
                       animate={{ y: [-15, -45], opacity: [0, 0.7, 0], scale: [0.9, 1.4] }}
                       transition={{ duration: 1.7, repeat: Infinity, delay: 0.3 }}
-                      className="w-1.5 h-6 bg-teal-200/30 rounded-full filter blur-[3px]"
+                      className="h-6 w-1.5 rounded-full bg-teal-200/30 blur-[3px]"
                     />
-                    <motion.span 
+                    <motion.span
                       animate={{ y: [-8, -35], opacity: [0, 0.9, 0], scale: [1, 1.2] }}
                       transition={{ duration: 1.4, repeat: Infinity, delay: 0.6 }}
-                      className="w-1.5 h-6 bg-white/40 rounded-full filter blur-[1px]"
+                      className="h-6 w-1.5 rounded-full bg-white/40 blur-[1px]"
                     />
                   </div>
                 )}
               </AnimatePresence>
 
-              {/* The Mate Cup Cup Representation */}
-              <div className="w-28 h-28 bg-[#1B4D43] rounded-b-[40px] rounded-t-[10px] border-4 border-[#3AA28F] shadow-md flex items-end justify-center relative p-1 overflow-hidden">
-                {/* Grass (Yerba) Background Ring */}
-                <div className="absolute top-0 inset-x-0 h-4 bg-teal-980/85 border-b border-yellow-600/30" />
-                
-                {/* Water overlay */}
+              <div className="relative flex h-28 w-28 items-end justify-center overflow-hidden rounded-b-[40px] rounded-t-[10px] border-4 border-[#3AA28F] bg-[#1B4D43] p-1 shadow-md">
+                <div className="absolute inset-x-0 top-0 h-4 border-b border-yellow-600/30 bg-teal-950/85" />
+
                 <AnimatePresence>
                   {(mateStatus === "lleno" || mateStatus === "cebando") && (
-                    <motion.div 
+                    <motion.div
                       initial={{ height: 0 }}
                       animate={{ height: "45%" }}
                       exit={{ height: 0 }}
-                      className="absolute bottom-4 inset-x-1.5 bg-sky-200/30 rounded-b-3xl flex items-center justify-center"
+                      className="absolute inset-x-1.5 bottom-4 flex items-center justify-center rounded-b-3xl bg-sky-200/30"
                     >
-                      {/* Interactive foam bubbles */}
-                      <span className="w-1 h-1 bg-[#4DB6A3] rounded-full absolute top-1 left-4 animate-ping" />
-                      <span className="w-1.5 h-1.5 bg-teal-100/60 rounded-full absolute top-2 right-6 animate-pulse" />
+                      <span className="absolute left-4 top-1 h-1 w-1 animate-ping rounded-full bg-[#4DB6A3]" />
+                      <span className="absolute right-6 top-2 h-1.5 w-1.5 animate-pulse rounded-full bg-teal-100/60" />
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                {/* Bombilla Straw */}
-                <div className="absolute -top-12 left-1/2 -translate-x-[2px] w-2 h-20 bg-gray-200 border-r border-gray-300 rounded-full origin-bottom rotate-[15deg]">
-                  <div className="w-3 h-3 bg-gray-300 rounded-full absolute top-0 -left-0.5 border border-gray-450" />
+                <div className="absolute left-1/2 top-[-3rem] h-20 w-2 origin-bottom rotate-[15deg] rounded-full border-r border-gray-300 bg-gray-200">
+                  <div className="absolute -left-0.5 top-0 h-3 w-3 rounded-full border border-gray-400 bg-gray-300" />
                 </div>
 
-                {/* Mate text indicator */}
-                <span className="text-[9px] font-mono font-bold text-[#EAFDF9] z-10 mb-2 uppercase tracking-widest block">
+                <span className="z-10 mb-2 block font-mono text-[9px] font-bold uppercase tracking-widest text-[#EAFDF9]">
                   {mateStatus}
                 </span>
               </div>
             </div>
 
-            {/* Mate thoughts text box */}
             <AnimatePresence mode="wait">
               {mateThought && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className="bg-[#EAFDF9] p-3 rounded-xl border border-teal-100 text-[#1B4D43] italic text-xs leading-relaxed font-serif text-center mt-2"
+                  className="mt-2 rounded-xl border border-teal-100 bg-[#EAFDF9] p-3 text-center font-serif text-xs italic leading-relaxed text-[#1B4D43]"
                 >
                   "{mateThought}"
                 </motion.div>
@@ -205,83 +190,81 @@ export default function RomanticRefuge({ onTriggerFloating }: RomanticRefugeProp
             </AnimatePresence>
           </div>
 
-          {/* Mate action buttons */}
           <div className="mt-4 flex gap-3">
             <button
               disabled={mateStatus === "cebando" || mateStatus === "lleno" || mateStatus === "tomando"}
               onClick={handleCebarMate}
-              className="flex-1 bg-[#4DB6A3] hover:bg-[#3AA28F] disabled:bg-gray-100 text-white disabled:text-gray-400 text-xs font-bold py-2.5 rounded-xl transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5"
+              className="flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-[#4DB6A3] py-2.5 text-xs font-bold text-white transition-all hover:bg-[#3AA28F] active:scale-95 disabled:bg-gray-100 disabled:text-gray-400"
             >
-              <Zap className="w-3.5 h-3.5 shrink-0" />
-              <span>Cebar Mate 🧉</span>
+              <Zap className="h-3.5 w-3.5 shrink-0" />
+              <span>Cebarlo</span>
             </button>
 
             <button
               disabled={mateStatus !== "lleno"}
               onClick={handleTomarMate}
-              className="flex-1 bg-[#1B4D43] hover:bg-[#143B33] disabled:bg-gray-100 text-[#EAFDF9] disabled:text-gray-400 text-xs font-bold py-2.5 rounded-xl transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5"
+              className="flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-[#1B4D43] py-2.5 text-xs font-bold text-[#EAFDF9] transition-all hover:bg-[#143B33] active:scale-95 disabled:bg-gray-100 disabled:text-gray-400"
             >
-              <Smile className="w-3.5 h-3.5 shrink-0" />
-              <span>Tomar un sorbo 😋</span>
+              <Smile className="h-3.5 w-3.5 shrink-0" />
+              <span>Tomarlo</span>
             </button>
           </div>
-          
-          <div className="text-[10px] text-gray-400 font-mono text-center mt-3">
-            Total mates compartidos en esta sesión: <span className="font-bold text-[#1B4D43]">{totalMatesCebados}</span> 🧉
+
+          <div className="mt-3 text-center font-mono text-[10px] text-gray-400">
+            Ya van <span className="font-bold text-[#1B4D43]">{totalMatesCebados}</span> matecitos compartidos
           </div>
         </div>
 
-        {/* RIGHT COLUMN: EL PLANIFICADOR DE CITAS PERFECTAS */}
-        <div className="bg-white/70 p-5 rounded-2xl border border-teal-50 flex flex-col justify-between shadow-sm text-left">
+        <div className="flex flex-col justify-between rounded-[1.8rem] border border-teal-50 bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(248,255,253,0.96))] p-5 text-left shadow-sm">
           <div>
-            <span className="text-xs font-mono font-bold text-teal-800 flex items-center gap-1 mb-2">
-              <CalendarDays className="w-3.5 h-3.5" /> PLANIFICADOR DE CITAS AL AZAR
+            <span className="mb-2 flex items-center gap-1 font-mono text-xs font-bold text-teal-800">
+              <CalendarDays className="h-3.5 w-3.5" /> Una idea para nosotros
             </span>
-            <p className="text-xs text-gray-655 leading-relaxed mb-4">
-              ¿No saben qué hacer el fin de semana o en su próxima tarde juntos? Dejen que el universo conspire a su favor combinando una comida rica, una actividad de relax y un mimo inolvidable.
+            <p className="mb-4 text-sm leading-relaxed text-gray-600">
+              Por si pinta dejar que el azar nos arme una salida linda.
             </p>
 
-            <div className="bg-teal-50/50 rounded-2xl p-4 border border-teal-100/50 min-h-[148px] flex flex-col justify-center relative overflow-hidden">
+            <div className="relative flex min-h-[148px] flex-col justify-center overflow-hidden rounded-2xl border border-teal-100/50 bg-teal-50/50 p-4">
               <AnimatePresence mode="wait">
                 {datePlan ? (
                   <motion.div
-                    key={datePlan.food} // Trigger animation on change
+                    key={datePlan.food}
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     className="space-y-3"
                   >
-                    <div className="flex gap-2 items-start text-xs text-gray-700">
-                      <span className="font-bold font-mono tracking-wider text-[#1B4D43] uppercase w-16 text-right pt-0.5 shrink-0">Comida:</span>
+                    <div className="flex items-start gap-2 text-xs text-gray-700">
+                      <span className="w-16 shrink-0 pt-0.5 text-right font-mono text-[#1B4D43]">Comida:</span>
                       <span className="font-medium text-gray-800">{datePlan.food}</span>
                     </div>
-                    <div className="flex gap-2 items-start text-xs text-gray-700">
-                      <span className="font-bold font-mono tracking-wider text-[#1B4D43] uppercase w-16 text-right pt-0.5 shrink-0">Plan:</span>
+                    <div className="flex items-start gap-2 text-xs text-gray-700">
+                      <span className="w-16 shrink-0 pt-0.5 text-right font-mono text-[#1B4D43]">Plan:</span>
                       <span className="font-medium text-gray-800">{datePlan.activity}</span>
                     </div>
-                    <div className="flex gap-2 items-start text-xs text-gray-700">
-                      <span className="font-bold font-mono tracking-wider text-[#1B4D43] uppercase w-16 text-right pt-0.5 shrink-0">Mimo:</span>
-                      <span className="font-medium text-gray-800 font-serif italic text-teal-900">"{datePlan.mimo}"</span>
+                    <div className="flex items-start gap-2 text-xs text-gray-700">
+                      <span className="w-16 shrink-0 pt-0.5 text-right font-mono text-[#1B4D43]">Mimo:</span>
+                      <span className="font-serif italic text-teal-900">"{datePlan.mimo}"</span>
                     </div>
                   </motion.div>
                 ) : (
-                  <div className="text-center text-xs text-gray-450 space-y-1.5 py-4">
-                    <RefreshCw className={`w-8 h-8 mx-auto text-teal-300 ${spinning ? "animate-spin text-[#4DB6A3]" : ""}`} />
-                    <p className="font-bold text-teal-800">✨ ¿Cuál será la cita perfecta de hoy? ✨</p>
-                    <p className="px-5">Presioná el botón de abajo para activar los engranajes e inventar un plan espectacular.</p>
+                  <div className="space-y-1.5 py-4 text-center text-xs text-gray-400">
+                    <RefreshCw className={`mx-auto h-8 w-8 text-teal-300 ${spinning ? "animate-spin text-[#4DB6A3]" : ""}`} />
+                    <p className="font-bold text-teal-800">A ver que plan nos toca hoy</p>
+                    <p className="px-5">Capaz sale algo simple, capaz algo demasiado lindo.</p>
                   </div>
                 )}
               </AnimatePresence>
             </div>
-            
+
             {datePlan && !spinning && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-3 flex items-center gap-1 text-[10px] text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-xl border border-emerald-150 font-mono"
+                className="mt-3 flex items-center gap-1 rounded-xl border border-emerald-200 bg-emerald-50 px-2.5 py-1 font-mono text-[10px] text-emerald-600"
               >
-                <CheckCircle className="w-3.5 h-3.5 shrink-0" />
-                <span>¡Perfecto! Plan aprobado por ley de noviolandia.</span>
+                <CheckCircle className="h-3.5 w-3.5 shrink-0" />
+                <span>Este plan ya me gusta.</span>
               </motion.div>
             )}
           </div>
@@ -289,15 +272,13 @@ export default function RomanticRefuge({ onTriggerFloating }: RomanticRefugeProp
           <button
             disabled={spinning}
             onClick={spinDate}
-            className="w-full mt-4 bg-[#4DB6A3] hover:bg-[#3AA28F] disabled:bg-teal-200 text-white text-xs font-extrabold py-2.5 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+            className="mt-4 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#4DB6A3] py-2.5 text-xs font-extrabold text-white shadow-sm transition-all hover:bg-[#3AA28F] active:scale-95 disabled:bg-teal-200"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${spinning ? "animate-spin" : ""}`} />
-            <span>{spinning ? "Girando opciones mágicas..." : "Generar Plan de Cita 🎰✨"}</span>
+            <RefreshCw className={`h-3.5 w-3.5 ${spinning ? "animate-spin" : ""}`} />
+            <span>{spinning ? "Pensando algo lindo..." : "Ver que nos toca"}</span>
           </button>
         </div>
-
       </div>
-
     </div>
   );
 }

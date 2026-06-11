@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Bone, Heart, Sparkles, Volume2 } from "lucide-react";
+import { Bone, Sparkles, Volume2 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
 interface DuqueCornerProps {
@@ -11,29 +11,29 @@ export default function DuqueCorner({ onTriggerFloating }: DuqueCornerProps) {
   const [feedCount, setFeedCount] = useState(0);
 
   const duqueQuotes = [
-    "¡Guau! Flor, a mí me encanta estar cerquita tuyo y mirarte con carita tierna hasta que me regales unos mimitos.",
-    "¡Gufr! Dame más caricias en la pancita. Vos siempre sabés cómo hacerme sentir querida.",
-    "¡Guau guau! Me encanta cuando jugás conmigo y me hacés sentir parte de todo con tanto amor.",
-    "¡Wuff! Yo sé que a vos te gusta intentar que me suba a la cama, aunque a veces no te dejen. Igual yo siempre quiero quedarme cerca tuyo.",
-    "Si vos estás tomando mates, yo feliz me siento al lado tuyo acompañándote con mi colita moviéndose.",
-    "Yo ya aprendí que a vos te gustan las hamburguesas con cheddar, los mates, los mimos y que te den mucho amor. Por eso me gusta tanto estar con vos.",
+    "Guau. Flor, a mi me encanta estar cerquita tuyo y mirarte con carita tierna hasta que me regales mimitos.",
+    "Dame mas caricias en la pancita. Vos siempre sabes como hacerme sentir querida.",
+    "Me encanta cuando jugas conmigo y me haces sentir parte de todo con tanto amor.",
+    "Yo se que a vos te gusta intentar que me suba a la cama. Igual yo siempre quiero quedarme cerca tuyo.",
+    "Si vos estas tomando mates, yo feliz me quedo al lado acompanandote con mi colita moviendose.",
+    "Yo ya aprendi que a vos te gustan las hamburguesas, los mates, los mimos y que te den mucho amor.",
   ];
 
   const handleBark = (e: React.MouseEvent) => {
     const randomIdx = Math.floor(Math.random() * duqueQuotes.length);
     setCurrentThoughtIdx(randomIdx);
-    onTriggerFloating(e.clientX, e.clientY, "La Duque te dejó un mensajito");
+    onTriggerFloating(e.clientX, e.clientY, "La Duque te dejo un mensajito");
   };
 
   const handleFeedBone = (e: React.MouseEvent) => {
     setFeedCount((prev) => prev + 1);
-    onTriggerFloating(e.clientX, e.clientY, "La Duque recibió un huesito");
+    onTriggerFloating(e.clientX, e.clientY, "La Duque recibio un huesito");
   };
 
   return (
     <div
       id="duque-section"
-      className="relative overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/60 p-6 shadow-xl backdrop-blur-md shadow-glow md:p-8"
+      className="relative overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/60 p-6 shadow-xl shadow-glow backdrop-blur-md md:p-8"
     >
       <div className="absolute right-0 top-0 p-4 text-teal-800 opacity-5">
         <Bone className="h-24 w-24 rotate-45" />
@@ -41,21 +41,20 @@ export default function DuqueCorner({ onTriggerFloating }: DuqueCornerProps) {
 
       <div className="mb-6">
         <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#1B4D43]">
-          La consentida que te quiere mucho 👑🐾
+          La consentida de la casa
         </span>
         <h2 className="mt-2 font-sans text-2xl font-extrabold tracking-tight text-gray-800">
-          El Rincón Especial de la Duque
+          La Duque tambien queria aparecer
         </h2>
-        <p className="mt-1 text-xs text-gray-500">
-          La Duque ama estar cerquita tuyo, recibir tus mimos y acompañarte con toda su
-          ternura. Tocá para escuchar uno de sus mensajitos.
+        <p className="mt-1 max-w-2xl text-sm text-gray-500">
+          Porque ella tambien te busca, se queda cerca y ya te quiere como si fueras de siempre.
         </p>
       </div>
 
       <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-12">
         <div className="flex flex-col items-center md:col-span-5">
           <div className="relative flex h-36 w-36 items-center justify-center overflow-hidden rounded-full border-4 border-[#4DB6A3] bg-[#EAFDF9] p-1 shadow-lg">
-            <div className="animate-bounce select-none text-6xl duration-1000">🐕</div>
+            <div className="select-none text-6xl animate-bounce duration-1000">🐕</div>
             <div
               className="absolute right-1 top-1 rounded-full bg-amber-400 p-1 text-[10px] font-extrabold text-amber-950 shadow-sm"
               title="Reina"
@@ -66,26 +65,24 @@ export default function DuqueCorner({ onTriggerFloating }: DuqueCornerProps) {
 
           <div className="mt-3 text-center">
             <h4 className="font-sans text-lg font-extrabold text-gray-800">La Duque Lihue</h4>
-            <p className="font-mono text-xs font-medium text-teal-700">
-              Fiel compañera de mimos y cercanía
-            </p>
+            <p className="font-mono text-xs font-medium text-teal-700">Companera oficial de mimos</p>
           </div>
 
           <div className="mt-4 w-full space-y-2 rounded-2xl border border-gray-100 bg-white/80 p-3.5 text-left text-xs">
             <div className="flex justify-between">
-              <span className="font-mono text-gray-400">Cariño por Flor:</span>
-              <span className="font-bold text-teal-600">Infinito y baboso</span>
+              <span className="font-mono text-gray-400">Con vos se pone:</span>
+              <span className="font-bold text-teal-600">Pegadita y feliz</span>
             </div>
             <div className="flex justify-between">
               <span className="font-mono text-gray-400">Plan favorito:</span>
-              <span className="font-bold text-teal-600">Estar pegadita a Flor</span>
+              <span className="font-bold text-teal-600">Acompanarte de cerca</span>
             </div>
             <div className="flex justify-between">
-              <span className="font-mono text-gray-400">Datos de Flor:</span>
-              <span className="font-bold text-teal-600">Cheddar, mates y mimos</span>
+              <span className="font-mono text-gray-400">Ya aprendio que amas:</span>
+              <span className="font-bold text-teal-600">Mates, cheddar y mimos</span>
             </div>
             <div className="flex justify-between">
-              <span className="font-mono font-bold text-[#1B4D43] text-gray-400">Huesitos recibidos hoy:</span>
+              <span className="font-mono font-bold text-gray-400">Huesitos recibidos:</span>
               <span className="rounded-full border border-teal-100 bg-teal-50 px-2 font-bold text-teal-600">
                 {feedCount} 🍖
               </span>
@@ -109,7 +106,7 @@ export default function DuqueCorner({ onTriggerFloating }: DuqueCornerProps) {
                   className="space-y-2 pt-2"
                 >
                   <span className="rounded-full bg-[#4DB6A3] px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide text-white">
-                    🐾 Mensajito de la Duque
+                    Mensajito de la Duque
                   </span>
                   <p className="font-serif text-sm italic leading-relaxed text-gray-800">
                     {duqueQuotes[currentThoughtIdx]}
@@ -117,14 +114,16 @@ export default function DuqueCorner({ onTriggerFloating }: DuqueCornerProps) {
                 </motion.div>
               ) : (
                 <div className="my-auto space-y-1 text-center text-xs text-gray-400">
-                  <p className="font-bold text-teal-700">🐾 La Duque tiene algo para decirte 🐾</p>
-                  <p className="px-4">Tocá el botón y escuchá uno de sus mensajitos para vos.</p>
+                  <p className="font-bold text-teal-700">La Duque tiene algo para vos</p>
+                  <p className="px-4">
+                    Seguro seria una mezcla de mimos, mirada tierna y cola moviendose.
+                  </p>
                 </div>
               )}
             </AnimatePresence>
 
             <span className="mt-3 block text-right font-mono text-[9px] text-gray-400">
-              — Traducido con amor desde el lenguaje canino 🐕💬
+              con traduccion amorosa incluida
             </span>
           </div>
 
@@ -134,7 +133,7 @@ export default function DuqueCorner({ onTriggerFloating }: DuqueCornerProps) {
               className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#4DB6A3] px-4 py-3 text-xs font-extrabold text-white shadow-md transition-all hover:bg-[#3AA28F] active:scale-95"
             >
               <Volume2 className="h-4 w-4" />
-              <span>Escuchar a la Duque 🐾</span>
+              <span>Escucharla</span>
             </button>
 
             <button
@@ -142,7 +141,7 @@ export default function DuqueCorner({ onTriggerFloating }: DuqueCornerProps) {
               className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-teal-200 bg-white px-4 py-3 text-xs font-bold text-teal-700 transition-all hover:bg-teal-50 active:scale-95"
             >
               <Bone className="h-4 w-4 animate-spin text-emerald-500" />
-              <span>Darle Huesito ({feedCount})</span>
+              <span>Darle huesito ({feedCount})</span>
             </button>
           </div>
         </div>

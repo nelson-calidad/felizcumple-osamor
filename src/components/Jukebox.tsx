@@ -153,19 +153,20 @@ export default function Jukebox({
     audioRef.current.currentTime = newPercentage * duration;
     setCurrentTime(newPercentage * duration);
     setProgress(newPercentage * 100);
-    onTriggerFloating(e.clientX, e.clientY, "Cambiando de compás");
+    onTriggerFloating(e.clientX, e.clientY, "Cambiando de compas");
   };
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/70 p-5 shadow-xl shadow-glow backdrop-blur-md md:p-6">
+    <div className="relative overflow-hidden rounded-[2rem] border border-[#4DB6A3]/20 bg-[linear-gradient(145deg,rgba(255,255,255,0.96)_0%,rgba(248,255,253,0.96)_55%,rgba(234,253,249,0.9)_100%)] p-5 shadow-[0_28px_55px_rgba(27,77,67,0.12)] backdrop-blur-md md:p-6">
       <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#EAFDF9] opacity-80 blur-xl" />
+      <div className="absolute -bottom-16 left-6 h-36 w-36 rounded-full bg-[#FFF3E8] opacity-70 blur-2xl" />
 
       <div className="flex flex-col items-center gap-5 sm:flex-row lg:items-center lg:gap-6">
         <button
           type="button"
           className="relative shrink-0 cursor-pointer"
           onClick={togglePlay}
-          aria-label={isPlaying ? "Pausar canción" : "Reproducir canción"}
+          aria-label={isPlaying ? "Pausar cancion" : "Reproducir cancion"}
         >
           <motion.div
             animate={{ rotate: isPlaying ? 360 : 0 }}
@@ -203,8 +204,8 @@ export default function Jukebox({
 
         <div className="w-full min-w-0 flex-1">
           <div className="mb-3 text-center sm:text-left lg:text-left">
-            <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#1B4D43] font-mono">
-              Canciones de nuestra historia
+            <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#1B4D43]">
+              Una cancion para este momento
             </span>
             <h3
               className="mt-2 truncate font-sans text-lg font-bold tracking-tight text-gray-800 md:text-xl"
@@ -252,7 +253,7 @@ export default function Jukebox({
             {hasMultipleSongs && (
               <button
                 onClick={handlePrev}
-                className="rounded-full border border-gray-200 bg-white p-2 text-[#1B4D43] shadow-sm transition-all hover:bg-[#EAFDF9] active:scale-95 cursor-pointer"
+                className="cursor-pointer rounded-full border border-gray-200 bg-white p-2 text-[#1B4D43] shadow-sm transition-all hover:bg-[#EAFDF9] active:scale-95"
                 title="Anterior"
               >
                 {"<<"}
@@ -274,7 +275,7 @@ export default function Jukebox({
             {hasMultipleSongs && (
               <button
                 onClick={handleNext}
-                className="rounded-full border border-gray-200 bg-white p-2 text-[#1B4D43] shadow-sm transition-all hover:bg-[#EAFDF9] active:scale-95 cursor-pointer"
+                className="cursor-pointer rounded-full border border-gray-200 bg-white p-2 text-[#1B4D43] shadow-sm transition-all hover:bg-[#EAFDF9] active:scale-95"
                 title="Siguiente"
               >
                 {">>"}
@@ -283,13 +284,12 @@ export default function Jukebox({
 
             <div className="ml-2 hidden items-center gap-1.5 font-mono text-[10px] text-gray-400 lg:flex">
               <Volume2 className="h-3.5 w-3.5 text-gray-400" />
-              <span>{isPlaying ? "Sonando para vos" : "Esperando play"}</span>
+              <span>{isPlaying ? "Sonando cerquita tuyo" : "Queda aca, esperandote"}</span>
             </div>
           </div>
 
-          <p className="mt-4 font-mono text-[11px] leading-relaxed text-gray-500">
-            Esta canción quedó acá para acompañarte mientras recorrés todo este regalo hecho con
-            amor.
+          <p className="mt-4 max-w-xl font-serif text-[13px] leading-relaxed text-[#5C6A67]">
+            La deje aca para que te abrace bajito mientras vas recorriendo todo esto.
           </p>
         </div>
       </div>

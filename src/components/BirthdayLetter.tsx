@@ -41,7 +41,7 @@ export default function BirthdayLetter({
     onTriggerFloating(
       e.clientX,
       e.clientY,
-      isOpen ? "La cartita quedó guardada otra vez" : "Se abrió la carta para vos",
+      isOpen ? "La carta quedo guardada otra vez" : "Se abrio la carta para vos",
     );
   };
 
@@ -53,7 +53,7 @@ export default function BirthdayLetter({
 
     setSavedReplies((prev) => [trimmedReply, ...prev].slice(0, 5));
     setIsSent(true);
-    onTriggerFloating(window.innerWidth / 2, window.innerHeight / 2, "Llegó un mensajito de vuelta");
+    onTriggerFloating(window.innerWidth / 2, window.innerHeight / 2, "Llego un mensajito tuyo");
 
     setTimeout(() => {
       setIsSent(false);
@@ -64,20 +64,19 @@ export default function BirthdayLetter({
   return (
     <div id="letter-section" className="relative flex flex-col items-center justify-center py-6 md:py-10">
       <div className="mb-6 text-center md:mb-8">
-        <span className="rounded-full bg-teal-100 px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-teal-700">
-          Especialmente para vos
+        <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-teal-700">
+          Solo para vos
         </span>
         <h2 className="mt-2 font-sans text-3xl font-extrabold tracking-tight text-gray-800">
-          La Carta de Cumpleaños
+          La carta que queria dejarte
         </h2>
-        <p className="mx-auto mt-1 max-w-md text-xs text-gray-500">
-          Tocá el sello del sobre para abrir una carta hecha con amor, ternura y todo lo que me
-          hacés sentir.
+        <p className="mx-auto mt-1 max-w-md text-sm text-gray-500">
+          Una cartita guardada aca, con todo lo que me nace decirte cuando pienso en vos.
         </p>
       </div>
 
       <div className="relative flex min-h-[300px] w-full max-w-lg items-center justify-center sm:min-h-[340px]">
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-[#EAFDF9]/45 to-transparent" />
+        <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-b from-white via-[#F8FFFD] to-[#EAFDF9]/70 shadow-[0_30px_70px_rgba(77,182,163,0.12)]" />
 
         <AnimatePresence>
           {isOpen && (
@@ -86,7 +85,7 @@ export default function BirthdayLetter({
               animate={{ y: -110, opacity: 1, scale: 1 }}
               exit={{ y: 50, opacity: 0, scale: 0.95 }}
               transition={{ type: "spring", damping: 15, stiffness: 100 }}
-              className="absolute z-20 w-11/12 max-w-md rounded-2xl border border-[#4DB6A3]/25 bg-white p-5 shadow-2xl md:p-8"
+              className="absolute z-20 w-11/12 max-w-md rounded-[2rem] border border-[#4DB6A3]/20 bg-[linear-gradient(180deg,#fffdf9_0%,#ffffff_62%,#f7fffd_100%)] p-5 shadow-[0_30px_60px_rgba(27,77,67,0.16)] md:p-8"
             >
               <div className="absolute right-4 top-4 text-teal-300">
                 <Heart className="h-5 w-5 fill-teal-500/10" />
@@ -106,31 +105,31 @@ export default function BirthdayLetter({
                   17 de junio - 12:00 AM
                 </p>
                 <h3 className="font-sans text-xl font-extrabold tracking-tight text-gray-800">
-                  Amorcito, mi Flor Lihue hermosa ❤️
+                  Amorcito, mi Flor Lihue hermosa
                 </h3>
 
                 <p>
-                  Hoy cumplís 26 añitos y quiero decirte lo mucho que te amo y lo feliz que me
-                  hace tenerte en mi vida. Sos una persona hermosa, buena, tierna, mi princesa, mi
-                  compañera, la que me alegra los días con una mirada, un abrazo o simplemente
+                  Hoy cumplis 26 anitos y quiero decirte lo mucho que te amo y lo feliz que me hace
+                  tenerte en mi vida. Sos una persona hermosa, buena, tierna, mi princesa, mi
+                  companera, la que me alegra los dias con una mirada, un abrazo o simplemente
                   estando.
                 </p>
                 <p>
                   Gracias por existir, por elegirme, por dejarme amarte y por compartir tantas
                   cosas lindas conmigo: nuestros mates, las series coreanas, las hamburguesas, los
-                  lomitos, los mimos de siempre y todos esos momentos que para mí valen un montón.
+                  lomitos, los mimos de siempre y todos esos momentos que para mi valen un monton.
                 </p>
                 <p>
-                  Quiero que sepas que voy a acompañarte siempre en lo que decidas, en tus sueños,
-                  en tus proyectos, en tus días buenos y también en los difíciles. Siempre voy a
-                  estar para vos, cuidándote, apoyándote y amándote como te merecés.
+                  Quiero que sepas que voy a acompanarte siempre en lo que decidas, en tus suenos,
+                  en tus proyectos, en tus dias buenos y tambien en los dificiles. Siempre voy a
+                  estar para vos, cuidandote, apoyandote y amandote como te mereces.
                 </p>
                 <p>
-                  Te amo muchísimo, mi linda, mi hermosa, mi Flor. Ojalá este nuevo año te traiga
-                  muchas cosas lindas, porque vos merecés todo lo bueno del mundo.
+                  Te amo muchisimo, mi linda, mi hermosa, mi Flor. Ojala este nuevo ano te traiga
+                  muchas cosas lindas, porque vos mereces todo lo bueno del mundo.
                 </p>
                 <p className="font-sans text-base font-semibold text-[#1B4D43]">
-                  Feliz cumple, amorcito mío. Te amo hasta la palmera y mucho más ❤️
+                  Feliz cumple, amorcito mio. Te amo hasta la palmera y mucho mas.
                 </p>
                 <p className="block pt-2 text-right font-mono text-xs font-medium italic text-gray-500">
                   Con todo mi amor,
@@ -141,7 +140,7 @@ export default function BirthdayLetter({
                 </p>
               </div>
 
-              <div className="mt-6 border-t border-dashed border-gray-100 pt-4">
+              <div className="mt-6 rounded-[1.4rem] border border-dashed border-[#D9ECE7] bg-[#FCFFFE] p-4">
                 <AnimatePresence mode="wait">
                   {isSent ? (
                     <motion.div
@@ -151,7 +150,7 @@ export default function BirthdayLetter({
                       className="flex items-center justify-center gap-2 rounded-xl border border-green-200 bg-green-50 p-3 text-xs font-semibold text-green-700"
                     >
                       <CheckCircle2 className="h-4 w-4" />
-                      <span>Tu respuesta quedó guardada con todo mi amor</span>
+                      <span>Tu respuesta quedo guardada con todo mi amor</span>
                     </motion.div>
                   ) : (
                     <motion.form
@@ -161,8 +160,8 @@ export default function BirthdayLetter({
                       onSubmit={handleSendReply}
                       className="space-y-3"
                     >
-                      <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
-                        Dejá un mensajito de vuelta:
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-[#B88357]">
+                        Si te nace dejarme unas palabritas
                       </span>
                       <div className="space-y-2">
                         <input
@@ -170,14 +169,14 @@ export default function BirthdayLetter({
                           required
                           value={replyText}
                           onChange={(e) => setReplyText(e.target.value)}
-                          placeholder="Ej: te amo, gracias mi vida, vení por mimos"
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#4DB6A3]"
+                          placeholder="Ej: te amo, gracias mi vida, veni por mimos"
+                          className="w-full rounded-2xl border border-[#E8DED0] bg-[#FFFDF9] px-4 py-3 text-xs text-[#5F4B44] focus:outline-none focus:ring-1 focus:ring-[#4DB6A3]"
                         />
                         <button
                           type="submit"
-                          className="w-full rounded-xl bg-[#4DB6A3] px-3 py-2 text-xs font-bold text-white transition-all hover:bg-[#3AA28F] active:scale-95"
+                          className="w-full rounded-2xl bg-[#1B4D43] px-3 py-3 text-xs font-bold text-white transition-all hover:bg-[#143B33] active:scale-95"
                         >
-                          Guardar respuesta
+                          Guardarla con la carta
                         </button>
                       </div>
                     </motion.form>
@@ -187,7 +186,7 @@ export default function BirthdayLetter({
                 {savedReplies.length > 0 && (
                   <div className="mt-4 space-y-2">
                     <p className="text-[10px] font-bold uppercase tracking-wider text-[#B88357]">
-                      Tus mensajitos guardados
+                      Lo que me dejaste
                     </p>
                     {savedReplies.map((reply, index) => (
                       <div
