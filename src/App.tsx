@@ -236,7 +236,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <div className="mx-auto max-w-6xl px-4 pt-6 md:px-6 md:pt-8">
+      <div className="mx-auto max-w-[1380px] px-4 pt-6 md:px-6 md:pt-8 xl:px-8">
         <div className="mb-6 flex items-center justify-between rounded-2xl border border-[#D7E7E1] bg-white/72 px-4 py-3 text-[11px] font-semibold text-[#35534C] shadow-sm backdrop-blur-md md:mb-8 md:px-5 md:font-mono md:text-xs">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 animate-ping rounded-full bg-[#4DB6A3]" />
@@ -321,36 +321,38 @@ export default function App() {
           </div>
         </div>
 
-        <div className="mb-10 grid grid-cols-1 items-start gap-6 xl:mb-12 xl:grid-cols-12 xl:gap-8">
-          <div className="space-y-6 xl:col-span-5 xl:space-y-8">
-            <div id="music-section">
-              <Jukebox
-                songs={MUSIC_PLAYLIST}
-                onTriggerFloating={triggerHeartShower}
-                birthdayCakeImg={birthdayCakeImg}
-                loveLetterImg={loveLetterImg}
-                polaroidImg={polaroidImg}
-              />
-            </div>
-
-            <BirthdayLetter
+        <div className="mb-10 space-y-6 xl:mb-12 xl:space-y-8">
+          <div id="music-section">
+            <Jukebox
+              songs={MUSIC_PLAYLIST}
               onTriggerFloating={triggerHeartShower}
+              birthdayCakeImg={birthdayCakeImg}
               loveLetterImg={loveLetterImg}
+              polaroidImg={polaroidImg}
             />
           </div>
 
-          <div className="space-y-6 xl:col-span-7 xl:space-y-8">
-            <LoveJar onTriggerFloating={triggerHeartShower} />
-
-            <div id="timeline-section">
-              <Timeline
-                memories={INITIAL_MEMORIES}
+          <div className="grid grid-cols-1 items-start gap-6 xl:grid-cols-12 xl:gap-8">
+            <div className="xl:col-span-5">
+              <BirthdayLetter
                 onTriggerFloating={triggerHeartShower}
-                birthdayCakeImg={birthdayCakeImg}
                 loveLetterImg={loveLetterImg}
-                polaroidImg={polaroidImg}
               />
             </div>
+
+            <div className="xl:col-span-7">
+              <LoveJar onTriggerFloating={triggerHeartShower} />
+            </div>
+          </div>
+
+          <div id="timeline-section">
+            <Timeline
+              memories={INITIAL_MEMORIES}
+              onTriggerFloating={triggerHeartShower}
+              birthdayCakeImg={birthdayCakeImg}
+              loveLetterImg={loveLetterImg}
+              polaroidImg={polaroidImg}
+            />
           </div>
         </div>
 
@@ -359,7 +361,7 @@ export default function App() {
         </div>
 
         <section className="mb-10 rounded-[2rem] border border-[#EDF1EE] bg-[linear-gradient(180deg,rgba(250,251,249,0.95),rgba(244,247,245,0.93))] p-5 shadow-[0_16px_38px_rgba(27,77,67,0.05)] backdrop-blur-md md:p-8">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl xl:max-w-3xl">
             <p className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[#B88357]">
               Extras para seguir jugando
             </p>
@@ -372,11 +374,19 @@ export default function App() {
             </p>
           </div>
 
-          <div className="mt-6 grid gap-6 lg:grid-cols-2 lg:items-start xl:gap-8">
-            <Trivia onTriggerFloating={triggerHeartShower} />
-            <DuqueCorner onTriggerFloating={triggerHeartShower} />
-            <LoveCoupons onTriggerFloating={triggerHeartShower} />
-            <RomanticRefuge onTriggerFloating={triggerHeartShower} />
+          <div className="mt-6 grid gap-6 xl:grid-cols-12 xl:gap-8">
+            <div className="xl:col-span-5">
+              <Trivia onTriggerFloating={triggerHeartShower} />
+            </div>
+            <div className="xl:col-span-7">
+              <DuqueCorner onTriggerFloating={triggerHeartShower} />
+            </div>
+            <div className="xl:col-span-7">
+              <LoveCoupons onTriggerFloating={triggerHeartShower} />
+            </div>
+            <div className="xl:col-span-5">
+              <RomanticRefuge onTriggerFloating={triggerHeartShower} />
+            </div>
           </div>
         </section>
 
