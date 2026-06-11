@@ -133,7 +133,7 @@ export default function Timeline({
 
       {filteredMemories.length > 0 ? (
         <>
-          <div className="mb-5 flex gap-3 overflow-x-auto pb-1 md:mb-6">
+          <div className="mb-5 hidden gap-3 overflow-x-auto pb-1 sm:flex md:mb-6">
             {filteredMemories.map((memory, index) => (
               <button
                 key={memory.id}
@@ -181,7 +181,7 @@ export default function Timeline({
                   <div className="h-1 w-1 rounded-full bg-gray-900" />
                 </div>
 
-                <div className="relative mb-4 aspect-[4/5] overflow-hidden rounded-md border border-gray-100 bg-gray-50 sm:aspect-[5/4] lg:aspect-[4/5]">
+                <div className="relative mx-auto mb-4 aspect-[4/5] max-h-[320px] w-full max-w-[250px] overflow-hidden rounded-md border border-gray-100 bg-gray-50 sm:max-h-none sm:max-w-none sm:aspect-[5/4] lg:aspect-[4/5]">
                   <img
                     src={getMemoryImage(activeMemory)}
                     alt={activeMemory.title}
@@ -248,6 +248,19 @@ export default function Timeline({
                   >
                     Anterior
                   </button>
+                  <div className="flex items-center gap-1 sm:hidden">
+                    {filteredMemories.map((memory, index) => (
+                      <button
+                        key={memory.id}
+                        type="button"
+                        onClick={() => setDeckIndex(index)}
+                        aria-label={`Ir al recuerdo ${index + 1}`}
+                        className={`h-2.5 rounded-full transition-all ${
+                          deckIndex === index ? "w-6 bg-[#214D44]" : "w-2.5 bg-[#CFE3DD]"
+                        }`}
+                      />
+                    ))}
+                  </div>
                   <button
                     onClick={handleNextDeck}
                     className="flex items-center gap-1.5 rounded-xl bg-[#214D44] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#183C35]"
