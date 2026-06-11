@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { ArrowDown, Heart, Sparkles } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import birthdayCakeImg from "./assets/images/birthday_cake_26_1780576134041.png";
@@ -112,10 +112,11 @@ const ROMANTIC_STEPS = [
 export default function App() {
   const [hearts, setHearts] = useState<FloatingHeart[]>([]);
   const [whisperMessage, setWhisperMessage] = useState(
-    "Toca cualquier rincón para ir llenando este regalo de pensamientos de amor.",
+    "Tocá cualquier rincón para ir llenando este regalo de pensamientos de amor.",
   );
   const [introModal, setIntroModal] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
+  const [completedSteps, setCompletedSteps] = useState<number[]>([0]);
 
   const handlePageClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
@@ -135,9 +136,16 @@ export default function App() {
     const step = ROMANTIC_STEPS[index];
     const element = document.getElementById(step.id);
     if (!element) return;
+
     setActiveStep(index);
+    setCompletedSteps((prev) => (prev.includes(index) ? prev : [...prev, index].sort((a, b) => a - b)));
     element.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const nextStepIndex = useMemo(
+    () => (activeStep + 1 < ROMANTIC_STEPS.length ? activeStep + 1 : null),
+    [activeStep],
+  );
 
   const triggerHeartShower = (x: number, y: number, text?: string) => {
     const customPhrases = [
@@ -174,7 +182,7 @@ export default function App() {
     <div
       id="root-bday-app"
       onClick={handlePageClick}
-      className="relative min-h-screen overflow-x-hidden bg-gradient-to-b from-[#EBF8F6] via-[#F8FDFC] to-[#E7F5F0] pb-20 font-sans selection:bg-[#A8E6CF] selection:text-[#0F3A32]"
+      className="relative min-h-screen overflow-x-hidden bg-gradient-to-b from-[#EBF8F6] via-[#F8FDFC] to-[#E7F5F0] pb-28 font-sans selection:bg-[#A8E6CF] selection:text-[#0F3A32]"
     >
       <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
         {hearts.map((heart) => (
@@ -219,22 +227,20 @@ export default function App() {
                 Hola, mi reina hermosa
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                Preparé esto porque te amo, porque quiero que seas feliz y porque me gusta
-                hacerlo para vos. Espero que tengas un día hermoso, porque tus 26 merecen
-                algo romántico, dulce y totalmente nuestro.
+                Preparé este rinconcito para acompañarte despacito: primero nuestra canción,
+                después la carta y, más abajo, los recuerdos y las sorpresas. Quise que se sienta
+                íntimo, dulce y totalmente nuestro.
               </p>
               <p className="mt-4 rounded-2xl border border-[#4DB6A3]/20 bg-[#EAFDF9] px-4 py-2.5 font-mono text-xs font-bold text-[#1B4D43]">
                 Día oficial del festejo de la mujer más linda: 17 de junio
               </p>
               <div className="mt-4 space-y-1.5 rounded-xl border border-gray-100 bg-gray-50 p-3.5 text-left text-xs text-gray-500">
                 <p>
-                  <b>Cómo recorrer este rinconcito de amor:</b>
+                  <b>Cómo recorrerlo:</b>
                 </p>
-                <p>• Empezá por nuestra canción y dejá que te acompañe.</p>
-                <p>• Después abrí la carta y leela tranquila.</p>
-                <p>• Tocá el frasco de mimos para encontrar mensajitos.</p>
-                <p>• Seguimos con nuestros recuerdos y con 26 razones por las que te amo.</p>
-                <p>• Podés tocar cualquier rincón para ir llenando todo de amor.</p>
+                <p>• Empezá por la canción y la carta.</p>
+                <p>• Seguí con el frasco y nuestros recuerdos.</p>
+                <p>• Al final te esperan las razones y los extras.</p>
               </div>
 
               <button
@@ -262,7 +268,7 @@ export default function App() {
             <span>Un regalo hecho con amor para Flor Lihue</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <Heart className="h-3.5 w-3.5 animate-pulse fill-teal-400 text-teal-400 shrink-0" />
+            <Heart className="h-3.5 w-3.5 shrink-0 animate-pulse fill-teal-400 text-teal-400" />
             <span>Felices 26, mi amor</span>
           </div>
         </div>
@@ -291,12 +297,8 @@ export default function App() {
               estando conmigo.
             </p>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-gray-600">
-              Hoy cumplís 26 añitos y quería hacerte algo distinto, algo que quede para vos,
-              para que cada vez que lo veas te acuerdes de lo mucho que te amo.
-            </p>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-gray-600">
-              Esta paginita es para recordarte que sos mi persona favorita, mi compañera,
-              mi amorcito, mi princesa y una de las cosas más lindas que tengo en la vida.
+              Hoy cumplís 26 añitos y quería regalarte algo distinto: un recorrido cortito,
+              romántico y lleno de nosotros para que cada parte te abrace un poquito.
             </p>
 
             <div className="mt-5 flex justify-center">
@@ -327,17 +329,20 @@ export default function App() {
                 Si querés, te voy llevando paso a paso
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-[#58706A]">
-                Lo pensé como un recorrido romántico para que sepas dónde tocar primero y
-                puedas vivirlo despacito.
+                Lo pensé como un recorrido romántico para que sepas dónde tocar primero y puedas
+                vivirlo despacito.
               </p>
             </div>
-            <button
-              type="button"
-              onClick={() => goToStep((activeStep + 1) % ROMANTIC_STEPS.length)}
-              className="rounded-full bg-[#214D44] px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-[#183C35] active:scale-95 cursor-pointer"
-            >
-              Siguiente sorpresa
-            </button>
+
+            {nextStepIndex !== null && (
+              <button
+                type="button"
+                onClick={() => goToStep(nextStepIndex)}
+                className="rounded-full bg-[#214D44] px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-[#183C35] active:scale-95 cursor-pointer"
+              >
+                Seguir recorrido
+              </button>
+            )}
           </div>
 
           <div className="mt-5 grid gap-3 md:grid-cols-5">
@@ -352,9 +357,20 @@ export default function App() {
                     : "border-white/80 bg-white/70 hover:bg-white"
                 }`}
               >
-                <span className="block text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
-                  Paso {index + 1}
-                </span>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="block text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
+                    Paso {index + 1}
+                  </span>
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-[9px] font-mono font-bold uppercase ${
+                      completedSteps.includes(index)
+                        ? "bg-[#DFF7F0] text-[#1F6A5D]"
+                        : "bg-gray-100 text-gray-400"
+                    }`}
+                  >
+                    {completedSteps.includes(index) ? "Visto" : "Pendiente"}
+                  </span>
+                </div>
                 <span className="mt-2 block font-serif text-lg text-[#214D44]">{step.title}</span>
                 <span className="mt-1 block text-xs leading-relaxed text-[#607772]">{step.note}</span>
               </button>
@@ -397,20 +413,38 @@ export default function App() {
 
         <div className="my-10 space-y-10">
           <ReasonsToLove onTriggerFloating={triggerHeartShower} />
-          <Trivia onTriggerFloating={triggerHeartShower} />
-          <DuqueCorner onTriggerFloating={triggerHeartShower} />
-          <LoveCoupons onTriggerFloating={triggerHeartShower} />
-          <RomanticRefuge onTriggerFloating={triggerHeartShower} />
         </div>
+
+        <section className="mb-10 rounded-[2rem] border border-white/70 bg-white/65 p-6 shadow-[0_22px_50px_rgba(27,77,67,0.10)] backdrop-blur-md md:p-8">
+          <div className="max-w-2xl">
+            <p className="text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-[#B88357]">
+              Extras para seguir jugando
+            </p>
+            <h2 className="mt-2 font-serif text-2xl text-[#214D44] md:text-3xl">
+              Cuando termines lo principal, acá siguen las sorpresas
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-[#58706A]">
+              Dejé estos rinconcitos más livianos para el final, como si después de la carta y
+              los recuerdos nos quedáramos jugando un rato más juntos.
+            </p>
+          </div>
+
+          <div className="mt-6 space-y-8">
+            <Trivia onTriggerFloating={triggerHeartShower} />
+            <DuqueCorner onTriggerFloating={triggerHeartShower} />
+            <LoveCoupons onTriggerFloating={triggerHeartShower} />
+            <RomanticRefuge onTriggerFloating={triggerHeartShower} />
+          </div>
+        </section>
 
         <footer className="mx-auto max-w-md rounded-2xl border border-gray-200/50 bg-white/40 px-4 py-6 text-center font-mono text-xs text-gray-400">
           <p className="mb-1 flex items-center justify-center gap-1.5 font-bold text-[#1B4D43]">
             <span>Hecho con amor eterno por tu novio</span>
-            <Heart className="h-3.5 w-3.5 animate-pulse fill-teal-400 text-teal-400 shrink-0" />
+            <Heart className="h-3.5 w-3.5 shrink-0 animate-pulse fill-teal-400 text-teal-400" />
           </p>
           <p className="px-5">
-            Dedicado con orgullo a Flor Lihue en sus 26 años. Sos mi amorcito, mi princesa
-            y mi compañera favorita para la vida.
+            Dedicado con orgullo a Flor Lihue en sus 26 años. Sos mi amorcito, mi princesa y mi
+            compañera favorita para la vida.
           </p>
           <span className="mt-2 block text-[9px] text-gray-300">
             2026 - Todos nuestros recuerdos guardados para siempre
@@ -418,16 +452,41 @@ export default function App() {
         </footer>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-40 flex h-10 items-center justify-center border-t border-[#4DB6A3]/25 bg-white/80 px-4 text-center font-sans shadow-lg backdrop-blur-lg select-none">
-        <motion.p
-          key={whisperMessage}
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex items-center justify-center gap-1.5 text-xs font-bold text-[#1B4D43]"
-        >
-          <Sparkles className="h-3.5 w-3.5 fill-teal-500/10 text-teal-500 shrink-0" />
-          <span>{whisperMessage}</span>
-        </motion.p>
+      <div className="fixed bottom-3 left-3 right-3 z-40 md:left-auto md:right-4 md:w-[360px]">
+        <div className="rounded-[1.6rem] border border-[#4DB6A3]/20 bg-white/88 p-3 shadow-xl backdrop-blur-lg">
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
+              Recorrido {activeStep + 1}/{ROMANTIC_STEPS.length}
+            </span>
+            {nextStepIndex !== null && (
+              <button
+                type="button"
+                onClick={() => goToStep(nextStepIndex)}
+                className="rounded-full bg-[#214D44] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-all hover:bg-[#183C35] active:scale-95"
+              >
+                Siguiente
+              </button>
+            )}
+          </div>
+
+          <div className="mb-2 h-1.5 overflow-hidden rounded-full bg-[#E3F1ED]">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-[#4DB6A3] to-[#214D44] transition-all duration-500"
+              style={{ width: `${((activeStep + 1) / ROMANTIC_STEPS.length) * 100}%` }}
+            />
+          </div>
+
+          <p className="text-sm font-serif text-[#214D44]">{ROMANTIC_STEPS[activeStep].title}</p>
+          <motion.p
+            key={whisperMessage}
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-1 flex items-start gap-1.5 text-[11px] font-medium leading-relaxed text-[#56706A]"
+          >
+            <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 fill-teal-500/10 text-teal-500" />
+            <span>{whisperMessage}</span>
+          </motion.p>
+        </div>
       </div>
     </div>
   );

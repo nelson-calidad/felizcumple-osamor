@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Sparkles } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { Memory } from "../types";
@@ -34,6 +34,13 @@ export default function Timeline({
     selectedCategory === "all"
       ? memories
       : memories.filter((memory) => memory.category === selectedCategory);
+
+  useEffect(() => {
+    if (deckIndex <= filteredMemories.length - 1) return;
+    setDeckIndex(0);
+  }, [deckIndex, filteredMemories.length]);
+
+  const activeMemory = filteredMemories[deckIndex];
 
   const getMemoryImage = (memory: Memory) => {
     if (memory.imageSrc) return memory.imageSrc;
@@ -93,19 +100,19 @@ export default function Timeline({
       <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
         <div>
           <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#1B4D43]">
-            Nuestros Momentos Juntos
+            Nuestros momentos juntos
           </span>
           <h2 className="mt-2 font-sans text-3xl font-extrabold tracking-tight text-gray-800">
             Polaroids de Nuestros Recuerdos
           </h2>
           <p className="mt-1 text-sm text-gray-500">
-            Un pequeño escritorio de recuerdos para ir pasando foto por foto y revivir lo
-            lindo que construimos.
+            Ahora se siente más álbum: podés ir foto por foto o saltar directo a la que más te den
+            ganas de volver a mirar.
           </p>
         </div>
       </div>
 
-      <div className="mb-8 flex flex-wrap gap-2.5">
+      <div className="mb-6 flex flex-wrap gap-2.5">
         {categories.map((category) => (
           <button
             key={category.id}
@@ -124,20 +131,49 @@ export default function Timeline({
         ))}
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`${selectedCategory}-${deckIndex}`}
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.4 }}
-          className="flex flex-col items-center justify-center py-6"
-        >
-          {filteredMemories.length > 0 ? (
-            <div className="w-full max-w-sm">
+      {filteredMemories.length > 0 ? (
+        <>
+          <div className="mb-6 flex gap-3 overflow-x-auto pb-1">
+            {filteredMemories.map((memory, index) => (
+              <button
+                key={memory.id}
+                type="button"
+                onClick={() => setDeckIndex(index)}
+                className={`min-w-[92px] shrink-0 rounded-[1.2rem] border p-2 text-left transition-all ${
+                  deckIndex === index
+                    ? "border-[#8FD4C4] bg-[#F6FFFC] shadow-[0_12px_24px_rgba(33,77,68,0.10)]"
+                    : "border-white/80 bg-white/75 hover:bg-white"
+                }`}
+              >
+                <div className="relative mb-2 aspect-square overflow-hidden rounded-xl">
+                  <img
+                    src={getMemoryImage(memory)}
+                    alt={memory.title}
+                    className="h-full w-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <p className="truncate text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[#B88357]">
+                  {index + 1}
+                </p>
+                <p className="mt-1 line-clamp-2 text-xs font-semibold leading-snug text-[#214D44]">
+                  {memory.title}
+                </p>
+              </button>
+            ))}
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${selectedCategory}-${activeMemory.id}`}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.35 }}
+              className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)]"
+            >
               <motion.div
-                key={filteredMemories[deckIndex].id}
-                initial={{ rotate: -4, scale: 0.9, opacity: 0 }}
+                initial={{ rotate: -4, scale: 0.95, opacity: 0 }}
                 animate={{ rotate: deckIndex % 2 === 0 ? 1 : -2, scale: 1, opacity: 1 }}
                 className="group relative rounded-lg border border-gray-100 bg-white p-4 pb-12 shadow-xl"
               >
@@ -147,8 +183,8 @@ export default function Timeline({
 
                 <div className="relative mb-4 aspect-square overflow-hidden rounded-md border border-gray-100 bg-gray-50">
                   <img
-                    src={getMemoryImage(filteredMemories[deckIndex])}
-                    alt="memoria_foto"
+                    src={getMemoryImage(activeMemory)}
+                    alt={activeMemory.title}
                     className="h-full w-full select-none object-cover"
                     referrerPolicy="no-referrer"
                     onError={(e) => {
@@ -156,73 +192,78 @@ export default function Timeline({
                     }}
                   />
                   <div className="absolute bottom-2 right-2 rounded-full bg-black/40 p-2 text-xs text-white backdrop-blur-sm">
-                    {filteredMemories[deckIndex].emoji}
+                    {activeMemory.emoji}
                   </div>
                 </div>
 
                 <div className="mt-2 px-1 text-center font-serif">
                   <span className="rounded-full bg-[#EAFDF9] px-2.5 py-0.5 font-mono text-[11px] font-bold uppercase text-[#1B4D43]">
-                    {filteredMemories[deckIndex].date}
+                    {activeMemory.date}
                   </span>
                   <h5 className="mt-1.5 text-lg font-extrabold leading-snug tracking-tight text-gray-800">
-                    {filteredMemories[deckIndex].title}
+                    {activeMemory.title}
                   </h5>
                   <p className="mt-1 text-xs italic leading-relaxed text-gray-500">
-                    "{filteredMemories[deckIndex].description}"
+                    "{activeMemory.description}"
                   </p>
-                </div>
-
-                <div className="mt-4 text-center">
-                  <button
-                    onClick={(e) => toggleSecret(filteredMemories[deckIndex].id, e)}
-                    className="inline-flex cursor-pointer items-center gap-1 rounded-full bg-teal-100 px-3 py-1 text-[10px] font-bold text-teal-700 transition-all hover:bg-teal-200"
-                  >
-                    <Sparkles className="h-3 w-3" />
-                    {revealedSecrets[filteredMemories[deckIndex].id]
-                      ? "Ocultar secreto"
-                      : "Revelar secreto"}
-                  </button>
-
-                  <AnimatePresence>
-                    {revealedSecrets[filteredMemories[deckIndex].id] && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 5 }}
-                        className="mt-3 rounded-lg border border-teal-100 bg-teal-50 p-2.5 text-left text-[11px] italic text-[#1B4D43]"
-                      >
-                        "{getSecretText(filteredMemories[deckIndex].id)}"
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </div>
               </motion.div>
 
-              <div className="mt-6 flex items-center justify-between">
-                <button
-                  onClick={handlePrevDeck}
-                  className="flex items-center gap-1.5 rounded-xl border bg-white px-3 py-1.5 text-xs font-semibold text-gray-600 shadow-sm hover:bg-gray-50 hover:text-gray-900"
-                >
-                  Anterior
-                </button>
-                <span className="font-mono text-xs font-bold text-gray-500">
-                  {deckIndex + 1} de {filteredMemories.length}
-                </span>
-                <button
-                  onClick={handleNextDeck}
-                  className="flex items-center gap-1.5 rounded-xl border bg-white px-3 py-1.5 text-xs font-semibold text-gray-600 shadow-sm hover:bg-gray-50 hover:text-gray-900"
-                >
-                  Siguiente
-                </button>
+              <div className="flex flex-col justify-between rounded-[1.8rem] border border-white/90 bg-white/82 p-5 shadow-[0_18px_36px_rgba(33,77,68,0.06)]">
+                <div>
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#B88357]">
+                    Recuerdo {deckIndex + 1} de {filteredMemories.length}
+                  </p>
+                  <h4 className="mt-2 font-serif text-2xl text-[#214D44]">{activeMemory.title}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-[#607772]">{activeMemory.description}</p>
+
+                  <div className="mt-5 rounded-[1.3rem] border border-dashed border-[#BFDCD4] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(245,255,252,0.7))] p-4">
+                    <button
+                      onClick={(e) => toggleSecret(activeMemory.id, e)}
+                      className="inline-flex cursor-pointer items-center gap-1 rounded-full bg-teal-100 px-3 py-1 text-[10px] font-bold text-teal-700 transition-all hover:bg-teal-200"
+                    >
+                      <Sparkles className="h-3 w-3" />
+                      {revealedSecrets[activeMemory.id] ? "Ocultar secreto" : "Revelar secreto"}
+                    </button>
+
+                    <AnimatePresence>
+                      {revealedSecrets[activeMemory.id] && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 5 }}
+                          className="mt-3 rounded-lg border border-teal-100 bg-teal-50 p-3 text-left text-sm italic leading-relaxed text-[#1B4D43]"
+                        >
+                          "{getSecretText(activeMemory.id)}"
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+
+                <div className="mt-5 flex items-center justify-between gap-3">
+                  <button
+                    onClick={handlePrevDeck}
+                    className="flex items-center gap-1.5 rounded-xl border bg-white px-3 py-2 text-xs font-semibold text-gray-600 shadow-sm hover:bg-gray-50 hover:text-gray-900"
+                  >
+                    Anterior
+                  </button>
+                  <button
+                    onClick={handleNextDeck}
+                    className="flex items-center gap-1.5 rounded-xl bg-[#214D44] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#183C35]"
+                  >
+                    Siguiente
+                  </button>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="py-10 text-center font-mono text-xs text-gray-500">
-              No hay recuerdos cargados en esta categoria aun.
-            </div>
-          )}
-        </motion.div>
-      </AnimatePresence>
+            </motion.div>
+          </AnimatePresence>
+        </>
+      ) : (
+        <div className="py-10 text-center font-mono text-xs text-gray-500">
+          No hay recuerdos cargados en esta categoría aún.
+        </div>
+      )}
     </div>
   );
 }

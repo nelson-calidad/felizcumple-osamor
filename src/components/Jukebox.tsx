@@ -11,6 +11,13 @@ interface JukeboxProps {
   polaroidImg: string;
 }
 
+const formatTime = (seconds: number) => {
+  if (!Number.isFinite(seconds) || seconds <= 0) return "0:00";
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+};
+
 export default function Jukebox({
   songs,
   onTriggerFloating,
@@ -22,6 +29,7 @@ export default function Jukebox({
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const playPromiseRef = useRef<Promise<void> | null>(null);
 
@@ -55,10 +63,13 @@ export default function Jukebox({
       audio.src = currentSongUrl;
       audio.load();
       setProgress(0);
+      setCurrentTime(0);
     }
 
     const updateProgress = () => {
-      if (active && audio.duration) {
+      if (!active) return;
+      setCurrentTime(audio.currentTime || 0);
+      if (audio.duration) {
         setProgress((audio.currentTime / audio.duration) * 100);
       }
     };
@@ -140,33 +151,39 @@ export default function Jukebox({
     const clickX = e.clientX - rect.left;
     const newPercentage = clickX / rect.width;
     audioRef.current.currentTime = newPercentage * duration;
+    setCurrentTime(newPercentage * duration);
     setProgress(newPercentage * 100);
-    onTriggerFloating(e.clientX, e.clientY, "Cambiando de compas");
+    onTriggerFloating(e.clientX, e.clientY, "Cambiando de compás");
   };
 
   return (
-    <div className="bg-white/70 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-[#4DB6A3]/25 relative overflow-hidden shadow-glow">
-      <div className="absolute -right-12 -top-12 w-40 h-40 bg-[#EAFDF9] rounded-full filter blur-xl opacity-80" />
+    <div className="relative overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/70 p-6 shadow-xl shadow-glow backdrop-blur-md">
+      <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#EAFDF9] opacity-80 blur-xl" />
 
-      <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-6 items-center">
-        <div className="relative group cursor-pointer shrink-0" onClick={togglePlay}>
+      <div className="flex flex-col items-center gap-6 sm:flex-row md:flex-col lg:flex-row">
+        <button
+          type="button"
+          className="relative shrink-0 cursor-pointer"
+          onClick={togglePlay}
+          aria-label={isPlaying ? "Pausar canción" : "Reproducir canción"}
+        >
           <motion.div
             animate={{ rotate: isPlaying ? 360 : 0 }}
             transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
-            className="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-[#333] border-4 border-[#4DB6A3] flex items-center justify-center shadow-lg relative p-1"
+            className="flex h-32 w-32 items-center justify-center rounded-full border-4 border-[#4DB6A3] bg-[#333] p-1 shadow-lg sm:h-36 sm:w-36"
           >
-            <div className="w-full h-full rounded-full overflow-hidden relative">
+            <div className="relative h-full w-full overflow-hidden rounded-full">
               <img
                 src={getCoverImage(currentSong.coverIndex)}
-                alt="Album Cover"
-                className="w-full h-full object-cover select-none"
+                alt="Album cover"
+                className="h-full w-full select-none object-cover"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-black/10 mix-blend-overlay" />
             </div>
 
-            <div className="absolute w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full border-4 border-gray-800 flex items-center justify-center">
-              <div className="w-2.5 h-2.5 bg-gray-900 rounded-full" />
+            <div className="absolute flex h-10 w-10 items-center justify-center rounded-full border-4 border-gray-800 bg-white sm:h-12 sm:w-12">
+              <div className="h-2.5 w-2.5 rounded-full bg-gray-900" />
             </div>
           </motion.div>
 
@@ -176,31 +193,31 @@ export default function Jukebox({
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1.1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
-                className="absolute -top-1 -right-1 bg-[#4DB6A3] text-white p-1.5 rounded-full shadow-md"
+                className="absolute -right-1 -top-1 rounded-full bg-[#4DB6A3] p-1.5 text-white shadow-md"
               >
-                <Heart className="w-3.5 h-3.5 fill-white animate-pulse" />
+                <Heart className="h-3.5 w-3.5 animate-pulse fill-white" />
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
+        </button>
 
-        <div className="flex-1 w-full min-w-0">
+        <div className="w-full min-w-0 flex-1">
           <div className="mb-3 text-center sm:text-left md:text-center lg:text-left">
-            <span className="text-xs font-semibold bg-[#EAFDF9] text-[#1B4D43] px-3 py-1 rounded-full uppercase tracking-wider font-mono border border-[#4DB6A3]/20">
-              Canciones de Nuestra Historia
+            <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#1B4D43] font-mono">
+              Canciones de nuestra historia
             </span>
             <h3
-              className="text-lg md:text-xl font-bold text-gray-800 tracking-tight font-sans mt-2 truncate"
+              className="mt-2 truncate font-sans text-lg font-bold tracking-tight text-gray-800 md:text-xl"
               title={currentSong.title}
             >
               {currentSong.title}
             </h3>
-            <p className="text-xs md:text-sm text-gray-500 font-mono italic truncate">
+            <p className="truncate font-mono text-xs italic text-gray-500 md:text-sm">
               {currentSong.artist}
             </p>
           </div>
 
-          <div className="h-5 flex items-end justify-center sm:justify-start md:justify-center lg:justify-start gap-[3px] mb-4 overflow-hidden px-1">
+          <div className="mb-4 flex h-5 items-end justify-center gap-[3px] overflow-hidden px-1 sm:justify-start md:justify-center lg:justify-start">
             {Array.from({ length: 14 }).map((_, i) => (
               <motion.div
                 key={i}
@@ -210,7 +227,7 @@ export default function Jukebox({
                   duration: 0.5 + Math.random() * 0.7,
                   ease: "easeInOut",
                 }}
-                className="w-[3px] bg-gradient-to-t from-[#4DB6A3] to-[#3AA28F] rounded-t"
+                className="w-[3px] rounded-t bg-gradient-to-t from-[#4DB6A3] to-[#3AA28F]"
               />
             ))}
           </div>
@@ -218,24 +235,24 @@ export default function Jukebox({
           <div className="mb-4">
             <div
               onClick={handleProgressBarClick}
-              className="h-2 bg-gray-100 rounded-full overflow-hidden cursor-pointer relative border border-gray-200/50"
+              className="relative h-2 cursor-pointer overflow-hidden rounded-full border border-gray-200/50 bg-gray-100"
             >
               <div
                 style={{ width: `${progress}%` }}
-                className="h-full bg-gradient-to-r from-[#4DB6A3] to-[#3AA28F] rounded-full transition-all duration-100"
+                className="h-full rounded-full bg-gradient-to-r from-[#4DB6A3] to-[#3AA28F] transition-all duration-100"
               />
             </div>
-            <div className="flex justify-between text-[10px] text-gray-400 font-mono mt-1">
-              <span>{isPlaying ? "Sonando" : "En pausa"}</span>
-              <span>{currentSong.duration}</span>
+            <div className="mt-1 flex justify-between font-mono text-[10px] text-gray-400">
+              <span>{formatTime(currentTime)}</span>
+              <span>{duration > 0 ? formatTime(duration) : currentSong.duration}</span>
             </div>
           </div>
 
-          <div className="flex items-center justify-center sm:justify-start md:justify-center lg:justify-start gap-4">
+          <div className="flex items-center justify-center gap-4 sm:justify-start md:justify-center lg:justify-start">
             {hasMultipleSongs && (
               <button
                 onClick={handlePrev}
-                className="p-2 rounded-full bg-white text-[#1B4D43] hover:bg-[#EAFDF9] border border-gray-200 shadow-sm active:scale-95 transition-all cursor-pointer"
+                className="rounded-full border border-gray-200 bg-white p-2 text-[#1B4D43] shadow-sm transition-all hover:bg-[#EAFDF9] active:scale-95 cursor-pointer"
                 title="Anterior"
               >
                 {"<<"}
@@ -244,35 +261,35 @@ export default function Jukebox({
 
             <button
               onClick={togglePlay}
-              className="p-3 rounded-full bg-[#4DB6A3] text-white hover:bg-[#3AA28F] shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center justify-center cursor-pointer"
+              className="flex cursor-pointer items-center justify-center rounded-full bg-[#4DB6A3] p-3 text-white shadow-md transition-all hover:bg-[#3AA28F] hover:shadow-lg active:scale-95"
               title={isPlaying ? "Pausar" : "Reproducir"}
             >
               {isPlaying ? (
-                <Pause className="w-5 h-5 fill-white" />
+                <Pause className="h-5 w-5 fill-white" />
               ) : (
-                <Play className="w-5 h-5 fill-white translate-x-0.5" />
+                <Play className="h-5 w-5 translate-x-0.5 fill-white" />
               )}
             </button>
 
             {hasMultipleSongs && (
               <button
                 onClick={handleNext}
-                className="p-2 rounded-full bg-white text-[#1B4D43] hover:bg-[#EAFDF9] border border-gray-200 shadow-sm active:scale-95 transition-all cursor-pointer"
+                className="rounded-full border border-gray-200 bg-white p-2 text-[#1B4D43] shadow-sm transition-all hover:bg-[#EAFDF9] active:scale-95 cursor-pointer"
                 title="Siguiente"
               >
                 {">>"}
               </button>
             )}
 
-            <div className="hidden lg:flex items-center gap-1.5 text-gray-400 ml-2 font-mono text-[10px]">
-              <Volume2 className="w-3.5 h-3.5 text-gray-400" />
-              <span>Amor 100%</span>
+            <div className="ml-2 hidden items-center gap-1.5 font-mono text-[10px] text-gray-400 lg:flex">
+              <Volume2 className="h-3.5 w-3.5 text-gray-400" />
+              <span>{isPlaying ? "Sonando para vos" : "Esperando play"}</span>
             </div>
           </div>
 
-          <p className="mt-4 text-[11px] text-gray-500 font-mono leading-relaxed">
-            Esta canción quedó acá para acompañarte mientras recorrés todo este regalo
-            hecho con amor.
+          <p className="mt-4 font-mono text-[11px] leading-relaxed text-gray-500">
+            Esta canción quedó acá para acompañarte mientras recorrés todo este regalo hecho con
+            amor.
           </p>
         </div>
       </div>

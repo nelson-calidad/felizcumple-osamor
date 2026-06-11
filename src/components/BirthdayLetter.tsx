@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CheckCircle2, Heart } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -7,6 +7,8 @@ interface BirthdayLetterProps {
   loveLetterImg: string;
 }
 
+const STORAGE_KEY = "flor-birthday-replies";
+
 export default function BirthdayLetter({
   onTriggerFloating,
   loveLetterImg,
@@ -14,9 +16,28 @@ export default function BirthdayLetter({
   const [isOpen, setIsOpen] = useState(false);
   const [replyText, setReplyText] = useState("");
   const [isSent, setIsSent] = useState(false);
+  const [savedReplies, setSavedReplies] = useState<string[]>([]);
+
+  useEffect(() => {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+
+    try {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        setSavedReplies(parsed.filter((item): item is string => typeof item === "string"));
+      }
+    } catch {
+      window.localStorage.removeItem(STORAGE_KEY);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(savedReplies));
+  }, [savedReplies]);
 
   const handleOpenEnvelope = (e: React.MouseEvent) => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
     onTriggerFloating(
       e.clientX,
       e.clientY,
@@ -26,8 +47,14 @@ export default function BirthdayLetter({
 
   const handleSendReply = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const trimmedReply = replyText.trim();
+    if (!trimmedReply) return;
+
+    setSavedReplies((prev) => [trimmedReply, ...prev].slice(0, 5));
     setIsSent(true);
     onTriggerFloating(window.innerWidth / 2, window.innerHeight / 2, "Llegó un mensajito de vuelta");
+
     setTimeout(() => {
       setIsSent(false);
       setReplyText("");
@@ -44,8 +71,8 @@ export default function BirthdayLetter({
           La Carta de Cumpleaños
         </h2>
         <p className="mx-auto mt-1 max-w-md text-xs text-gray-500">
-          Tocá el sello del sobre para abrir una carta hecha con amor, ternura y todo lo
-          que me hacés sentir.
+          Tocá el sello del sobre para abrir una carta hecha con amor, ternura y todo lo que me
+          hacés sentir.
         </p>
       </div>
 
@@ -74,7 +101,7 @@ export default function BirthdayLetter({
                 />
               </div>
 
-              <div className="scrollbar-thin max-h-[280px] space-y-4 overflow-y-auto pr-1 font-serif text-sm leading-relaxed text-[#374151] md:max-h-[360px] md:text-base">
+              <div className="max-h-[280px] space-y-4 overflow-y-auto pr-1 font-serif text-sm leading-relaxed text-[#374151] md:max-h-[360px] md:text-base">
                 <p className="font-mono text-[13px] font-bold uppercase tracking-wide text-[#1B4D43]">
                   17 de junio - 12:00 AM
                 </p>
@@ -83,28 +110,26 @@ export default function BirthdayLetter({
                 </h3>
 
                 <p>
-                  Hoy cumplís 26 añitos y quiero decirte lo mucho que te amo y lo feliz que
-                  me hace tenerte en mi vida. Sos una persona hermosa, buena, tierna, mi
-                  princesa, mi compañera, la que me alegra los días con una mirada, un
-                  abrazo o simplemente estando.
+                  Hoy cumplís 26 añitos y quiero decirte lo mucho que te amo y lo feliz que me
+                  hace tenerte en mi vida. Sos una persona hermosa, buena, tierna, mi princesa, mi
+                  compañera, la que me alegra los días con una mirada, un abrazo o simplemente
+                  estando.
                 </p>
                 <p>
-                  Gracias por existir, por elegirme, por dejarme amarte y por compartir
-                  tantas cosas lindas conmigo: nuestros mates, las series coreanas, las
-                  hamburguesas, los lomitos, los mimos de siempre y todos esos momentos que
-                  para mí valen un montón.
+                  Gracias por existir, por elegirme, por dejarme amarte y por compartir tantas
+                  cosas lindas conmigo: nuestros mates, las series coreanas, las hamburguesas, los
+                  lomitos, los mimos de siempre y todos esos momentos que para mí valen un montón.
                 </p>
                 <p>
-                  Quiero que sepas que voy a acompañarte siempre en lo que decidas, en tus
-                  sueños, en tus proyectos, en tus días buenos y también en los difíciles.
-                  Siempre voy a estar para vos, cuidándote, apoyándote y amándote como te
-                  merecés.
+                  Quiero que sepas que voy a acompañarte siempre en lo que decidas, en tus sueños,
+                  en tus proyectos, en tus días buenos y también en los difíciles. Siempre voy a
+                  estar para vos, cuidándote, apoyándote y amándote como te merecés.
                 </p>
                 <p>
-                  Te amo muchísimo, mi linda, mi hermosa, mi Flor. Ojalá este nuevo año te
-                  traiga muchas cosas lindas, porque vos merecés todo lo bueno del mundo.
+                  Te amo muchísimo, mi linda, mi hermosa, mi Flor. Ojalá este nuevo año te traiga
+                  muchas cosas lindas, porque vos merecés todo lo bueno del mundo.
                 </p>
-                <p className="font-semibold font-sans text-base text-[#1B4D43]">
+                <p className="font-sans text-base font-semibold text-[#1B4D43]">
                   Feliz cumple, amorcito mío. Te amo hasta la palmera y mucho más ❤️
                 </p>
                 <p className="block pt-2 text-right font-mono text-xs font-medium italic text-gray-500">
@@ -134,30 +159,46 @@ export default function BirthdayLetter({
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       onSubmit={handleSendReply}
-                      className="space-y-2"
+                      className="space-y-3"
                     >
                       <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
                         Dejá un mensajito de vuelta:
                       </span>
-                      <div className="flex gap-2">
+                      <div className="space-y-2">
                         <input
                           type="text"
                           required
                           value={replyText}
                           onChange={(e) => setReplyText(e.target.value)}
                           placeholder="Ej: te amo, gracias mi vida, vení por mimos"
-                          className="flex-1 rounded-xl border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[#4DB6A3]"
+                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-[#4DB6A3]"
                         />
                         <button
                           type="submit"
-                          className="shrink-0 rounded-xl bg-[#4DB6A3] px-3 py-1.5 text-xs font-bold text-white transition-all hover:bg-[#3AA28F] active:scale-95"
+                          className="w-full rounded-xl bg-[#4DB6A3] px-3 py-2 text-xs font-bold text-white transition-all hover:bg-[#3AA28F] active:scale-95"
                         >
-                          Enviar
+                          Guardar respuesta
                         </button>
                       </div>
                     </motion.form>
                   )}
                 </AnimatePresence>
+
+                {savedReplies.length > 0 && (
+                  <div className="mt-4 space-y-2">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#B88357]">
+                      Tus mensajitos guardados
+                    </p>
+                    {savedReplies.map((reply, index) => (
+                      <div
+                        key={`${reply}-${index}`}
+                        className="rounded-xl border border-[#E6D9C8] bg-[#FFF9F0] px-3 py-2 text-xs leading-relaxed text-[#6E4944]"
+                      >
+                        {reply}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           )}
@@ -165,7 +206,7 @@ export default function BirthdayLetter({
 
         <motion.div
           animate={{ y: isOpen ? 80 : 0 }}
-          className="relative h-48 w-80 cursor-pointer rounded-b-2xl border-2 border-[#4DB6A3]/25 bg-cream shadow-xl"
+          className="relative h-48 w-80 cursor-pointer rounded-b-2xl border-2 border-[#4DB6A3]/25 shadow-xl"
           onClick={handleOpenEnvelope}
         >
           <div className="absolute inset-0 overflow-hidden rounded-2xl bg-gradient-to-b from-[#E7FAF6] to-[#D5EFEA] shadow-inner">
