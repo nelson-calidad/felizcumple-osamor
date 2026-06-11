@@ -57,13 +57,13 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
   return (
     <section
       id="love-jar-section"
-      className="relative overflow-hidden rounded-[2rem] border border-[#E8E1D7] bg-[linear-gradient(180deg,rgba(255,252,248,0.97),rgba(241,249,245,0.94))] p-4 shadow-[0_24px_60px_rgba(60,83,76,0.10)] md:p-7"
+      className="relative overflow-hidden rounded-[2rem] border border-[#EAE4DA] bg-[linear-gradient(180deg,rgba(255,252,248,0.98),rgba(244,249,246,0.95))] p-4 shadow-[0_18px_44px_rgba(60,83,76,0.08)] md:p-7"
     >
       <div className="absolute -left-10 top-0 h-32 w-32 rounded-full bg-[#F7DED8]/55 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-[#DCEDE6]/70 blur-3xl" />
 
       <div className="relative mb-5 text-center md:mb-6">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/80 px-3 py-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[#7A5A52] shadow-sm">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/82 px-3 py-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-[#7A5A52] shadow-sm">
           <Star className="h-3.5 w-3.5 fill-[#D8B17D]/15 text-[#B88357]" />
           Frasco de mimos
         </div>
@@ -76,7 +76,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
       </div>
 
       <div className="relative grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_260px] lg:items-start lg:gap-6">
-        <div className="order-1 rounded-[1.8rem] border border-white/90 bg-white/86 p-4 shadow-[0_18px_36px_rgba(33,77,68,0.06)] md:p-6">
+        <div className="order-1 rounded-[1.8rem] border border-[#F0F1ED] bg-white/88 p-4 shadow-[0_14px_30px_rgba(33,77,68,0.05)] md:p-6">
           <div className="mb-4 flex items-center justify-between gap-3">
             <div>
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#B88357]">
@@ -89,7 +89,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
             </div>
           </div>
 
-          <div className="rounded-[1.5rem] border border-dashed border-[#C8DED6] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(247,253,250,0.82))] p-4 shadow-inner sm:p-5">
+          <div className="rounded-[1.5rem] border border-dashed border-[#D5E6DF] bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(248,253,251,0.84))] p-4 shadow-inner sm:p-5">
             <AnimatePresence mode="wait">
               {selectedMimo ? (
                 <motion.div
@@ -138,7 +138,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
             </button>
           </div>
 
-          <div className="mt-4 rounded-[1.3rem] border border-[#EFE7DB] bg-[#FFFBF6] p-4">
+          <div className="mt-4 rounded-[1.3rem] border border-[#F0EAE0] bg-[#FFFBF7] p-4">
             <div className="mb-3 flex items-center gap-2">
               <Bookmark className="h-4 w-4 text-[#B88357]" />
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#B88357]">
@@ -165,7 +165,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
           </div>
         </div>
 
-        <div className="order-2 hidden rounded-[1.8rem] border border-white/80 bg-white/58 p-4 shadow-[0_18px_40px_rgba(110,73,68,0.10)] lg:block">
+        <div className="order-2 hidden rounded-[1.8rem] border border-[#F1F1ED] bg-white/62 p-4 shadow-[0_14px_30px_rgba(110,73,68,0.08)] lg:block">
           <div className="relative mx-auto flex max-w-[210px] flex-col items-center">
             <motion.button
               type="button"

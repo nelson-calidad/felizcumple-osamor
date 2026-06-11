@@ -39,13 +39,13 @@ export default function ReasonsToLove({ onTriggerFloating }: ReasonsToLoveProps)
   return (
     <section
       id="reasons-section"
-      className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-[linear-gradient(180deg,rgba(255,251,248,0.96),rgba(237,249,246,0.93))] p-6 shadow-[0_28px_80px_rgba(27,77,67,0.12)] md:p-8"
+      className="relative overflow-hidden rounded-[2rem] border border-[#ECE8E0] bg-[linear-gradient(180deg,rgba(255,251,248,0.97),rgba(240,248,245,0.94))] p-6 shadow-[0_18px_48px_rgba(27,77,67,0.08)] md:p-8"
     >
       <div className="absolute -top-10 right-0 h-36 w-36 rounded-full bg-[#FFD9E3]/50 blur-3xl" />
       <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-[#D6F0E8]/70 blur-3xl" />
 
       <div className="relative mb-8 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/75 px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-[#6E4944] shadow-sm">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/78 px-3 py-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[#6E4944] shadow-sm">
           <Sparkles className="h-3.5 w-3.5 fill-[#E7B980]/20 text-[#B88357]" />
           26 razones
         </div>
@@ -72,7 +72,7 @@ export default function ReasonsToLove({ onTriggerFloating }: ReasonsToLoveProps)
                 `Razón ${index + 1}: ${reason.replace(/\.$/, "")}`,
               )
             }
-            className="group rounded-[1.4rem] border border-white/90 bg-white/82 p-4 text-left shadow-[0_14px_30px_rgba(33,77,68,0.08)] transition-all hover:border-[#BFE1D7] hover:bg-white cursor-pointer"
+            className="group rounded-[1.4rem] border border-[#F0F1ED] bg-white/86 p-4 text-left shadow-[0_12px_24px_rgba(33,77,68,0.05)] transition-all hover:border-[#D6E7E1] hover:bg-white cursor-pointer"
           >
             <div className="mb-3 flex items-center justify-between">
               <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">

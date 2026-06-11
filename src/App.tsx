@@ -254,7 +254,7 @@ export default function App() {
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="relative overflow-hidden rounded-[2rem] border border-[#DDEBE6] bg-[linear-gradient(135deg,rgba(255,252,248,0.96),rgba(243,250,247,0.94))] p-6 shadow-[0_24px_60px_rgba(35,77,67,0.10)] md:p-8"
+            className="relative overflow-hidden rounded-[2.2rem] border border-[#E2ECE8] bg-[linear-gradient(135deg,rgba(255,252,248,0.98),rgba(245,250,247,0.95))] p-6 shadow-[0_18px_48px_rgba(35,77,67,0.08)] md:p-8"
           >
             <div className="absolute -left-10 top-0 h-32 w-32 rounded-full bg-[#F4DED7]/60 blur-3xl" />
             <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-[#DCEEE7]/70 blur-3xl" />
@@ -272,37 +272,37 @@ export default function App() {
                 <h1 className="bg-gradient-to-r from-[#113A32] via-[#225E52] to-[#4DB6A3] bg-clip-text font-sans text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl md:text-5xl">
                   Feliz cumple, mi Flor Lihue hermosa ❤️
                 </h1>
-                <p className="mt-3 font-serif text-lg font-semibold italic text-[#1B4D43] md:text-xl">
+                <p className="mt-3 font-serif text-lg font-medium italic text-[#1B4D43] md:text-xl">
                   Para la chica que me hace feliz con un mate, una mirada, un mimo o simplemente
                   estando conmigo.
                 </p>
-                <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-gray-600 lg:mx-0 lg:max-w-2xl">
+                <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#62716C] lg:mx-0 lg:max-w-2xl">
                   Hoy cumplís 26 añitos y quería regalarte algo distinto: un recorrido cortito,
                   romántico y lleno de nosotros para que cada parte te abrace un poquito.
                 </p>
 
                 <div className="mt-5 flex justify-center lg:justify-start">
-                  <div className="flex max-w-full items-center gap-2 rounded-full border border-[#EAFDF9]/60 bg-[#EAFDF9] px-4 py-2 text-center font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1B4D43] shadow-sm sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-wider">
+                  <div className="flex max-w-full items-center gap-2 rounded-full border border-[#EAF4F0] bg-[#F3FBF8] px-4 py-2 text-center font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#35534C] shadow-sm sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.2em]">
                     <Sparkles className="h-4 w-4 fill-teal-600/20 text-teal-600" />
                     <span>Preparé esto porque te amo, quiero que seas feliz y me encanta hacerlo por vos</span>
                   </div>
                 </div>
               </div>
 
-              <div className="hidden rounded-[1.8rem] border border-white/90 bg-white/82 p-5 text-left shadow-[0_18px_36px_rgba(33,77,68,0.08)] lg:block">
+              <div className="hidden rounded-[1.9rem] border border-[#EEF2EF] bg-white/84 p-5 text-left shadow-[0_14px_32px_rgba(33,77,68,0.06)] lg:block">
                 <p className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
                   Este regalo tiene
                 </p>
                 <div className="mt-4 grid gap-3">
-                  <div className="rounded-[1.2rem] border border-[#E8EFEA] bg-[#FCFEFD] px-4 py-3">
+                  <div className="rounded-[1.2rem] border border-[#EDF2EF] bg-[#FCFEFD] px-4 py-3">
                     <p className="font-serif text-lg text-[#214D44]">Nuestra canción</p>
                     <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Para empezar con el clima justo.</p>
                   </div>
-                  <div className="rounded-[1.2rem] border border-[#E8EFEA] bg-[#FCFEFD] px-4 py-3">
+                  <div className="rounded-[1.2rem] border border-[#EDF2EF] bg-[#FCFEFD] px-4 py-3">
                     <p className="font-serif text-lg text-[#214D44]">Carta y recuerdos</p>
                     <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Lo más importante, ordenado y con aire.</p>
                   </div>
-                  <div className="rounded-[1.2rem] border border-[#E8EFEA] bg-[#FCFEFD] px-4 py-3">
+                  <div className="rounded-[1.2rem] border border-[#EDF2EF] bg-[#FCFEFD] px-4 py-3">
                     <p className="font-serif text-lg text-[#214D44]">Sorpresas suaves</p>
                     <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Para seguir jugando al final sin tapar lo principal.</p>
                   </div>
@@ -358,7 +358,7 @@ export default function App() {
           <ReasonsToLove onTriggerFloating={triggerHeartShower} />
         </div>
 
-        <section className="mb-10 rounded-[2rem] border border-[#E7ECE8] bg-[linear-gradient(180deg,rgba(250,251,249,0.94),rgba(242,247,244,0.92))] p-5 shadow-[0_20px_44px_rgba(27,77,67,0.06)] backdrop-blur-md md:p-8">
+        <section className="mb-10 rounded-[2rem] border border-[#EDF1EE] bg-[linear-gradient(180deg,rgba(250,251,249,0.95),rgba(244,247,245,0.93))] p-5 shadow-[0_16px_38px_rgba(27,77,67,0.05)] backdrop-blur-md md:p-8">
           <div className="max-w-2xl">
             <p className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[#B88357]">
               Extras para seguir jugando

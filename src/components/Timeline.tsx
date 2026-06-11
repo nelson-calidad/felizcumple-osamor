@@ -95,11 +95,11 @@ export default function Timeline({
   return (
     <div
       id="memories-section"
-      className="rounded-3xl border border-[#4DB6A3]/25 bg-white/50 p-5 shadow-xl shadow-glow backdrop-blur-md md:p-8"
+      className="rounded-3xl border border-[#E4ECE8] bg-white/58 p-5 shadow-[0_18px_42px_rgba(33,77,68,0.06)] backdrop-blur-md md:p-8"
     >
       <div className="mb-6 flex flex-col justify-between gap-4 md:mb-8 md:flex-row md:items-center">
         <div>
-          <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#1B4D43]">
+          <span className="rounded-full border border-[#D7E9E3] bg-[#F3FBF8] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[#35534C]">
             Nuestros momentos juntos
           </span>
           <h2 className="mt-2 font-sans text-3xl font-extrabold tracking-tight text-gray-800">
@@ -144,7 +144,7 @@ export default function Timeline({
               <motion.div
                 initial={{ rotate: -4, scale: 0.95, opacity: 0 }}
                 animate={{ rotate: deckIndex % 2 === 0 ? 1 : -2, scale: 1, opacity: 1 }}
-                className="group relative rounded-lg border border-gray-100 bg-white p-3 pb-8 shadow-xl sm:p-4 sm:pb-12"
+              className="group relative rounded-lg border border-[#F0F1ED] bg-white p-3 pb-8 shadow-[0_18px_32px_rgba(33,77,68,0.06)] sm:p-4 sm:pb-12"
               >
                 <div className="absolute left-1/2 top-2 flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-red-400 opacity-60">
                   <div className="h-1 w-1 rounded-full bg-gray-900" />
@@ -172,7 +172,7 @@ export default function Timeline({
                 </div>
               </motion.div>
 
-              <div className="rounded-[1.8rem] border border-white/90 bg-white/82 p-4 shadow-[0_18px_36px_rgba(33,77,68,0.06)] sm:p-5">
+              <div className="rounded-[1.8rem] border border-[#F0F1ED] bg-white/86 p-4 shadow-[0_14px_30px_rgba(33,77,68,0.05)] sm:p-5">
                 <div className="space-y-4">
                   <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#B88357]">
                     Recuerdo {deckIndex + 1} de {filteredMemories.length}
