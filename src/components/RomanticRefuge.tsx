@@ -99,7 +99,7 @@ export default function RomanticRefuge({ onTriggerFloating }: RomanticRefugeProp
   };
 
   return (
-    <div id="refuge-section" className="relative overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/60 p-6 shadow-xl shadow-glow backdrop-blur-md md:p-8">
+    <div id="refuge-section" className="relative h-full overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/60 p-6 shadow-xl shadow-glow backdrop-blur-md md:min-h-[36rem] md:p-8">
       <div className="mb-6 text-center md:text-left">
         <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#1B4D43]">
           Nuestro rinconcito
@@ -107,12 +107,12 @@ export default function RomanticRefuge({ onTriggerFloating }: RomanticRefugeProp
         <h2 className="mt-2 font-sans text-2xl font-extrabold tracking-tight text-gray-800">
           Mates, planes y esa paz que me das
         </h2>
-        <p className="mt-1 max-w-2xl text-sm text-gray-500">
+        <p className="mt-1 max-w-xl text-sm text-gray-500">
           Todo lo simple que con vos se vuelve mi parte favorita del dia.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 md:h-full md:grid-cols-2">
         <div className="flex flex-col justify-between rounded-[1.8rem] border border-teal-50 bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(248,255,253,0.96))] p-5 shadow-sm">
           <div>
             <div className="mb-4 flex items-center justify-between">
@@ -220,7 +220,7 @@ export default function RomanticRefuge({ onTriggerFloating }: RomanticRefugeProp
             <span className="mb-2 flex items-center gap-1 font-mono text-xs font-bold text-teal-800">
               <CalendarDays className="h-3.5 w-3.5" /> Una idea para nosotros
             </span>
-            <p className="mb-4 text-sm leading-relaxed text-gray-600">
+            <p className="mb-4 max-w-sm text-sm leading-relaxed text-gray-600">
               Por si pinta dejar que el azar nos arme una salida linda.
             </p>
 

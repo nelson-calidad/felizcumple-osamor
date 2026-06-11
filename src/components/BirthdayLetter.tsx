@@ -62,7 +62,7 @@ export default function BirthdayLetter({
   };
 
   return (
-    <div id="letter-section" className="relative flex flex-col items-center justify-center py-6 md:py-10">
+    <div id="letter-section" className="relative flex h-full flex-col items-center justify-center py-6 md:min-h-[41rem] md:py-8 xl:py-10">
       <div className="mb-6 text-center md:mb-8">
         <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-teal-700">
           Solo para vos
@@ -75,7 +75,7 @@ export default function BirthdayLetter({
         </p>
       </div>
 
-      <div className="relative flex min-h-[300px] w-full max-w-lg items-center justify-center sm:min-h-[340px]">
+      <div className="relative flex min-h-[300px] w-full max-w-lg items-center justify-center sm:min-h-[340px] md:flex-1">
         <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-b from-white via-[#F8FFFD] to-[#EAFDF9]/70 shadow-[0_30px_70px_rgba(77,182,163,0.12)]" />
 
         <AnimatePresence>

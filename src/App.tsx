@@ -34,7 +34,7 @@ const INITIAL_MEMORIES: Memory[] = [
     date: "Primera foto juntos",
     title: "Lagunas de Yala",
     description:
-      "Nuestra primera foto juntos. El paisaje, la complicidad y esa sensación de estar empezando algo demasiado lindo como para explicarlo normal.",
+      "Nuestra primera foto juntos. El paisaje, la complicidad y esa sensacion de estar empezando algo demasiado lindo como para explicarlo normal.",
     category: "romance",
     emoji: "🌿",
     imageSrc: `${import.meta.env.BASE_URL}memories/yala.jpeg`,
@@ -44,7 +44,7 @@ const INITIAL_MEMORIES: Memory[] = [
     date: "Un detalle que amo recordar",
     title: "Tus flores y esa sonrisa",
     description:
-      "Esa sorpresa con flores y tu sonrisa tan linda merecía estar acá. Me encanta verte feliz y poder regalarte momentos así.",
+      "Esa sorpresa con flores y tu sonrisa tan linda merecia estar aca. Me encanta verte feliz y poder regalarte momentos asi.",
     category: "romance",
     emoji: "🌻",
     imageSrc: `${import.meta.env.BASE_URL}memories/flores.jpeg`,
@@ -52,19 +52,19 @@ const INITIAL_MEMORIES: Memory[] = [
   {
     id: "3",
     date: "Nuestro primer viaje juntos",
-    title: "Escapada a Córdoba",
+    title: "Escapada a Cordoba",
     description:
-      "Ese viaje a Córdoba marcó un antes y un después. Mate, ruta, charla y esa alegría de sentir que con vos todo fluye.",
+      "Ese viaje a Cordoba marco un antes y un despues. Mate, ruta, charla y esa alegria de sentir que con vos todo fluye.",
     category: "adventure",
     emoji: "🧉",
     imageSrc: `${import.meta.env.BASE_URL}memories/cordoba.jpeg`,
   },
   {
     id: "4",
-    date: "Tu vocación y un orgullo enorme",
+    date: "Tu vocacion y un orgullo enorme",
     title: "Recibida de Hemoterapia",
     description:
-      "Verte recibirte fue una mezcla de orgullo, admiración y ganas de aplaudirte para siempre. Me fascina escucharte hablar de lo que amás.",
+      "Verte recibirte fue una mezcla de orgullo, admiracion y ganas de aplaudirte para siempre. Me fascina escucharte hablar de lo que amas.",
     category: "milestone",
     emoji: "🎓",
     imageSrc: `${import.meta.env.BASE_URL}memories/hemoterapia.jpeg`,
@@ -74,7 +74,7 @@ const INITIAL_MEMORIES: Memory[] = [
     date: "Una salida simple y hermosa",
     title: "Fuimos al cine",
     description:
-      "Me encanta cómo hasta una ida al cine con vos se vuelve recuerdo favorito. Tu sonrisa ahí me puede siempre.",
+      "Me encanta como hasta una ida al cine con vos se vuelve recuerdo favorito. Tu sonrisa ahi me puede siempre.",
     category: "daily",
     emoji: "🎬",
     imageSrc: `${import.meta.env.BASE_URL}memories/cine.jpeg`,
@@ -84,17 +84,17 @@ const INITIAL_MEMORIES: Memory[] = [
     date: "Tu cumple anterior",
     title: "Ese cumple tan nuestro",
     description:
-      "Esa foto tuya me derrite. Me encanta recordarte así, sonriendo tan hermosa en un día tan especial.",
+      "Esa foto tuya me derrite. Me encanta recordarte asi, sonriendo tan hermosa en un dia tan especial.",
     category: "romance",
     emoji: "🎂",
     imageSrc: `${import.meta.env.BASE_URL}memories/cumple-anterior.jpeg`,
   },
   {
     id: "7",
-    date: "Otra foto tuya que amo muchísimo",
+    date: "Otra foto tuya que amo muchisimo",
     title: "Estabas tan linda",
     description:
-      "La otra foto del cumple también tenía que estar sí o sí, porque estabas tan linda que no podía dejarla afuera.",
+      "La otra foto del cumple tambien tenia que estar si o si, porque estabas tan linda que no podia dejarla afuera.",
     category: "romance",
     emoji: "💛",
     imageSrc: `${import.meta.env.BASE_URL}memories/cumple-anterior-2.jpeg`,
@@ -103,8 +103,8 @@ const INITIAL_MEMORIES: Memory[] = [
 
 export default function App() {
   const [hearts, setHearts] = useState<FloatingHeart[]>([]);
-  const [whisperMessage, setWhisperMessage] = useState(
-    "Tocá cualquier rincón para ir llenando este regalo de pensamientos de amor.",
+  const [, setWhisperMessage] = useState(
+    "Toca cualquier rincon para ir llenando este regalo de pensamientos de amor.",
   );
   const [introModal, setIntroModal] = useState(true);
 
@@ -124,14 +124,14 @@ export default function App() {
 
   const triggerHeartShower = (x: number, y: number, text?: string) => {
     const customPhrases = [
-      "Te amo muchísimo y me hacés muy feliz",
+      "Te amo muchisimo y me haces muy feliz",
       "Gracias por existir y por dejarme amarte",
       "Sos mi persona favorita en el mundo",
-      "Con vos hasta los días simples se sienten hermosos",
+      "Con vos hasta los dias simples se sienten hermosos",
       "Tus abrazos son mi lugar favorito",
-      "Me encanta cuidarte, acompañarte y verte feliz",
-      "Sos mi Flor hermosa y te elegiría siempre",
-      "Te amo hasta la palmera y mucho más",
+      "Me encanta cuidarte, acompanarte y verte feliz",
+      "Sos mi Flor hermosa y te elegiria siempre",
+      "Te amo hasta la palmera y mucho mas",
     ];
 
     const phrase = text || customPhrases[Math.floor(Math.random() * customPhrases.length)];
@@ -150,7 +150,7 @@ export default function App() {
 
     setTimeout(() => {
       setHearts((prev) => prev.filter((heart) => !newHearts.some((item) => item.id === heart.id)));
-    }, 2000);
+    }, 3600);
   };
 
   return (
@@ -168,7 +168,7 @@ export default function App() {
               top: heart.y,
               transform: `scale(${heart.scale}) rotate(${heart.rotation}deg)`,
             }}
-            className="absolute flex select-none flex-col items-center justify-center text-[#3BA28F] filter drop-shadow-md heart-particle"
+            className="heart-particle absolute flex select-none flex-col items-center justify-center text-[#3BA28F] drop-shadow-md"
           >
             <Heart className="h-5 w-5 fill-[#A3E7DC] text-[#3BA28F]" />
             {heart.text && (
@@ -202,21 +202,12 @@ export default function App() {
                 Hola, mi reina hermosa
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                Preparé este rinconcito para acompañarte despacito: primero nuestra canción,
-                después la carta y, más abajo, los recuerdos y las sorpresas. Quise que se sienta
-                íntimo, dulce y totalmente nuestro.
+                Prepare este rinconcito para acompanarte despacito: primero nuestra cancion,
+                despues la carta y, mas abajo, los recuerdos y las sorpresas.
               </p>
               <p className="mt-4 rounded-2xl border border-[#4DB6A3]/20 bg-[#EAFDF9] px-4 py-2.5 font-mono text-xs font-bold text-[#1B4D43]">
-                Día oficial del festejo de la mujer más linda: 17 de junio
+                Dia oficial del festejo de la mujer mas linda: 17 de junio
               </p>
-              <div className="mt-4 space-y-1.5 rounded-xl border border-gray-100 bg-gray-50 p-3.5 text-left text-xs text-gray-500">
-                <p>
-                  <b>Cómo recorrerlo:</b>
-                </p>
-                <p>• Empezá por la canción y la carta.</p>
-                <p>• Seguí con el frasco y nuestros recuerdos.</p>
-                <p>• Al final te esperan las razones y los extras.</p>
-              </div>
 
               <button
                 onClick={() => {
@@ -273,18 +264,16 @@ export default function App() {
                   Feliz cumple, mi Flor Lihue hermosa ❤️
                 </h1>
                 <p className="mt-3 font-serif text-lg font-medium italic text-[#1B4D43] md:text-xl">
-                  Para la chica que me hace feliz con un mate, una mirada, un mimo o simplemente
-                  estando conmigo.
+                  Para la chica que me hace feliz con un mate, una mirada, un mimo o simplemente estando conmigo.
                 </p>
                 <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#62716C] lg:mx-0 lg:max-w-2xl">
-                  Hoy cumplís 26 añitos y quería regalarte algo distinto: un recorrido cortito,
-                  romántico y lleno de nosotros para que cada parte te abrace un poquito.
+                  Hoy cumplis 26 anitos y queria regalarte algo distinto: un recorrido romantico y lleno de nosotros para que cada parte te abrace un poquito.
                 </p>
 
                 <div className="mt-5 flex justify-center lg:justify-start">
                   <div className="flex max-w-full items-center gap-2 rounded-full border border-[#EAF4F0] bg-[#F3FBF8] px-4 py-2 text-center font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#35534C] shadow-sm sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.2em]">
                     <Sparkles className="h-4 w-4 fill-teal-600/20 text-teal-600" />
-                    <span>Preparé esto porque te amo, quiero que seas feliz y me encanta hacerlo por vos</span>
+                    <span>Prepare esto porque te amo y me encanta hacerlo por vos</span>
                   </div>
                 </div>
               </div>
@@ -295,12 +284,12 @@ export default function App() {
                 </p>
                 <div className="mt-4 grid gap-3">
                   <div className="rounded-[1.2rem] border border-[#EDF2EF] bg-[#FCFEFD] px-4 py-3">
-                    <p className="font-serif text-lg text-[#214D44]">Nuestra canción</p>
+                    <p className="font-serif text-lg text-[#214D44]">Nuestra cancion</p>
                     <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Para empezar con el clima justo.</p>
                   </div>
                   <div className="rounded-[1.2rem] border border-[#EDF2EF] bg-[#FCFEFD] px-4 py-3">
                     <p className="font-serif text-lg text-[#214D44]">Carta y recuerdos</p>
-                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Lo más importante, ordenado y con aire.</p>
+                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Lo mas importante, con aire y en su lugar.</p>
                   </div>
                   <div className="rounded-[1.2rem] border border-[#EDF2EF] bg-[#FCFEFD] px-4 py-3">
                     <p className="font-serif text-lg text-[#214D44]">Sorpresas suaves</p>
@@ -332,7 +321,7 @@ export default function App() {
             />
           </div>
 
-          <div className="grid grid-cols-1 items-start gap-6 xl:grid-cols-12 xl:gap-8">
+          <div className="grid grid-cols-1 items-stretch gap-6 xl:grid-cols-12 xl:gap-8">
             <div className="xl:col-span-5">
               <BirthdayLetter
                 onTriggerFloating={triggerHeartShower}
@@ -366,45 +355,49 @@ export default function App() {
               Extras para seguir jugando
             </p>
             <h2 className="mt-2 font-serif text-2xl text-[#214D44] md:text-3xl">
-              Cuando termines lo principal, acá siguen las sorpresas
+              Cuando termines lo principal, aca siguen las sorpresas
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-[#58706A]">
-              Dejé estos rinconcitos para el final, como un cierre más relajado después de la
-              carta, los recuerdos y lo importante.
+              Los deje para el final, como un cierre mas relajado despues de la carta, los recuerdos y lo importante.
             </p>
           </div>
 
           <div className="mt-6 grid gap-6 xl:grid-cols-12 xl:gap-8">
-            <div className="xl:col-span-5">
+            <div className="xl:col-span-5 xl:h-full">
               <Trivia onTriggerFloating={triggerHeartShower} />
             </div>
-            <div className="xl:col-span-7">
+            <div className="xl:col-span-7 xl:h-full">
               <DuqueCorner onTriggerFloating={triggerHeartShower} />
             </div>
-            <div className="xl:col-span-7">
+            <div className="xl:col-span-7 xl:h-full">
               <LoveCoupons onTriggerFloating={triggerHeartShower} />
             </div>
-            <div className="xl:col-span-5">
+            <div className="xl:col-span-5 xl:h-full">
               <RomanticRefuge onTriggerFloating={triggerHeartShower} />
             </div>
           </div>
         </section>
 
-        <footer className="mx-auto max-w-md rounded-2xl border border-gray-200/50 bg-white/40 px-4 py-6 text-center font-mono text-xs text-gray-400">
-          <p className="mb-1 flex items-center justify-center gap-1.5 font-bold text-[#1B4D43]">
-            <span>Hecho con amor eterno por tu novio</span>
-            <Heart className="h-3.5 w-3.5 shrink-0 animate-pulse fill-teal-400 text-teal-400" />
-          </p>
-          <p className="px-5">
-            Dedicado con orgullo a Flor Lihue en sus 26 años. Sos mi amorcito, mi princesa y mi
-            compañera favorita para la vida.
-          </p>
-          <span className="mt-2 block text-[9px] text-gray-300">
-            2026 - Todos nuestros recuerdos guardados para siempre
-          </span>
+        <footer className="relative mx-auto max-w-4xl overflow-hidden rounded-[2rem] border border-[#E3EBE7] bg-[linear-gradient(135deg,rgba(255,252,248,0.9),rgba(245,250,247,0.92))] px-5 py-8 text-center shadow-[0_18px_44px_rgba(27,77,67,0.06)] md:px-8 md:py-10">
+          <div className="absolute -left-6 bottom-0 h-28 w-28 rounded-full bg-[#F6DDD7]/55 blur-3xl" />
+          <div className="absolute -right-6 top-0 h-28 w-28 rounded-full bg-[#DDEFE8]/70 blur-3xl" />
+          <div className="relative">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/75 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#B88357] shadow-sm">
+              <Heart className="h-3.5 w-3.5 shrink-0 fill-[#E7B7C3] text-[#D890A4]" />
+              Para vos, mi amor
+            </p>
+            <p className="mx-auto mt-4 max-w-2xl font-serif text-2xl leading-relaxed text-[#214D44] md:text-[2rem]">
+              Ojala cada parte de esta pagina te recuerde, aunque sea un poquito, lo feliz que me hace amarte.
+            </p>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#64746E]">
+              Feliz cumple, mi Flor Lihue hermosa. Gracias por ser mi lugar favorito, mi paz y mi companera mas linda.
+            </p>
+            <span className="mt-5 block font-mono text-[10px] uppercase tracking-[0.18em] text-[#90A19B]">
+              2026 · guardado con amor para siempre
+            </span>
+          </div>
         </footer>
       </div>
-
     </div>
   );
 }

@@ -7,26 +7,26 @@ interface LoveJarProps {
 }
 
 const PRESET_MIMOS = [
-  "Mi Flor hermosa, solo quería recordarte que te amo muchísimo y que sos lo más lindo que me pasó.",
-  "Feliz cumple otra vez, mi amorcito. Ojalá hoy sonrías mucho, porque tu sonrisa es mi parte favorita del día.",
+  "Mi Flor hermosa, solo queria recordarte que te amo muchisimo y que sos lo mas lindo que me paso.",
+  "Feliz cumple otra vez, mi amorcito. Ojala hoy sonrias mucho, porque tu sonrisa es mi parte favorita del dia.",
   "Mi princesa, gracias por existir y por hacerme tan feliz sin darte cuenta.",
   "Este papelito es chiquito, pero mi amor por vos es gigante.",
-  "Te amo en tus días lindos, en tus días cansados, en tus enojos, en tus risas y en todo lo que sos.",
+  "Te amo en tus dias lindos, en tus dias cansados, en tus enojos, en tus risas y en todo lo que sos.",
   "Mi Flor Lihue, sos mi lugar favorito, mi mimo favorito y mi persona favorita.",
-  "Ojalá nunca te olvides de lo hermosa, buena y especial que sos para mí.",
-  "Te elegiría mil veces, en esta vida y en todas las que vengan.",
-  "Amorcito, gracias por dejarme acompañarte y amarte como te merecés.",
+  "Ojala nunca te olvides de lo hermosa, buena y especial que sos para mi.",
+  "Te elegiria mil veces, en esta vida y en todas las que vengan.",
+  "Amorcito, gracias por dejarme acompanarte y amarte como te mereces.",
   "Me encanta compartir la vida con vos, aunque sea tomando mates, viendo series o simplemente estando juntitos.",
   "Sos mi linda, mi hermosa, mi princesa y mi todo.",
-  "Hoy cumplís 26, pero yo cumplo otro día más de suerte por tenerte conmigo.",
+  "Hoy cumplis 26, pero yo cumplo otro dia mas de suerte por tenerte conmigo.",
   "Te amo hasta la palmera, hasta la luna, hasta donde no se pueda explicar.",
-  "Quiero estar siempre para vos, en cada sueño, en cada decisión y en cada pasito que des.",
+  "Quiero estar siempre para vos, en cada sueno, en cada decision y en cada pasito que des.",
   "Gracias por ser tan vos, tan dulce, tan buena y tan hermosa.",
-  "Este mensajito es para decirte que me hacés muy feliz, incluso en los días simples.",
+  "Este mensajito es para decirte que me haces muy feliz, incluso en los dias simples.",
   "Mi amor, me encanta tu forma de ser, tus mimos, tus abrazos y todo lo que viene de vos.",
-  "Donde estés vos, yo siento que estoy bien.",
-  "Nunca dudes de lo mucho que te amo y de lo importante que sos para mí.",
-  "Sos mi Flor más linda, la que quiero cuidar, acompañar y amar siempre ❤️",
+  "Donde estes vos, yo siento que estoy bien.",
+  "Nunca dudes de lo mucho que te amo y de lo importante que sos para mi.",
+  "Sos mi Flor mas linda, la que quiero cuidar, acompanar y amar siempre.",
 ];
 
 export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
@@ -44,20 +44,20 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
     const message = source[randomIndex];
 
     setSelectedMimo(message);
-    onTriggerFloating(e.clientX, e.clientY, "Salió un mensajito del frasco");
+    onTriggerFloating(e.clientX, e.clientY, "Salio un mensajito del frasco");
   };
 
   const saveMimo = (e: React.MouseEvent) => {
     if (!selectedMimo) return;
 
     setSavedMimos((prev) => (prev.includes(selectedMimo) ? prev : [selectedMimo, ...prev].slice(0, 3)));
-    onTriggerFloating(e.clientX, e.clientY, "Este mimo quedó guardado");
+    onTriggerFloating(e.clientX, e.clientY, "Este mimo quedo guardado");
   };
 
   return (
     <section
       id="love-jar-section"
-      className="relative overflow-hidden rounded-[2rem] border border-[#EAE4DA] bg-[linear-gradient(180deg,rgba(255,252,248,0.98),rgba(244,249,246,0.95))] p-4 shadow-[0_18px_44px_rgba(60,83,76,0.08)] md:p-7"
+      className="relative h-full overflow-hidden rounded-[2rem] border border-[#EAE4DA] bg-[linear-gradient(180deg,rgba(255,252,248,0.98),rgba(244,249,246,0.95))] p-4 shadow-[0_18px_44px_rgba(60,83,76,0.08)] md:min-h-[41rem] md:p-7"
     >
       <div className="absolute -left-10 top-0 h-32 w-32 rounded-full bg-[#F7DED8]/55 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-[#DCEDE6]/70 blur-3xl" />
@@ -70,26 +70,28 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
         <h3 className="mt-4 font-serif text-3xl tracking-tight text-[#214D44] md:text-4xl">
           Frasco de Mimos
         </h3>
-        <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-[#60716B]">
-          Un rinconcito para abrir un mimo, guardarlo si te gusta y seguir leyendo tranquila.
+        <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-[#60716B]">
+          Un rinconcito lleno de papelitos para sacarte una sonrisa de vez en cuando.
         </p>
       </div>
 
-      <div className="relative grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_260px] lg:items-start lg:gap-6">
-        <div className="order-1 rounded-[1.8rem] border border-[#F0F1ED] bg-white/88 p-4 shadow-[0_14px_30px_rgba(33,77,68,0.05)] md:p-6">
+      <div className="relative grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_260px] lg:items-stretch lg:gap-6">
+        <div className="order-1 rounded-[1.8rem] border border-[#F0F1ED] bg-white/88 p-4 shadow-[0_14px_30px_rgba(33,77,68,0.05)] md:flex md:min-h-[30rem] md:flex-col md:p-6">
           <div className="mb-4 flex items-center justify-between gap-3">
             <div>
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#B88357]">
                 Mensajito del momento
               </p>
-              <p className="mt-1 text-xs text-[#74857F]">Abrí uno, guardalo si querés y seguí con otro.</p>
+              <p className="mt-1 text-xs text-[#74857F]">
+                Sale uno, lo guardas si te gusta, y queda con vos.
+              </p>
             </div>
             <div className="rounded-full border border-[#E9DED0] bg-[#FFF8F1] p-2 text-[#B88357]">
               <Heart className="h-4 w-4 fill-[#EBC3CB] text-[#D38A9A]" />
             </div>
           </div>
 
-          <div className="rounded-[1.5rem] border border-dashed border-[#D5E6DF] bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(248,253,251,0.84))] p-4 shadow-inner sm:p-5">
+          <div className="rounded-[1.5rem] border border-dashed border-[#D5E6DF] bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(248,253,251,0.84))] p-4 shadow-inner sm:flex-1 sm:p-5">
             <AnimatePresence mode="wait">
               {selectedMimo ? (
                 <motion.div
@@ -109,9 +111,9 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
                 </motion.div>
               ) : (
                 <div className="space-y-2 py-4 text-center">
-                  <p className="font-serif text-xl text-[#35534C]">Tocá para destapar un mimo</p>
+                  <p className="font-serif text-xl text-[#35534C]">Toca y aparece un mimo</p>
                   <p className="mx-auto max-w-sm text-sm leading-relaxed text-[#71837E]">
-                    La idea es que el mensajito aparezca acá mismo y puedas seguir sin perderte.
+                    Se queda aca, a mano, para leerlo tranquila y seguir recorriendo.
                   </p>
                 </div>
               )}
@@ -159,13 +161,13 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
               </div>
             ) : (
               <p className="text-sm leading-relaxed text-[#74857F]">
-                Si uno te gusta mucho, lo guardás acá y lo podés releer sin volver a buscarlo.
+                Si uno te gusta mucho, lo guardas aca y lo podes releer sin volver a buscarlo.
               </p>
             )}
           </div>
         </div>
 
-        <div className="order-2 hidden rounded-[1.8rem] border border-[#F1F1ED] bg-white/62 p-4 shadow-[0_14px_30px_rgba(110,73,68,0.08)] lg:block">
+        <div className="order-2 hidden rounded-[1.8rem] border border-[#F1F1ED] bg-white/62 p-4 shadow-[0_14px_30px_rgba(110,73,68,0.08)] lg:flex lg:min-h-[30rem] lg:items-center">
           <div className="relative mx-auto flex max-w-[210px] flex-col items-center">
             <motion.button
               type="button"
@@ -176,11 +178,11 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
               onClick={drawMimo}
               title="Sacar mimo"
             >
-              <div className="absolute -top-[18px] left-1/2 flex h-5 w-20 -translate-x-1/2 items-center justify-center rounded-t-md rounded-b-[4px] border-b-2 border-amber-900 bg-amber-700/80 shadow-md">
+              <div className="absolute left-1/2 top-[-18px] flex h-5 w-20 -translate-x-1/2 items-center justify-center rounded-b-[4px] rounded-t-md border-b-2 border-amber-900 bg-amber-700/80 shadow-md">
                 <div className="h-[3px] w-14 rounded bg-amber-600/60" />
               </div>
 
-              <div className="absolute left-[-12px] top-14 flex rotate-2 items-center gap-1 rounded-r-md rounded-l-[3px] border-l-2 border-[#3AA28F] bg-[#4DB6A3] px-2.5 py-1 text-[9px] font-bold uppercase text-white shadow">
+              <div className="absolute left-[-12px] top-14 flex rotate-2 items-center gap-1 rounded-l-[3px] rounded-r-md border-l-2 border-[#3AA28F] bg-[#4DB6A3] px-2.5 py-1 text-[9px] font-bold uppercase text-white shadow">
                 <Heart className="h-2 w-2 fill-white" />
                 Mimos 26
               </div>
@@ -221,7 +223,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
             </motion.button>
 
             <p className="mt-4 text-center text-xs leading-relaxed text-[#607772]">
-              Frasco de mimos
+              Un mimo esperandote
             </p>
           </div>
         </div>
