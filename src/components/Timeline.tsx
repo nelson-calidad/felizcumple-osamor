@@ -206,16 +206,8 @@ export default function Timeline({
                   </div>
                 </div>
 
-                <div className="mt-6 flex items-center justify-between gap-3">
-                  <button
-                    onClick={handlePrevDeck}
-                    className="inline-flex items-center gap-2 rounded-full border border-[#D9E3DF] bg-white px-4 py-2.5 text-sm font-semibold text-[#58706A] transition-all hover:border-[#C8D9D2] hover:text-[#214D44]"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                    Anterior
-                  </button>
-
-                  <div className="flex items-center gap-1.5">
+                <div className="mt-6 space-y-3">
+                  <div className="flex items-center justify-center gap-1.5">
                     {filteredMemories.map((memory, index) => (
                       <button
                         key={memory.id}
@@ -229,13 +221,23 @@ export default function Timeline({
                     ))}
                   </div>
 
-                  <button
-                    onClick={handleNextDeck}
-                    className="inline-flex items-center gap-2 rounded-full bg-[#214D44] px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#183C35]"
-                  >
-                    Siguiente
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                    <button
+                      onClick={handlePrevDeck}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#D9E3DF] bg-white px-4 py-2.5 text-sm font-semibold text-[#58706A] transition-all hover:border-[#C8D9D2] hover:text-[#214D44] sm:w-auto"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                      Anterior
+                    </button>
+
+                    <button
+                      onClick={handleNextDeck}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#214D44] px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#183C35] sm:w-auto"
+                    >
+                      Siguiente
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
