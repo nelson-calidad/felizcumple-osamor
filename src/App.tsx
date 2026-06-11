@@ -244,7 +244,7 @@ export default function App() {
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="relative overflow-hidden rounded-[2.2rem] border border-[#E2ECE8] bg-[linear-gradient(135deg,rgba(255,252,248,0.98),rgba(245,250,247,0.95))] p-6 shadow-[0_18px_48px_rgba(35,77,67,0.08)] md:p-8"
+            className="relative overflow-hidden rounded-[2.3rem] border border-[#E2ECE8] bg-[linear-gradient(135deg,rgba(255,252,248,0.98),rgba(245,250,247,0.95))] p-6 shadow-[0_24px_58px_rgba(35,77,67,0.09)] md:p-8 lg:p-10"
           >
             <div className="absolute -left-10 top-0 h-32 w-32 rounded-full bg-[#F4DED7]/60 blur-3xl" />
             <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-[#DCEEE7]/70 blur-3xl" />
@@ -259,13 +259,13 @@ export default function App() {
                   🎉
                 </div>
 
-                <h1 className="bg-gradient-to-r from-[#113A32] via-[#225E52] to-[#4DB6A3] bg-clip-text font-sans text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl md:text-5xl">
+                <h1 className="bg-gradient-to-r from-[#113A32] via-[#225E52] to-[#4DB6A3] bg-clip-text font-sans text-3xl font-extrabold tracking-[-0.03em] text-transparent sm:text-4xl md:text-5xl lg:text-[3.7rem]">
                   Feliz cumple, mi Flor Lihue hermosa ❤️
                 </h1>
                 <p className="mt-3 font-serif text-lg font-medium italic text-[#1B4D43] md:text-xl">
                   Para la chica que me hace feliz con un mate, una mirada y un mimo.
                 </p>
-                <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#62716C] lg:mx-0 lg:max-w-xl">
+                <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#62716C] lg:mx-0 lg:max-w-lg lg:text-[15px]">
                   Queria dejarte algo nuestro, suave y lindo, para recorrer despacito.
                 </p>
 

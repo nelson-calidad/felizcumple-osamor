@@ -49,7 +49,7 @@ export default function ReasonsToLove({ onTriggerFloating }: ReasonsToLoveProps)
           <Sparkles className="h-3.5 w-3.5 fill-[#E7B980]/20 text-[#B88357]" />
           26 razones
         </div>
-        <h2 className="mt-4 font-serif text-3xl tracking-tight text-[#214D44] md:text-4xl">
+        <h2 className="mt-4 font-serif text-3xl tracking-tight text-[#214D44] md:text-4xl lg:text-[3rem]">
           26 cosas por las que te amo
         </h2>
         <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-[#5A706A] md:text-[15px]">
@@ -71,7 +71,7 @@ export default function ReasonsToLove({ onTriggerFloating }: ReasonsToLoveProps)
                 `Razon ${index + 1}: ${reason.replace(/\.$/, "")}`,
               )
             }
-            className="group cursor-pointer rounded-[1.4rem] border border-[#F0F1ED] bg-white/86 p-4 text-left shadow-[0_12px_24px_rgba(33,77,68,0.05)] transition-all hover:border-[#D6E7E1] hover:bg-white"
+            className="group cursor-pointer rounded-[1.5rem] border border-[#F0F1ED] bg-white/86 p-4 text-left shadow-[0_12px_24px_rgba(33,77,68,0.05)] transition-all hover:border-[#D6E7E1] hover:bg-white md:p-5"
           >
             <div className="mb-3 flex items-center justify-between">
               <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
@@ -79,7 +79,7 @@ export default function ReasonsToLove({ onTriggerFloating }: ReasonsToLoveProps)
               </span>
               <Heart className="h-4 w-4 fill-[#F2C8D2] text-[#D890A4] transition-transform group-hover:scale-110" />
             </div>
-            <p className="font-serif text-[16px] leading-relaxed text-[#35534C]">{reason}</p>
+            <p className="font-serif text-[16px] leading-relaxed text-[#35534C] md:text-[17px]">{reason}</p>
           </motion.button>
         ))}
       </div>

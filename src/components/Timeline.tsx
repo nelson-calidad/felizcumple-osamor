@@ -104,7 +104,7 @@ export default function Timeline({
         <span className="rounded-full border border-[#D7E9E3] bg-[#F3FBF8] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#35534C]">
           Nuestros momentos juntos
         </span>
-        <h2 className="mt-3 font-serif text-3xl tracking-tight text-[#214D44] md:text-4xl">
+        <h2 className="mt-3 font-serif text-3xl tracking-tight text-[#214D44] md:text-4xl lg:text-[3rem]">
           Polaroids de Nuestros Recuerdos
         </h2>
         <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-[#64746E]">
@@ -168,7 +168,7 @@ export default function Timeline({
               </div>
             </div>
 
-            <div className="rounded-[1.9rem] border border-[#EFF2EF] bg-white/88 p-5 shadow-[0_16px_32px_rgba(33,77,68,0.05)] md:p-6">
+            <div className="rounded-[1.9rem] border border-[#EFF2EF] bg-white/88 p-5 shadow-[0_16px_32px_rgba(33,77,68,0.05)] md:p-6 lg:p-7">
               <div className="flex h-full flex-col justify-between">
                 <div>
                   <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#B88357]">
@@ -177,7 +177,7 @@ export default function Timeline({
                   <h3 className="mt-3 font-serif text-3xl leading-tight text-[#214D44] md:text-[2.3rem]">
                     {activeMemory.title}
                   </h3>
-                  <p className="mt-4 max-w-xl text-base leading-relaxed text-[#61716B]">
+                  <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#61716B] md:text-base">
                     {activeMemory.description}
                   </p>
 

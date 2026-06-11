@@ -157,7 +157,7 @@ export default function Jukebox({
   };
 
   return (
-    <div className="relative overflow-hidden rounded-[2rem] border border-[#4DB6A3]/20 bg-[linear-gradient(145deg,rgba(255,255,255,0.96)_0%,rgba(248,255,253,0.96)_55%,rgba(234,253,249,0.9)_100%)] p-5 shadow-[0_28px_55px_rgba(27,77,67,0.12)] backdrop-blur-md md:p-6">
+    <div className="relative overflow-hidden rounded-[2rem] border border-[#4DB6A3]/20 bg-[linear-gradient(145deg,rgba(255,255,255,0.96)_0%,rgba(248,255,253,0.96)_55%,rgba(234,253,249,0.9)_100%)] p-5 shadow-[0_28px_55px_rgba(27,77,67,0.12)] backdrop-blur-md md:p-6 lg:p-7">
       <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#EAFDF9] opacity-80 blur-xl" />
       <div className="absolute -bottom-16 left-6 h-36 w-36 rounded-full bg-[#FFF3E8] opacity-70 blur-2xl" />
 
@@ -208,7 +208,7 @@ export default function Jukebox({
               Una cancion para este momento
             </span>
             <h3
-              className="mt-2 truncate font-sans text-lg font-bold tracking-tight text-gray-800 md:text-xl"
+              className="mt-2 truncate font-sans text-xl font-bold tracking-tight text-gray-800 md:text-2xl"
               title={currentSong.title}
             >
               {currentSong.title}
@@ -288,7 +288,7 @@ export default function Jukebox({
             </div>
           </div>
 
-          <p className="mt-4 max-w-xl font-serif text-[13px] leading-relaxed text-[#5C6A67]">
+          <p className="mt-4 max-w-xl font-serif text-[14px] leading-relaxed text-[#5C6A67]">
             La deje aca para que te abrace bajito mientras vas recorriendo todo esto.
           </p>
         </div>
