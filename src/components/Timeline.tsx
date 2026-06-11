@@ -165,16 +165,10 @@ export default function Timeline({
                   </div>
                 </div>
 
-                <div className="mt-2 px-1 text-center font-serif">
+                <div className="mt-3 px-1 text-center font-serif">
                   <span className="rounded-full bg-[#EAFDF9] px-2.5 py-0.5 font-mono text-[11px] font-bold uppercase text-[#1B4D43]">
                     {activeMemory.date}
                   </span>
-                  <h5 className="mt-1.5 text-lg font-extrabold leading-snug tracking-tight text-gray-800">
-                    {activeMemory.title}
-                  </h5>
-                  <p className="mt-1 text-xs italic leading-relaxed text-gray-500">
-                    "{activeMemory.description}"
-                  </p>
                 </div>
               </motion.div>
 

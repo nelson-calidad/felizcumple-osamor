@@ -71,8 +71,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
           Frasco de Mimos
         </h3>
         <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-[#60716B]">
-          Ahora está pensado para celular de verdad: tocás, leés y sacás otro mimo sin moverte de
-          la misma zona.
+          Un rinconcito para abrir un mimo, guardarlo si te gusta y seguir leyendo tranquila.
         </p>
       </div>
 
@@ -83,7 +82,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#B88357]">
                 Mensajito del momento
               </p>
-              <p className="mt-1 text-xs text-[#74857F]">Todo sucede acá mismo, sin subir ni bajar la pantalla.</p>
+              <p className="mt-1 text-xs text-[#74857F]">Abrí uno, guardalo si querés y seguí con otro.</p>
             </div>
             <div className="rounded-full border border-[#E9DED0] bg-[#FFF8F1] p-2 text-[#B88357]">
               <Heart className="h-4 w-4 fill-[#EBC3CB] text-[#D38A9A]" />
@@ -222,7 +221,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
             </motion.button>
 
             <p className="mt-4 text-center text-xs leading-relaxed text-[#607772]">
-              En computadora queda como detalle visual. En celular prioricé comodidad.
+              Frasco de mimos
             </p>
           </div>
         </div>
