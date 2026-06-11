@@ -106,8 +106,7 @@ export default function Timeline({
             Polaroids de Nuestros Recuerdos
           </h2>
           <p className="mt-1 text-sm text-gray-500">
-            Ahora se siente más álbum: podés ir foto por foto o saltar directo a la que más te den
-            ganas de volver a mirar.
+            Un rincón para volver a mirar algunos de nuestros momentos más lindos juntos.
           </p>
         </div>
       </div>
@@ -133,36 +132,6 @@ export default function Timeline({
 
       {filteredMemories.length > 0 ? (
         <>
-          <div className="mb-5 hidden gap-3 overflow-x-auto pb-1 sm:flex md:mb-6">
-            {filteredMemories.map((memory, index) => (
-              <button
-                key={memory.id}
-                type="button"
-                onClick={() => setDeckIndex(index)}
-                className={`min-w-[84px] shrink-0 rounded-[1.2rem] border p-2 text-left transition-all sm:min-w-[92px] ${
-                  deckIndex === index
-                    ? "border-[#8FD4C4] bg-[#F6FFFC] shadow-[0_12px_24px_rgba(33,77,68,0.10)]"
-                    : "border-white/80 bg-white/75 hover:bg-white"
-                }`}
-              >
-                <div className="relative mb-2 aspect-[3/4] overflow-hidden rounded-xl">
-                  <img
-                    src={getMemoryImage(memory)}
-                    alt={memory.title}
-                    className="h-full w-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <p className="truncate text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[#B88357]">
-                  {index + 1}
-                </p>
-                <p className="mt-1 line-clamp-2 text-xs font-semibold leading-snug text-[#214D44]">
-                  {memory.title}
-                </p>
-              </button>
-            ))}
-          </div>
-
           <AnimatePresence mode="wait">
             <motion.div
               key={`${selectedCategory}-${activeMemory.id}`}

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { ArrowDown, Heart, Sparkles } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import birthdayCakeImg from "./assets/images/birthday_cake_26_1780576134041.png";
@@ -101,22 +101,12 @@ const INITIAL_MEMORIES: Memory[] = [
   },
 ];
 
-const ROMANTIC_STEPS = [
-  { id: "music-section", title: "Poné play en nuestra canción", note: "Empezá con la música." },
-  { id: "letter-section", title: "Abrí la carta", note: "Leela tranquila, es toda para vos." },
-  { id: "love-jar-section", title: "Destapá el frasco de mimos", note: "Acá guardé mensajitos." },
-  { id: "timeline-section", title: "Mirá nuestros recuerdos", note: "Un paseo por nosotros." },
-  { id: "reasons-section", title: "Leé las 26 razones", note: "Una por cada añito tuyo." },
-];
-
 export default function App() {
   const [hearts, setHearts] = useState<FloatingHeart[]>([]);
   const [whisperMessage, setWhisperMessage] = useState(
     "Tocá cualquier rincón para ir llenando este regalo de pensamientos de amor.",
   );
   const [introModal, setIntroModal] = useState(true);
-  const [activeStep, setActiveStep] = useState(0);
-  const [completedSteps, setCompletedSteps] = useState<number[]>([0]);
 
   const handlePageClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
@@ -131,21 +121,6 @@ export default function App() {
 
     triggerHeartShower(e.clientX, e.clientY);
   };
-
-  const goToStep = (index: number) => {
-    const step = ROMANTIC_STEPS[index];
-    const element = document.getElementById(step.id);
-    if (!element) return;
-
-    setActiveStep(index);
-    setCompletedSteps((prev) => (prev.includes(index) ? prev : [...prev, index].sort((a, b) => a - b)));
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  const nextStepIndex = useMemo(
-    () => (activeStep + 1 < ROMANTIC_STEPS.length ? activeStep + 1 : null),
-    [activeStep],
-  );
 
   const triggerHeartShower = (x: number, y: number, text?: string) => {
     const customPhrases = [
@@ -346,89 +321,6 @@ export default function App() {
           </div>
         </div>
 
-        <section className="mb-8 rounded-[2rem] border border-[#E4ECE8] bg-white/72 p-4 shadow-[0_18px_40px_rgba(27,77,67,0.06)] backdrop-blur-md md:mb-10 md:p-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[#B88357]">
-                Recorrido guiado
-              </p>
-              <h2 className="mt-2 font-serif text-2xl text-[#214D44]">
-                Si querés, te voy llevando paso a paso
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-[#58706A]">
-                Lo pensé como un recorrido romántico para que sepas dónde tocar primero y puedas
-                vivirlo despacito.
-              </p>
-            </div>
-
-            <div className="rounded-[1.4rem] border border-[#E0EBE7] bg-[#FAFDFC] p-3 shadow-sm md:hidden">
-              <div className="mb-2 flex items-center justify-between gap-3">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
-                  Paso {activeStep + 1}/{ROMANTIC_STEPS.length}
-                </span>
-                {nextStepIndex !== null && (
-                  <button
-                    type="button"
-                    onClick={() => goToStep(nextStepIndex)}
-                    className="rounded-full bg-[#214D44] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-all hover:bg-[#183C35] active:scale-95"
-                  >
-                    Siguiente
-                  </button>
-                )}
-              </div>
-              <div className="mb-2 h-1.5 overflow-hidden rounded-full bg-[#E3F1ED]">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-[#4DB6A3] to-[#214D44] transition-all duration-500"
-                  style={{ width: `${((activeStep + 1) / ROMANTIC_STEPS.length) * 100}%` }}
-                />
-              </div>
-              <p className="text-sm font-serif text-[#214D44]">{ROMANTIC_STEPS[activeStep].title}</p>
-            </div>
-
-            {nextStepIndex !== null && (
-              <button
-                type="button"
-                onClick={() => goToStep(nextStepIndex)}
-                className="hidden cursor-pointer rounded-full bg-[#214D44] px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-[#183C35] active:scale-95 md:block"
-              >
-                Seguir recorrido
-              </button>
-            )}
-          </div>
-
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-            {ROMANTIC_STEPS.map((step, index) => (
-              <button
-                key={step.id}
-                type="button"
-                onClick={() => goToStep(index)}
-                className={`rounded-[1.4rem] border p-4 text-left transition-all cursor-pointer ${
-                  activeStep === index
-                    ? "border-[#8FD4C4] bg-[#F6FFFC] shadow-[0_12px_24px_rgba(33,77,68,0.10)]"
-                    : "border-white/80 bg-white/70 hover:bg-white"
-                }`}
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <span className="block text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-[#B88357]">
-                    Paso {index + 1}
-                  </span>
-                  <span
-                    className={`rounded-full px-2 py-0.5 text-[9px] font-mono font-bold uppercase ${
-                      completedSteps.includes(index)
-                        ? "bg-[#DFF7F0] text-[#1F6A5D]"
-                        : "bg-gray-100 text-gray-400"
-                    }`}
-                  >
-                    {completedSteps.includes(index) ? "Visto" : "Pendiente"}
-                  </span>
-                </div>
-                <span className="mt-2 block font-serif text-lg text-[#214D44]">{step.title}</span>
-                <span className="mt-1 block text-xs leading-relaxed text-[#607772]">{step.note}</span>
-              </button>
-            ))}
-          </div>
-        </section>
-
         <div className="mb-10 grid grid-cols-1 items-start gap-6 xl:mb-12 xl:grid-cols-12 xl:gap-8">
           <div className="space-y-6 xl:col-span-5 xl:space-y-8">
             <div id="music-section">
@@ -503,42 +395,6 @@ export default function App() {
         </footer>
       </div>
 
-      <div className="fixed bottom-3 right-4 z-40 hidden w-[360px] md:block">
-        <div className="rounded-[1.6rem] border border-[#4DB6A3]/20 bg-white/88 p-3 shadow-xl backdrop-blur-lg">
-          <div className="mb-2 flex items-center justify-between gap-3">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
-              Recorrido {activeStep + 1}/{ROMANTIC_STEPS.length}
-            </span>
-            {nextStepIndex !== null && (
-              <button
-                type="button"
-                onClick={() => goToStep(nextStepIndex)}
-                className="rounded-full bg-[#214D44] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-all hover:bg-[#183C35] active:scale-95"
-              >
-                Siguiente
-              </button>
-            )}
-          </div>
-
-          <div className="mb-2 h-1.5 overflow-hidden rounded-full bg-[#E3F1ED]">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-[#4DB6A3] to-[#214D44] transition-all duration-500"
-              style={{ width: `${((activeStep + 1) / ROMANTIC_STEPS.length) * 100}%` }}
-            />
-          </div>
-
-          <p className="text-sm font-serif text-[#214D44]">{ROMANTIC_STEPS[activeStep].title}</p>
-          <motion.p
-            key={whisperMessage}
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-1 flex items-start gap-1.5 text-[11px] font-medium leading-relaxed text-[#56706A]"
-          >
-            <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 fill-teal-500/10 text-teal-500" />
-            <span>{whisperMessage}</span>
-          </motion.p>
-        </div>
-      </div>
     </div>
   );
 }
