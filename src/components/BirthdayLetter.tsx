@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { CheckCircle2, Heart } from "lucide-react";
+import React, { useState } from "react";
+import { Heart } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
 interface BirthdayLetterProps {
@@ -7,34 +7,11 @@ interface BirthdayLetterProps {
   loveLetterImg: string;
 }
 
-const STORAGE_KEY = "flor-birthday-replies";
-
 export default function BirthdayLetter({
   onTriggerFloating,
   loveLetterImg,
 }: BirthdayLetterProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [replyText, setReplyText] = useState("");
-  const [isSent, setIsSent] = useState(false);
-  const [savedReplies, setSavedReplies] = useState<string[]>([]);
-
-  useEffect(() => {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
-
-    try {
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed)) {
-        setSavedReplies(parsed.filter((item): item is string => typeof item === "string"));
-      }
-    } catch {
-      window.localStorage.removeItem(STORAGE_KEY);
-    }
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(savedReplies));
-  }, [savedReplies]);
 
   const handleOpenEnvelope = (e: React.MouseEvent) => {
     setIsOpen((prev) => !prev);
@@ -43,22 +20,6 @@ export default function BirthdayLetter({
       e.clientY,
       isOpen ? "La carta quedo guardada otra vez" : "Se abrio la carta para vos",
     );
-  };
-
-  const handleSendReply = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const trimmedReply = replyText.trim();
-    if (!trimmedReply) return;
-
-    setSavedReplies((prev) => [trimmedReply, ...prev].slice(0, 5));
-    setIsSent(true);
-    onTriggerFloating(window.innerWidth / 2, window.innerHeight / 2, "Llego un mensajito tuyo");
-
-    setTimeout(() => {
-      setIsSent(false);
-      setReplyText("");
-    }, 4500);
   };
 
   return (
@@ -100,7 +61,7 @@ export default function BirthdayLetter({
                 />
               </div>
 
-              <div className="max-h-[280px] space-y-4 overflow-y-auto pr-1 font-serif text-sm leading-relaxed text-[#374151] md:max-h-[360px] md:text-base">
+              <div className="max-h-[420px] space-y-4 overflow-y-auto pr-1 font-serif text-sm leading-relaxed text-[#374151] md:max-h-[520px] md:text-base">
                 <p className="font-mono text-[13px] font-bold uppercase tracking-wide text-[#1B4D43]">
                   17 de junio - 12:00 AM
                 </p>
@@ -138,66 +99,6 @@ export default function BirthdayLetter({
                     Tu amorcito
                   </span>
                 </p>
-              </div>
-
-              <div className="mt-6 rounded-[1.4rem] border border-dashed border-[#D9ECE7] bg-[#FCFFFE] p-4">
-                <AnimatePresence mode="wait">
-                  {isSent ? (
-                    <motion.div
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0.9, opacity: 0 }}
-                      className="flex items-center justify-center gap-2 rounded-xl border border-green-200 bg-green-50 p-3 text-xs font-semibold text-green-700"
-                    >
-                      <CheckCircle2 className="h-4 w-4" />
-                      <span>Tu respuesta quedo guardada con todo mi amor</span>
-                    </motion.div>
-                  ) : (
-                    <motion.form
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onSubmit={handleSendReply}
-                      className="space-y-3"
-                    >
-                      <span className="block text-[10px] font-bold uppercase tracking-wider text-[#B88357]">
-                        Si te nace dejarme unas palabritas
-                      </span>
-                      <div className="space-y-2">
-                        <input
-                          type="text"
-                          required
-                          value={replyText}
-                          onChange={(e) => setReplyText(e.target.value)}
-                          placeholder="Ej: te amo, gracias mi vida, veni por mimos"
-                          className="w-full rounded-2xl border border-[#E8DED0] bg-[#FFFDF9] px-4 py-3 text-xs text-[#5F4B44] focus:outline-none focus:ring-1 focus:ring-[#4DB6A3]"
-                        />
-                        <button
-                          type="submit"
-                          className="w-full rounded-2xl bg-[#1B4D43] px-3 py-3 text-xs font-bold text-white transition-all hover:bg-[#143B33] active:scale-95"
-                        >
-                          Guardarla con la carta
-                        </button>
-                      </div>
-                    </motion.form>
-                  )}
-                </AnimatePresence>
-
-                {savedReplies.length > 0 && (
-                  <div className="mt-4 space-y-2">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#B88357]">
-                      Lo que me dejaste
-                    </p>
-                    {savedReplies.map((reply, index) => (
-                      <div
-                        key={`${reply}-${index}`}
-                        className="rounded-xl border border-[#E6D9C8] bg-[#FFF9F0] px-3 py-2 text-xs leading-relaxed text-[#6E4944]"
-                      >
-                        {reply}
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             </motion.div>
           )}
