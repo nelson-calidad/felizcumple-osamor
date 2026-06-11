@@ -182,7 +182,7 @@ export default function App() {
     <div
       id="root-bday-app"
       onClick={handlePageClick}
-      className="relative min-h-screen overflow-x-hidden bg-gradient-to-b from-[#EBF8F6] via-[#F8FDFC] to-[#E7F5F0] pb-28 font-sans selection:bg-[#A8E6CF] selection:text-[#0F3A32]"
+      className="relative min-h-screen overflow-x-hidden bg-gradient-to-b from-[#EBF8F6] via-[#F8FDFC] to-[#EDEEE8] pb-28 font-sans selection:bg-[#A8E6CF] selection:text-[#0F3A32]"
     >
       <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
         {hearts.map((heart) => (
@@ -261,7 +261,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <div className="mx-auto max-w-5xl px-4 pt-6 md:pt-8">
+      <div className="mx-auto max-w-6xl px-4 pt-6 md:px-6 md:pt-8">
         <div className="mb-6 flex items-center justify-between rounded-2xl border border-[#D7E7E1] bg-white/72 px-4 py-3 text-[11px] font-semibold text-[#35534C] shadow-sm backdrop-blur-md md:mb-8 md:px-5 md:font-mono md:text-xs">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 animate-ping rounded-full bg-[#4DB6A3]" />
@@ -273,38 +273,65 @@ export default function App() {
           </div>
         </div>
 
-        <div className="mb-8 text-center md:mb-10">
+        <div className="mb-8 md:mb-10">
           <motion.div
             key="birthday-active-header"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="relative mx-auto mb-5 max-w-2xl overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/85 p-6 shadow-xl md:mb-6 md:p-8"
+            className="relative overflow-hidden rounded-[2rem] border border-[#DDEBE6] bg-[linear-gradient(135deg,rgba(255,252,248,0.96),rgba(243,250,247,0.94))] p-6 shadow-[0_24px_60px_rgba(35,77,67,0.10)] md:p-8"
           >
-            <div className="absolute left-4 top-2 animate-bounce select-none text-2xl">🎈</div>
-            <div
-              className="absolute right-4 top-2 animate-bounce select-none text-2xl"
-              style={{ animationDelay: "0.4s" }}
-            >
-              🎉
-            </div>
+            <div className="absolute -left-10 top-0 h-32 w-32 rounded-full bg-[#F4DED7]/60 blur-3xl" />
+            <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-[#DCEEE7]/70 blur-3xl" />
 
-            <h1 className="bg-gradient-to-r from-[#113A32] via-[#225E52] to-[#4DB6A3] bg-clip-text font-sans text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl md:text-5xl">
-              Feliz cumple, mi Flor Lihue hermosa ❤️
-            </h1>
-            <p className="mt-3 font-serif text-lg font-semibold italic text-[#1B4D43]">
-              Para la chica que me hace feliz con un mate, una mirada, un mimo o simplemente
-              estando conmigo.
-            </p>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-gray-600">
-              Hoy cumplís 26 añitos y quería regalarte algo distinto: un recorrido cortito,
-              romántico y lleno de nosotros para que cada parte te abrace un poquito.
-            </p>
+            <div className="relative grid items-center gap-6 lg:grid-cols-[minmax(0,1.3fr)_320px] lg:gap-8">
+              <div className="text-center lg:text-left">
+                <div className="absolute left-4 top-2 hidden select-none text-2xl lg:block">🎈</div>
+                <div
+                  className="absolute right-4 top-2 hidden select-none text-2xl lg:block"
+                  style={{ animationDelay: "0.4s" }}
+                >
+                  🎉
+                </div>
 
-            <div className="mt-5 flex justify-center">
-              <div className="flex max-w-full items-center gap-2 rounded-full border border-[#EAFDF9]/60 bg-[#EAFDF9] px-4 py-2 text-center font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1B4D43] shadow-sm sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-wider">
-                <Sparkles className="h-4 w-4 fill-teal-600/20 text-teal-600" />
-                <span>Preparé esto porque te amo, quiero que seas feliz y me encanta hacerlo por vos</span>
+                <h1 className="bg-gradient-to-r from-[#113A32] via-[#225E52] to-[#4DB6A3] bg-clip-text font-sans text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl md:text-5xl">
+                  Feliz cumple, mi Flor Lihue hermosa ❤️
+                </h1>
+                <p className="mt-3 font-serif text-lg font-semibold italic text-[#1B4D43] md:text-xl">
+                  Para la chica que me hace feliz con un mate, una mirada, un mimo o simplemente
+                  estando conmigo.
+                </p>
+                <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-gray-600 lg:mx-0 lg:max-w-2xl">
+                  Hoy cumplís 26 añitos y quería regalarte algo distinto: un recorrido cortito,
+                  romántico y lleno de nosotros para que cada parte te abrace un poquito.
+                </p>
+
+                <div className="mt-5 flex justify-center lg:justify-start">
+                  <div className="flex max-w-full items-center gap-2 rounded-full border border-[#EAFDF9]/60 bg-[#EAFDF9] px-4 py-2 text-center font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1B4D43] shadow-sm sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-wider">
+                    <Sparkles className="h-4 w-4 fill-teal-600/20 text-teal-600" />
+                    <span>Preparé esto porque te amo, quiero que seas feliz y me encanta hacerlo por vos</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="hidden rounded-[1.8rem] border border-white/90 bg-white/82 p-5 text-left shadow-[0_18px_36px_rgba(33,77,68,0.08)] lg:block">
+                <p className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
+                  Este regalo tiene
+                </p>
+                <div className="mt-4 grid gap-3">
+                  <div className="rounded-[1.2rem] border border-[#E8EFEA] bg-[#FCFEFD] px-4 py-3">
+                    <p className="font-serif text-lg text-[#214D44]">Nuestra canción</p>
+                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Para empezar con el clima justo.</p>
+                  </div>
+                  <div className="rounded-[1.2rem] border border-[#E8EFEA] bg-[#FCFEFD] px-4 py-3">
+                    <p className="font-serif text-lg text-[#214D44]">Carta y recuerdos</p>
+                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Lo más importante, ordenado y con aire.</p>
+                  </div>
+                  <div className="rounded-[1.2rem] border border-[#E8EFEA] bg-[#FCFEFD] px-4 py-3">
+                    <p className="font-serif text-lg text-[#214D44]">Sorpresas suaves</p>
+                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Para seguir jugando al final sin tapar lo principal.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -402,8 +429,8 @@ export default function App() {
           </div>
         </section>
 
-        <div className="mb-10 grid grid-cols-1 items-start gap-6 lg:mb-12 lg:grid-cols-12 lg:gap-8">
-          <div className="space-y-6 lg:col-span-5 lg:space-y-8">
+        <div className="mb-10 grid grid-cols-1 items-start gap-6 xl:mb-12 xl:grid-cols-12 xl:gap-8">
+          <div className="space-y-6 xl:col-span-5 xl:space-y-8">
             <div id="music-section">
               <Jukebox
                 songs={MUSIC_PLAYLIST}
@@ -420,7 +447,7 @@ export default function App() {
             />
           </div>
 
-          <div className="space-y-6 lg:col-span-7 lg:space-y-8">
+          <div className="space-y-6 xl:col-span-7 xl:space-y-8">
             <LoveJar onTriggerFloating={triggerHeartShower} />
 
             <div id="timeline-section">
