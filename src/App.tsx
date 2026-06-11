@@ -261,8 +261,8 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <div className="mx-auto max-w-5xl px-4 pt-8">
-        <div className="mb-8 flex items-center justify-between rounded-2xl border border-[#4DB6A3]/25 bg-white/70 px-5 py-3 font-mono text-xs font-semibold text-[#1B4D43] shadow-md backdrop-blur-md">
+      <div className="mx-auto max-w-5xl px-4 pt-6 md:pt-8">
+        <div className="mb-6 flex items-center justify-between rounded-2xl border border-[#D7E7E1] bg-white/72 px-4 py-3 text-[11px] font-semibold text-[#35534C] shadow-sm backdrop-blur-md md:mb-8 md:px-5 md:font-mono md:text-xs">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 animate-ping rounded-full bg-[#4DB6A3]" />
             <span>Un regalo hecho con amor para Flor Lihue</span>
@@ -319,10 +319,10 @@ export default function App() {
           </div>
         </div>
 
-        <section className="mb-8 rounded-[2rem] border border-white/70 bg-white/70 p-4 shadow-[0_18px_40px_rgba(27,77,67,0.08)] backdrop-blur-md md:mb-10 md:p-6">
+        <section className="mb-8 rounded-[2rem] border border-[#E4ECE8] bg-white/72 p-4 shadow-[0_18px_40px_rgba(27,77,67,0.06)] backdrop-blur-md md:mb-10 md:p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl">
-              <p className="text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-[#B88357]">
+              <p className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[#B88357]">
                 Recorrido guiado
               </p>
               <h2 className="mt-2 font-serif text-2xl text-[#214D44]">
@@ -334,7 +334,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="rounded-[1.4rem] border border-[#DCEEE9] bg-[#F8FFFD] p-3 shadow-sm md:hidden">
+            <div className="rounded-[1.4rem] border border-[#E0EBE7] bg-[#FAFDFC] p-3 shadow-sm md:hidden">
               <div className="mb-2 flex items-center justify-between gap-3">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
                   Paso {activeStep + 1}/{ROMANTIC_STEPS.length}
@@ -382,7 +382,7 @@ export default function App() {
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <span className="block text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
+                  <span className="block text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-[#B88357]">
                     Paso {index + 1}
                   </span>
                   <span
@@ -439,17 +439,17 @@ export default function App() {
           <ReasonsToLove onTriggerFloating={triggerHeartShower} />
         </div>
 
-        <section className="mb-10 rounded-[2rem] border border-white/70 bg-white/65 p-5 shadow-[0_22px_50px_rgba(27,77,67,0.10)] backdrop-blur-md md:p-8">
+        <section className="mb-10 rounded-[2rem] border border-[#E7ECE8] bg-[linear-gradient(180deg,rgba(250,251,249,0.94),rgba(242,247,244,0.92))] p-5 shadow-[0_20px_44px_rgba(27,77,67,0.06)] backdrop-blur-md md:p-8">
           <div className="max-w-2xl">
-            <p className="text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-[#B88357]">
+            <p className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[#B88357]">
               Extras para seguir jugando
             </p>
             <h2 className="mt-2 font-serif text-2xl text-[#214D44] md:text-3xl">
               Cuando termines lo principal, acá siguen las sorpresas
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-[#58706A]">
-              Dejé estos rinconcitos más livianos para el final, como si después de la carta y
-              los recuerdos nos quedáramos jugando un rato más juntos.
+              Dejé estos rinconcitos para el final, como un cierre más relajado después de la
+              carta, los recuerdos y lo importante.
             </p>
           </div>
 
