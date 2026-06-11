@@ -204,9 +204,14 @@ export default function App() {
               <p className="mt-3 text-sm leading-relaxed text-gray-600">
                 Te prepare este rinconcito con nuestra cancion, la carta, los recuerdos y algunas sorpresas suaves para el final.
               </p>
-              <p className="mt-4 rounded-2xl border border-[#4DB6A3]/20 bg-[#EAFDF9] px-4 py-2.5 font-mono text-xs font-bold text-[#1B4D43]">
-                17 de junio
-              </p>
+              <div className="mt-4 rounded-2xl border border-[#4DB6A3]/20 bg-[#EAFDF9] px-4 py-3 text-center">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#B88357]">
+                  Para abrir este regalo
+                </p>
+                <p className="mt-1 font-serif text-base text-[#1B4D43]">
+                  17 de junio
+                </p>
+              </div>
 
               <button
                 onClick={() => {
