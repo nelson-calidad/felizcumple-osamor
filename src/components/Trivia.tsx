@@ -24,7 +24,7 @@ export default function Trivia({ onTriggerFloating }: TriviaProps) {
   const questions: Question[] = [
     {
       id: 1,
-      question: "Cual es nuestra comida infalible cuando salimos en una cita linda o nos quedamos charlando hasta tarde?",
+      question: "Cual es nuestra comida infalible cuando salimos o nos quedamos charlando hasta tarde?",
       options: [
         "Ensalada gourmet y sushi",
         "Hamburguesas riquisimas o lomitos espectaculares",
@@ -36,19 +36,19 @@ export default function Trivia({ onTriggerFloating }: TriviaProps) {
     },
     {
       id: 2,
-      question: "Que pasa inevitablemente cuando intentamos ver una serie coreana o un kdrama juntos en el sillon?",
+      question: "Que pasa cuando intentamos ver una serie coreana o un kdrama juntos?",
       options: [
-        "La terminamos completa en silencio y sin interrupcion",
-        "Vos te dormis en los primeros cinco minutos",
-        "Terminamos charlando de la vida por horas y emocionandonos juntos",
-        "Peleamos por quien tiene el control remoto",
+        "La terminamos en silencio",
+        "Vos te dormis enseguida",
+        "Terminamos charlando de la vida por horas",
+        "Peleamos por el control remoto",
       ],
       answerIndex: 2,
       funFact: "Aunque queremos verla entera, lo tierno es que charlamos mil horas y amo verte emocionada.",
     },
     {
       id: 3,
-      question: "Que profesion hermosa y admirable ejerces con tanta vocacion y de la que amo escucharte hablar?",
+      question: "Que profesion hermosa ejerces y de la que amo escucharte hablar?",
       options: [
         "Inmunologa espacial",
         "Tecnica en Hemoterapia",
@@ -60,7 +60,7 @@ export default function Trivia({ onTriggerFloating }: TriviaProps) {
     },
     {
       id: 4,
-      question: "Quien es nuestro pilar perruno y la que siempre nos acompana con alegria?",
+      question: "Quien es nuestro pilar perruno y la que siempre nos acompana?",
       options: [
         "El perrito de la fiambreria",
         "La Duque",
@@ -72,7 +72,7 @@ export default function Trivia({ onTriggerFloating }: TriviaProps) {
     },
     {
       id: 5,
-      question: "Cual es el companero fiel que aparece en charlas, desvelos y jornadas de estudio?",
+      question: "Cual es el companero fiel de charlas, desvelos y jornadas de estudio?",
       options: [
         "Te de tilo frio",
         "Gaseosa de pomelo",
@@ -129,8 +129,8 @@ export default function Trivia({ onTriggerFloating }: TriviaProps) {
         <h2 className="mt-2 flex items-center gap-2 font-sans text-2xl font-extrabold tracking-tight text-gray-800">
           Cuanto nos conocemos, amorcito
         </h2>
-        <p className="mt-1 max-w-2xl text-sm text-gray-500">
-          Una excusa tierna para volver a esas cositas nuestras que me encantan.
+        <p className="mt-1 max-w-xl text-sm text-gray-500">
+          Una excusa linda para volver a esas cositas nuestras.
         </p>
       </div>
 
@@ -213,7 +213,7 @@ export default function Trivia({ onTriggerFloating }: TriviaProps) {
                 >
                   <p className="flex items-center gap-1 font-bold">
                     <Star className="h-4 w-4 animate-pulse fill-teal-400 text-teal-600" />
-                    Lo que me encanta de esto:
+                    Lo lindo de esto:
                   </p>
                   <p className="mt-1 font-serif italic text-gray-600">
                     "{questions[currentQuestionIdx].funFact}"
@@ -245,7 +245,7 @@ export default function Trivia({ onTriggerFloating }: TriviaProps) {
                 Te salio hermosa
               </h3>
               <p className="mt-1 px-4 text-xs text-gray-500 md:text-sm">
-                Te llevaste <span className="font-bold text-[#1B4D43]">{score} de {questions.length}</span> y a mi me seguis gustando igual de mucho.
+                Te llevaste <span className="font-bold text-[#1B4D43]">{score} de {questions.length}</span>.
               </p>
             </div>
 

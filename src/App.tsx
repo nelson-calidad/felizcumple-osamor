@@ -202,11 +202,10 @@ export default function App() {
                 Hola, mi reina hermosa
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                Prepare este rinconcito para acompanarte despacito: primero nuestra cancion,
-                despues la carta y, mas abajo, los recuerdos y las sorpresas.
+                Te prepare este rinconcito con nuestra cancion, la carta, los recuerdos y algunas sorpresas suaves para el final.
               </p>
               <p className="mt-4 rounded-2xl border border-[#4DB6A3]/20 bg-[#EAFDF9] px-4 py-2.5 font-mono text-xs font-bold text-[#1B4D43]">
-                Dia oficial del festejo de la mujer mas linda: 17 de junio
+                17 de junio
               </p>
 
               <button
@@ -264,36 +263,36 @@ export default function App() {
                   Feliz cumple, mi Flor Lihue hermosa ❤️
                 </h1>
                 <p className="mt-3 font-serif text-lg font-medium italic text-[#1B4D43] md:text-xl">
-                  Para la chica que me hace feliz con un mate, una mirada, un mimo o simplemente estando conmigo.
+                  Para la chica que me hace feliz con un mate, una mirada y un mimo.
                 </p>
-                <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#62716C] lg:mx-0 lg:max-w-2xl">
-                  Hoy cumplis 26 anitos y queria regalarte algo distinto: un recorrido romantico y lleno de nosotros para que cada parte te abrace un poquito.
+                <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#62716C] lg:mx-0 lg:max-w-xl">
+                  Queria dejarte algo nuestro, suave y lindo, para recorrer despacito.
                 </p>
 
                 <div className="mt-5 flex justify-center lg:justify-start">
                   <div className="flex max-w-full items-center gap-2 rounded-full border border-[#EAF4F0] bg-[#F3FBF8] px-4 py-2 text-center font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#35534C] shadow-sm sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.2em]">
                     <Sparkles className="h-4 w-4 fill-teal-600/20 text-teal-600" />
-                    <span>Prepare esto porque te amo y me encanta hacerlo por vos</span>
+                    <span>Hecho para vos</span>
                   </div>
                 </div>
               </div>
 
               <div className="hidden rounded-[1.9rem] border border-[#EEF2EF] bg-white/84 p-5 text-left shadow-[0_14px_32px_rgba(33,77,68,0.06)] lg:block">
                 <p className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
-                  Este regalo tiene
+                  Aca adentro
                 </p>
                 <div className="mt-4 grid gap-3">
                   <div className="rounded-[1.2rem] border border-[#EDF2EF] bg-[#FCFEFD] px-4 py-3">
                     <p className="font-serif text-lg text-[#214D44]">Nuestra cancion</p>
-                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Para empezar con el clima justo.</p>
+                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Para empezar lindo.</p>
                   </div>
                   <div className="rounded-[1.2rem] border border-[#EDF2EF] bg-[#FCFEFD] px-4 py-3">
                     <p className="font-serif text-lg text-[#214D44]">Carta y recuerdos</p>
-                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Lo mas importante, con aire y en su lugar.</p>
+                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Lo mas importante.</p>
                   </div>
                   <div className="rounded-[1.2rem] border border-[#EDF2EF] bg-[#FCFEFD] px-4 py-3">
                     <p className="font-serif text-lg text-[#214D44]">Sorpresas suaves</p>
-                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Para seguir jugando al final sin tapar lo principal.</p>
+                    <p className="mt-1 text-xs leading-relaxed text-[#6A7A75]">Para el final.</p>
                   </div>
                 </div>
               </div>
@@ -350,15 +349,15 @@ export default function App() {
         </div>
 
         <section className="mb-10 rounded-[2rem] border border-[#EDF1EE] bg-[linear-gradient(180deg,rgba(250,251,249,0.95),rgba(244,247,245,0.93))] p-5 shadow-[0_16px_38px_rgba(27,77,67,0.05)] backdrop-blur-md md:p-8">
-          <div className="max-w-2xl xl:max-w-3xl">
+          <div className="max-w-2xl xl:max-w-2xl">
             <p className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-[#B88357]">
-              Extras para seguir jugando
+              Extras
             </p>
             <h2 className="mt-2 font-serif text-2xl text-[#214D44] md:text-3xl">
-              Cuando termines lo principal, aca siguen las sorpresas
+              Un poquito mas para vos
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-[#58706A]">
-              Los deje para el final, como un cierre mas relajado despues de la carta, los recuerdos y lo importante.
+              Algunas cositas suaves para seguir sonriendo un rato mas.
             </p>
           </div>
 
@@ -387,10 +386,10 @@ export default function App() {
               Para vos, mi amor
             </p>
             <p className="mx-auto mt-4 max-w-2xl font-serif text-2xl leading-relaxed text-[#214D44] md:text-[2rem]">
-              Ojala cada parte de esta pagina te recuerde, aunque sea un poquito, lo feliz que me hace amarte.
+              Ojala cada parte de esta pagina te recuerde lo feliz que me hace amarte.
             </p>
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#64746E]">
-              Feliz cumple, mi Flor Lihue hermosa. Gracias por ser mi lugar favorito, mi paz y mi companera mas linda.
+              Feliz cumple, mi Flor Lihue hermosa. Gracias por ser mi lugar favorito.
             </p>
             <span className="mt-5 block font-mono text-[10px] uppercase tracking-[0.18em] text-[#90A19B]">
               2026 · guardado con amor para siempre

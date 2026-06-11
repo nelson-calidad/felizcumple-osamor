@@ -72,22 +72,22 @@ export default function Timeline({
 
   const getSecretText = (id: string) => {
     if (id === "1") {
-      return "Lagunas de Yala. Estaba maravillado de estar con vos ahí y de ver lo bien que nos quedaba empezar algo tan lindo juntos.";
+      return "Lagunas de Yala. Estaba maravillado de estar con vos ahi y de ver lo bien que nos quedaba empezar algo tan lindo juntos.";
     }
     if (id === "2") {
-      return "Esa sorpresa con flores y tu sonrisa me pueden por completo. Verte feliz me llena y me hace querer seguir mimándote siempre.";
+      return "Esa sorpresa con flores y tu sonrisa me pueden por completo. Verte feliz me llena y me hace querer seguir mimandote siempre.";
     }
     if (id === "3") {
-      return "Córdoba. Ese viaje marcó un antes y un después. Mate, ruta, charla y esa alegría de sentir que con vos todo fluye.";
+      return "Cordoba. Ese viaje marco un antes y un despues. Mate, ruta, charla y esa alegria de sentir que con vos todo fluye.";
     }
     if (id === "4") {
-      return "Verte recibirte me llenó de orgullo. Me encanta admirarte y escucharte hablar con pasión de lo que amás.";
+      return "Verte recibirte me lleno de orgullo. Me encanta admirarte y escucharte hablar con pasion de lo que amas.";
     }
     if (id === "5") {
-      return "Nuestra salida al cine fue una de esas citas que parecen simples, pero conmigo se quedan enormes porque estabas preciosa y feliz al lado mío.";
+      return "Nuestra salida al cine fue una de esas citas simples que conmigo se quedan enormes porque estabas preciosa y feliz al lado mio.";
     }
     if (id === "6") {
-      return "Ese cumple tan nuestro me encanta recordarlo por todo: tu sonrisa, la torta, el momento compartido y lo hermosa que estabas ese día.";
+      return "Ese cumple tan nuestro me encanta recordarlo por todo: tu sonrisa, el momento compartido y lo hermosa que estabas ese dia.";
     }
     return "Esta otra foto tuya me derrite. Me encanta mirarte y volver a sentir lo afortunado que soy de tenerte en mi vida.";
   };
@@ -107,9 +107,8 @@ export default function Timeline({
         <h2 className="mt-3 font-serif text-3xl tracking-tight text-[#214D44] md:text-4xl">
           Polaroids de Nuestros Recuerdos
         </h2>
-        <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-[#64746E]">
-          Un pequeño álbum para volver, despacito, a algunos de los momentos más lindos que
-          construimos juntos.
+        <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-[#64746E]">
+          Un album chiquito para volver a algunos de los momentos mas lindos nuestros.
         </p>
       </div>
 
@@ -245,7 +244,7 @@ export default function Timeline({
         </AnimatePresence>
       ) : (
         <div className="py-10 text-center font-mono text-xs text-gray-500">
-          No hay recuerdos cargados en esta categoría aún.
+          No hay recuerdos cargados en esta categoria aun.
         </div>
       )}
     </section>

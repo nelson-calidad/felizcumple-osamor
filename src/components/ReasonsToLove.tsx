@@ -5,30 +5,30 @@ import { motion } from "motion/react";
 const REASONS = [
   "Porque sos hermosa.",
   "Porque sos buena.",
-  "Porque me hacés reír.",
+  "Porque me haces reir.",
   "Porque tus abrazos son mi lugar favorito.",
-  "Porque me elegís.",
-  "Porque me dejás cuidarte.",
-  "Porque me hacés sentir amado.",
+  "Porque me elegis.",
+  "Porque me dejas cuidarte.",
+  "Porque me haces sentir amado.",
   "Porque amo tus mimos.",
-  "Porque con vos todo es más lindo.",
+  "Porque con vos todo es mas lindo.",
   "Porque sos mi princesa.",
   "Porque me encanta verte feliz.",
-  "Porque me acompañás.",
+  "Porque me acompanas.",
   "Porque sos tierna.",
   "Porque amo compartir mates con vos.",
   "Porque amo ver series con vos.",
-  "Porque nuestras comidas juntos son más ricas.",
+  "Porque nuestras comidas juntos son mas ricas.",
   "Porque me das paz.",
-  "Porque me motivás.",
-  "Porque sos única.",
-  "Porque tenés un corazón hermoso.",
+  "Porque me motivas.",
+  "Porque sos unica.",
+  "Porque tenes un corazon hermoso.",
   "Porque amo tu forma de mirarme.",
-  "Porque me hacés extrañarte.",
+  "Porque me haces extranarte.",
   "Porque me encanta estar con vos.",
   "Porque sos mi Flor.",
-  "Porque te elegiría siempre.",
-  "Porque te amo hasta la palmera y mucho más.",
+  "Porque te elegiria siempre.",
+  "Porque te amo hasta la palmera y mucho mas.",
 ];
 
 interface ReasonsToLoveProps {
@@ -52,9 +52,8 @@ export default function ReasonsToLove({ onTriggerFloating }: ReasonsToLoveProps)
         <h2 className="mt-4 font-serif text-3xl tracking-tight text-[#214D44] md:text-4xl">
           26 cosas por las que te amo
         </h2>
-        <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-[#5A706A] md:text-[15px]">
-          Una por cada año tuyo, para que te acuerdes de lo mucho que me gusta amarte,
-          cuidarte y compartir la vida con vos.
+        <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-[#5A706A] md:text-[15px]">
+          Una por cada ano tuyo.
         </p>
       </div>
 
@@ -69,14 +68,14 @@ export default function ReasonsToLove({ onTriggerFloating }: ReasonsToLoveProps)
               onTriggerFloating(
                 e.clientX,
                 e.clientY,
-                `Razón ${index + 1}: ${reason.replace(/\.$/, "")}`,
+                `Razon ${index + 1}: ${reason.replace(/\.$/, "")}`,
               )
             }
-            className="group rounded-[1.4rem] border border-[#F0F1ED] bg-white/86 p-4 text-left shadow-[0_12px_24px_rgba(33,77,68,0.05)] transition-all hover:border-[#D6E7E1] hover:bg-white cursor-pointer"
+            className="group cursor-pointer rounded-[1.4rem] border border-[#F0F1ED] bg-white/86 p-4 text-left shadow-[0_12px_24px_rgba(33,77,68,0.05)] transition-all hover:border-[#D6E7E1] hover:bg-white"
           >
             <div className="mb-3 flex items-center justify-between">
               <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
-                Razón {index + 1}
+                Razon {index + 1}
               </span>
               <Heart className="h-4 w-4 fill-[#F2C8D2] text-[#D890A4] transition-transform group-hover:scale-110" />
             </div>
@@ -87,8 +86,7 @@ export default function ReasonsToLove({ onTriggerFloating }: ReasonsToLoveProps)
 
       <div className="relative mt-8 rounded-[1.8rem] border border-[#E6D9C8] bg-[linear-gradient(135deg,rgba(255,250,244,0.95),rgba(246,235,214,0.82))] px-5 py-6 text-center shadow-[0_18px_36px_rgba(110,73,68,0.10)] md:px-8">
         <p className="font-serif text-xl leading-relaxed text-[#6E4944] md:text-2xl">
-          “No sé cómo explicarte todo lo que te amo, pero sí sé que quiero seguir
-          demostrándotelo todos los días.”
+          “No se como explicarte todo lo que te amo, pero si se que quiero seguir demostrandotelo todos los dias.”
         </p>
       </div>
     </section>
