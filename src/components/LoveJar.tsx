@@ -57,12 +57,12 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
   return (
     <section
       id="love-jar-section"
-      className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-[radial-gradient(circle_at_top_left,_rgba(255,244,239,0.95),_rgba(238,251,247,0.94)_48%,_rgba(216,241,234,0.82)_100%)] p-5 shadow-[0_28px_80px_rgba(27,77,67,0.14)] backdrop-blur-md md:p-8"
+      className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-[radial-gradient(circle_at_top_left,_rgba(255,244,239,0.95),_rgba(238,251,247,0.94)_48%,_rgba(216,241,234,0.82)_100%)] p-4 shadow-[0_28px_80px_rgba(27,77,67,0.14)] backdrop-blur-md md:p-8"
     >
       <div className="absolute -left-8 -top-12 h-40 w-40 rounded-full bg-[#FFD7E2]/45 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-44 w-44 rounded-full bg-[#CDEEE5]/65 blur-3xl" />
 
-      <div className="relative mb-6 text-center">
+      <div className="relative mb-5 text-center md:mb-6">
         <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-3 py-1.5 text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-[#6E4944] shadow-sm">
           <Star className="h-3.5 w-3.5 fill-[#E7B980]/20 text-[#B88357]" />
           Frasco de mimos
@@ -76,7 +76,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-8">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-6">
         <div className="rounded-[2rem] border border-white/80 bg-white/55 p-4 shadow-[0_18px_40px_rgba(110,73,68,0.12)]">
           <div className="relative mx-auto flex max-w-[280px] flex-col items-center">
             <motion.button
@@ -84,7 +84,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
               whileHover={{ y: -4, rotate: -1 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 170, damping: 16 }}
-              className="relative flex h-52 w-40 items-center justify-center rounded-t-[44px] rounded-b-[28px] border-[3px] border-[#77B8A7] bg-white/55 p-4 shadow-[0_18px_38px_rgba(54,116,101,0.18)] sm:h-60 sm:w-48"
+              className="relative flex h-48 w-36 items-center justify-center rounded-t-[44px] rounded-b-[28px] border-[3px] border-[#77B8A7] bg-white/55 p-4 shadow-[0_18px_38px_rgba(54,116,101,0.18)] sm:h-56 sm:w-44 lg:h-60 lg:w-48"
               onClick={handleDrawLocalMimo}
               title="Sacar mimo"
             >
@@ -178,7 +178,7 @@ export default function LoveJar({ onTriggerFloating }: LoveJarProps) {
               </div>
             </div>
 
-            <div className="flex min-h-[240px] items-center justify-center rounded-[1.4rem] border border-dashed border-[#BFDCD4] bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(245,255,252,0.78))] px-4 py-6 text-center shadow-inner sm:min-h-[220px]">
+            <div className="flex min-h-[200px] items-center justify-center rounded-[1.4rem] border border-dashed border-[#BFDCD4] bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(245,255,252,0.78))] px-4 py-5 text-center shadow-inner sm:min-h-[220px]">
               <AnimatePresence mode="wait">
                 {selectedMimo ? (
                   <motion.div

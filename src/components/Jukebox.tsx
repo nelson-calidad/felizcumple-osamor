@@ -157,10 +157,10 @@ export default function Jukebox({
   };
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/70 p-6 shadow-xl shadow-glow backdrop-blur-md">
+    <div className="relative overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/70 p-5 shadow-xl shadow-glow backdrop-blur-md md:p-6">
       <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#EAFDF9] opacity-80 blur-xl" />
 
-      <div className="flex flex-col items-center gap-6 sm:flex-row md:flex-col lg:flex-row">
+      <div className="flex flex-col items-center gap-5 sm:flex-row lg:items-center lg:gap-6">
         <button
           type="button"
           className="relative shrink-0 cursor-pointer"
@@ -170,7 +170,7 @@ export default function Jukebox({
           <motion.div
             animate={{ rotate: isPlaying ? 360 : 0 }}
             transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
-            className="flex h-32 w-32 items-center justify-center rounded-full border-4 border-[#4DB6A3] bg-[#333] p-1 shadow-lg sm:h-36 sm:w-36"
+            className="flex h-28 w-28 items-center justify-center rounded-full border-4 border-[#4DB6A3] bg-[#333] p-1 shadow-lg sm:h-32 sm:w-32 lg:h-36 lg:w-36"
           >
             <div className="relative h-full w-full overflow-hidden rounded-full">
               <img
@@ -202,7 +202,7 @@ export default function Jukebox({
         </button>
 
         <div className="w-full min-w-0 flex-1">
-          <div className="mb-3 text-center sm:text-left md:text-center lg:text-left">
+          <div className="mb-3 text-center sm:text-left lg:text-left">
             <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#1B4D43] font-mono">
               Canciones de nuestra historia
             </span>
@@ -217,7 +217,7 @@ export default function Jukebox({
             </p>
           </div>
 
-          <div className="mb-4 flex h-5 items-end justify-center gap-[3px] overflow-hidden px-1 sm:justify-start md:justify-center lg:justify-start">
+          <div className="mb-4 flex h-5 items-end justify-center gap-[3px] overflow-hidden px-1 sm:justify-start lg:justify-start">
             {Array.from({ length: 14 }).map((_, i) => (
               <motion.div
                 key={i}
@@ -248,7 +248,7 @@ export default function Jukebox({
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-4 sm:justify-start md:justify-center lg:justify-start">
+          <div className="flex items-center justify-center gap-4 sm:justify-start lg:justify-start">
             {hasMultipleSongs && (
               <button
                 onClick={handlePrev}

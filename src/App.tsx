@@ -273,13 +273,13 @@ export default function App() {
           </div>
         </div>
 
-        <div className="mb-10 text-center">
+        <div className="mb-8 text-center md:mb-10">
           <motion.div
             key="birthday-active-header"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="relative mx-auto mb-6 max-w-2xl overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/85 p-8 shadow-xl"
+            className="relative mx-auto mb-5 max-w-2xl overflow-hidden rounded-3xl border border-[#4DB6A3]/25 bg-white/85 p-6 shadow-xl md:mb-6 md:p-8"
           >
             <div className="absolute left-4 top-2 animate-bounce select-none text-2xl">🎈</div>
             <div
@@ -289,7 +289,7 @@ export default function App() {
               🎉
             </div>
 
-            <h1 className="bg-gradient-to-r from-[#113A32] via-[#225E52] to-[#4DB6A3] bg-clip-text font-sans text-4xl font-extrabold tracking-tight text-transparent md:text-5xl">
+            <h1 className="bg-gradient-to-r from-[#113A32] via-[#225E52] to-[#4DB6A3] bg-clip-text font-sans text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl md:text-5xl">
               Feliz cumple, mi Flor Lihue hermosa ❤️
             </h1>
             <p className="mt-3 font-serif text-lg font-semibold italic text-[#1B4D43]">
@@ -302,7 +302,7 @@ export default function App() {
             </p>
 
             <div className="mt-5 flex justify-center">
-              <div className="flex items-center gap-2 rounded-full border border-[#EAFDF9]/60 bg-[#EAFDF9] px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-[#1B4D43] shadow-sm">
+              <div className="flex max-w-full items-center gap-2 rounded-full border border-[#EAFDF9]/60 bg-[#EAFDF9] px-4 py-2 text-center font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#1B4D43] shadow-sm sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-wider">
                 <Sparkles className="h-4 w-4 fill-teal-600/20 text-teal-600" />
                 <span>Preparé esto porque te amo, quiero que seas feliz y me encanta hacerlo por vos</span>
               </div>
@@ -319,7 +319,7 @@ export default function App() {
           </div>
         </div>
 
-        <section className="mb-10 rounded-[2rem] border border-white/70 bg-white/70 p-5 shadow-[0_18px_40px_rgba(27,77,67,0.08)] backdrop-blur-md md:p-6">
+        <section className="mb-8 rounded-[2rem] border border-white/70 bg-white/70 p-4 shadow-[0_18px_40px_rgba(27,77,67,0.08)] backdrop-blur-md md:mb-10 md:p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl">
               <p className="text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-[#B88357]">
@@ -334,18 +334,42 @@ export default function App() {
               </p>
             </div>
 
+            <div className="rounded-[1.4rem] border border-[#DCEEE9] bg-[#F8FFFD] p-3 shadow-sm md:hidden">
+              <div className="mb-2 flex items-center justify-between gap-3">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">
+                  Paso {activeStep + 1}/{ROMANTIC_STEPS.length}
+                </span>
+                {nextStepIndex !== null && (
+                  <button
+                    type="button"
+                    onClick={() => goToStep(nextStepIndex)}
+                    className="rounded-full bg-[#214D44] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-all hover:bg-[#183C35] active:scale-95"
+                  >
+                    Siguiente
+                  </button>
+                )}
+              </div>
+              <div className="mb-2 h-1.5 overflow-hidden rounded-full bg-[#E3F1ED]">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-[#4DB6A3] to-[#214D44] transition-all duration-500"
+                  style={{ width: `${((activeStep + 1) / ROMANTIC_STEPS.length) * 100}%` }}
+                />
+              </div>
+              <p className="text-sm font-serif text-[#214D44]">{ROMANTIC_STEPS[activeStep].title}</p>
+            </div>
+
             {nextStepIndex !== null && (
               <button
                 type="button"
                 onClick={() => goToStep(nextStepIndex)}
-                className="rounded-full bg-[#214D44] px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-[#183C35] active:scale-95 cursor-pointer"
+                className="hidden cursor-pointer rounded-full bg-[#214D44] px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-[#183C35] active:scale-95 md:block"
               >
                 Seguir recorrido
               </button>
             )}
           </div>
 
-          <div className="mt-5 grid gap-3 md:grid-cols-5">
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
             {ROMANTIC_STEPS.map((step, index) => (
               <button
                 key={step.id}
@@ -378,8 +402,8 @@ export default function App() {
           </div>
         </section>
 
-        <div className="mb-12 grid grid-cols-1 items-start gap-8 md:grid-cols-12">
-          <div className="space-y-8 md:col-span-5">
+        <div className="mb-10 grid grid-cols-1 items-start gap-6 lg:mb-12 lg:grid-cols-12 lg:gap-8">
+          <div className="space-y-6 lg:col-span-5 lg:space-y-8">
             <div id="music-section">
               <Jukebox
                 songs={MUSIC_PLAYLIST}
@@ -396,7 +420,7 @@ export default function App() {
             />
           </div>
 
-          <div className="space-y-8 md:col-span-7">
+          <div className="space-y-6 lg:col-span-7 lg:space-y-8">
             <LoveJar onTriggerFloating={triggerHeartShower} />
 
             <div id="timeline-section">
@@ -411,11 +435,11 @@ export default function App() {
           </div>
         </div>
 
-        <div className="my-10 space-y-10">
+        <div className="my-8 space-y-8 md:my-10 md:space-y-10">
           <ReasonsToLove onTriggerFloating={triggerHeartShower} />
         </div>
 
-        <section className="mb-10 rounded-[2rem] border border-white/70 bg-white/65 p-6 shadow-[0_22px_50px_rgba(27,77,67,0.10)] backdrop-blur-md md:p-8">
+        <section className="mb-10 rounded-[2rem] border border-white/70 bg-white/65 p-5 shadow-[0_22px_50px_rgba(27,77,67,0.10)] backdrop-blur-md md:p-8">
           <div className="max-w-2xl">
             <p className="text-[11px] font-mono font-bold uppercase tracking-[0.24em] text-[#B88357]">
               Extras para seguir jugando
@@ -429,7 +453,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="mt-6 space-y-8">
+          <div className="mt-6 grid gap-6 lg:grid-cols-2 lg:items-start xl:gap-8">
             <Trivia onTriggerFloating={triggerHeartShower} />
             <DuqueCorner onTriggerFloating={triggerHeartShower} />
             <LoveCoupons onTriggerFloating={triggerHeartShower} />
@@ -452,7 +476,7 @@ export default function App() {
         </footer>
       </div>
 
-      <div className="fixed bottom-3 left-3 right-3 z-40 md:left-auto md:right-4 md:w-[360px]">
+      <div className="fixed bottom-3 right-4 z-40 hidden w-[360px] md:block">
         <div className="rounded-[1.6rem] border border-[#4DB6A3]/20 bg-white/88 p-3 shadow-xl backdrop-blur-lg">
           <div className="mb-2 flex items-center justify-between gap-3">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#B88357]">

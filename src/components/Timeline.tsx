@@ -95,9 +95,9 @@ export default function Timeline({
   return (
     <div
       id="memories-section"
-      className="rounded-3xl border border-[#4DB6A3]/25 bg-white/50 p-6 shadow-xl shadow-glow backdrop-blur-md md:p-8"
+      className="rounded-3xl border border-[#4DB6A3]/25 bg-white/50 p-5 shadow-xl shadow-glow backdrop-blur-md md:p-8"
     >
-      <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
+      <div className="mb-6 flex flex-col justify-between gap-4 md:mb-8 md:flex-row md:items-center">
         <div>
           <span className="rounded-full border border-[#4DB6A3]/20 bg-[#EAFDF9] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#1B4D43]">
             Nuestros momentos juntos
@@ -112,7 +112,7 @@ export default function Timeline({
         </div>
       </div>
 
-      <div className="mb-6 flex flex-wrap gap-2.5">
+      <div className="mb-5 flex flex-wrap gap-2.5 md:mb-6">
         {categories.map((category) => (
           <button
             key={category.id}
@@ -133,19 +133,19 @@ export default function Timeline({
 
       {filteredMemories.length > 0 ? (
         <>
-          <div className="mb-6 flex gap-3 overflow-x-auto pb-1">
+          <div className="mb-5 flex gap-3 overflow-x-auto pb-1 md:mb-6">
             {filteredMemories.map((memory, index) => (
               <button
                 key={memory.id}
                 type="button"
                 onClick={() => setDeckIndex(index)}
-                className={`min-w-[92px] shrink-0 rounded-[1.2rem] border p-2 text-left transition-all ${
+                className={`min-w-[84px] shrink-0 rounded-[1.2rem] border p-2 text-left transition-all sm:min-w-[92px] ${
                   deckIndex === index
                     ? "border-[#8FD4C4] bg-[#F6FFFC] shadow-[0_12px_24px_rgba(33,77,68,0.10)]"
                     : "border-white/80 bg-white/75 hover:bg-white"
                 }`}
               >
-                <div className="relative mb-2 aspect-square overflow-hidden rounded-xl">
+                <div className="relative mb-2 aspect-[3/4] overflow-hidden rounded-xl">
                   <img
                     src={getMemoryImage(memory)}
                     alt={memory.title}
@@ -170,18 +170,18 @@ export default function Timeline({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.35 }}
-              className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)]"
+              className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-5"
             >
               <motion.div
                 initial={{ rotate: -4, scale: 0.95, opacity: 0 }}
                 animate={{ rotate: deckIndex % 2 === 0 ? 1 : -2, scale: 1, opacity: 1 }}
-                className="group relative rounded-lg border border-gray-100 bg-white p-4 pb-12 shadow-xl"
+                className="group relative rounded-lg border border-gray-100 bg-white p-3 pb-8 shadow-xl sm:p-4 sm:pb-12"
               >
                 <div className="absolute left-1/2 top-2 flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-red-400 opacity-60">
                   <div className="h-1 w-1 rounded-full bg-gray-900" />
                 </div>
 
-                <div className="relative mb-4 aspect-square overflow-hidden rounded-md border border-gray-100 bg-gray-50">
+                <div className="relative mb-4 aspect-[4/5] overflow-hidden rounded-md border border-gray-100 bg-gray-50 sm:aspect-[5/4] lg:aspect-[4/5]">
                   <img
                     src={getMemoryImage(activeMemory)}
                     alt={activeMemory.title}
@@ -209,15 +209,15 @@ export default function Timeline({
                 </div>
               </motion.div>
 
-              <div className="flex flex-col justify-between rounded-[1.8rem] border border-white/90 bg-white/82 p-5 shadow-[0_18px_36px_rgba(33,77,68,0.06)]">
-                <div>
+              <div className="rounded-[1.8rem] border border-white/90 bg-white/82 p-4 shadow-[0_18px_36px_rgba(33,77,68,0.06)] sm:p-5">
+                <div className="space-y-4">
                   <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#B88357]">
                     Recuerdo {deckIndex + 1} de {filteredMemories.length}
                   </p>
                   <h4 className="mt-2 font-serif text-2xl text-[#214D44]">{activeMemory.title}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-[#607772]">{activeMemory.description}</p>
 
-                  <div className="mt-5 rounded-[1.3rem] border border-dashed border-[#BFDCD4] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(245,255,252,0.7))] p-4">
+                  <div className="rounded-[1.3rem] border border-dashed border-[#BFDCD4] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(245,255,252,0.7))] p-4">
                     <button
                       onClick={(e) => toggleSecret(activeMemory.id, e)}
                       className="inline-flex cursor-pointer items-center gap-1 rounded-full bg-teal-100 px-3 py-1 text-[10px] font-bold text-teal-700 transition-all hover:bg-teal-200"
@@ -241,7 +241,7 @@ export default function Timeline({
                   </div>
                 </div>
 
-                <div className="mt-5 flex items-center justify-between gap-3">
+                <div className="flex items-center justify-between gap-3 pt-1">
                   <button
                     onClick={handlePrevDeck}
                     className="flex items-center gap-1.5 rounded-xl border bg-white px-3 py-2 text-xs font-semibold text-gray-600 shadow-sm hover:bg-gray-50 hover:text-gray-900"

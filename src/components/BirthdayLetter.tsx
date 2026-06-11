@@ -62,8 +62,8 @@ export default function BirthdayLetter({
   };
 
   return (
-    <div id="letter-section" className="relative flex flex-col items-center justify-center py-10">
-      <div className="mb-8 text-center">
+    <div id="letter-section" className="relative flex flex-col items-center justify-center py-6 md:py-10">
+      <div className="mb-6 text-center md:mb-8">
         <span className="rounded-full bg-teal-100 px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-teal-700">
           Especialmente para vos
         </span>
@@ -76,7 +76,7 @@ export default function BirthdayLetter({
         </p>
       </div>
 
-      <div className="relative flex min-h-[360px] w-full max-w-lg items-center justify-center">
+      <div className="relative flex min-h-[300px] w-full max-w-lg items-center justify-center sm:min-h-[340px]">
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-[#EAFDF9]/45 to-transparent" />
 
         <AnimatePresence>
@@ -86,7 +86,7 @@ export default function BirthdayLetter({
               animate={{ y: -110, opacity: 1, scale: 1 }}
               exit={{ y: 50, opacity: 0, scale: 0.95 }}
               transition={{ type: "spring", damping: 15, stiffness: 100 }}
-              className="absolute z-20 w-11/12 max-w-md rounded-2xl border border-[#4DB6A3]/25 bg-white p-6 shadow-2xl md:p-8"
+              className="absolute z-20 w-11/12 max-w-md rounded-2xl border border-[#4DB6A3]/25 bg-white p-5 shadow-2xl md:p-8"
             >
               <div className="absolute right-4 top-4 text-teal-300">
                 <Heart className="h-5 w-5 fill-teal-500/10" />
@@ -206,7 +206,7 @@ export default function BirthdayLetter({
 
         <motion.div
           animate={{ y: isOpen ? 80 : 0 }}
-          className="relative h-48 w-80 cursor-pointer rounded-b-2xl border-2 border-[#4DB6A3]/25 shadow-xl"
+          className="relative h-44 w-[18rem] cursor-pointer rounded-b-2xl border-2 border-[#4DB6A3]/25 shadow-xl sm:h-48 sm:w-80"
           onClick={handleOpenEnvelope}
         >
           <div className="absolute inset-0 overflow-hidden rounded-2xl bg-gradient-to-b from-[#E7FAF6] to-[#D5EFEA] shadow-inner">
