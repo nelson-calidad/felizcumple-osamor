@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { Memory } from "../types";
 
@@ -62,12 +62,12 @@ export default function Timeline({
 
   const handleNextDeck = (e: React.MouseEvent) => {
     setDeckIndex((prev) => (prev + 1) % filteredMemories.length);
-    onTriggerFloating(e.clientX, e.clientY, "Siguiente foto del escritorio");
+    onTriggerFloating(e.clientX, e.clientY, "Siguiente recuerdo");
   };
 
   const handlePrevDeck = (e: React.MouseEvent) => {
     setDeckIndex((prev) => (prev - 1 + filteredMemories.length) % filteredMemories.length);
-    onTriggerFloating(e.clientX, e.clientY, "Volvamos a la foto anterior");
+    onTriggerFloating(e.clientX, e.clientY, "Volvamos al recuerdo anterior");
   };
 
   const getSecretText = (id: string) => {
@@ -93,25 +93,27 @@ export default function Timeline({
   };
 
   return (
-    <div
+    <section
       id="memories-section"
-      className="rounded-3xl border border-[#E4ECE8] bg-white/58 p-5 shadow-[0_18px_42px_rgba(33,77,68,0.06)] backdrop-blur-md md:p-8"
+      className="relative overflow-hidden rounded-[2.1rem] border border-[#E7ECE8] bg-[linear-gradient(180deg,rgba(251,253,252,0.96),rgba(244,248,246,0.93))] p-5 shadow-[0_22px_52px_rgba(33,77,68,0.07)] backdrop-blur-md md:p-8"
     >
-      <div className="mb-6 flex flex-col justify-between gap-4 md:mb-8 md:flex-row md:items-center">
-        <div>
-          <span className="rounded-full border border-[#D7E9E3] bg-[#F3FBF8] px-3 py-1 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[#35534C]">
-            Nuestros momentos juntos
-          </span>
-          <h2 className="mt-2 font-sans text-3xl font-extrabold tracking-tight text-gray-800">
-            Polaroids de Nuestros Recuerdos
-          </h2>
-          <p className="mt-1 text-sm text-gray-500">
-            Un rincón para volver a mirar algunos de nuestros momentos más lindos juntos.
-          </p>
-        </div>
+      <div className="absolute -right-10 top-0 h-36 w-36 rounded-full bg-[#DDEEE8]/70 blur-3xl" />
+      <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-[#F4E1DA]/45 blur-3xl" />
+
+      <div className="relative mb-6 text-center md:mb-8">
+        <span className="rounded-full border border-[#D7E9E3] bg-[#F3FBF8] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#35534C]">
+          Nuestros momentos juntos
+        </span>
+        <h2 className="mt-3 font-serif text-3xl tracking-tight text-[#214D44] md:text-4xl">
+          Polaroids de Nuestros Recuerdos
+        </h2>
+        <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-[#64746E]">
+          Un pequeño álbum para volver, despacito, a algunos de los momentos más lindos que
+          construimos juntos.
+        </p>
       </div>
 
-      <div className="mb-5 flex flex-wrap gap-2.5 md:mb-6">
+      <div className="relative mb-6 flex flex-wrap justify-center gap-2.5 md:mb-8">
         {categories.map((category) => (
           <button
             key={category.id}
@@ -121,8 +123,8 @@ export default function Timeline({
             }}
             className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all duration-300 active:scale-95 ${
               selectedCategory === category.id
-                ? "scale-105 bg-[#4DB6A3] font-bold text-white shadow-md shadow-[#4DB6A3]/20"
-                : "border border-gray-100 bg-white text-gray-500 hover:bg-[#EAFDF9] hover:text-[#1B4D43]"
+                ? "bg-[#3EA894] text-white shadow-md shadow-[#4DB6A3]/20"
+                : "border border-[#E8EEEB] bg-white/88 text-[#687873] hover:bg-[#F5FBF8] hover:text-[#214D44]"
             }`}
           >
             {category.label}
@@ -131,71 +133,71 @@ export default function Timeline({
       </div>
 
       {filteredMemories.length > 0 ? (
-        <>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`${selectedCategory}-${activeMemory.id}`}
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.35 }}
-              className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-5"
-            >
-              <motion.div
-                initial={{ rotate: -4, scale: 0.95, opacity: 0 }}
-                animate={{ rotate: deckIndex % 2 === 0 ? 1 : -2, scale: 1, opacity: 1 }}
-              className="group relative rounded-lg border border-[#F0F1ED] bg-white p-3 pb-8 shadow-[0_18px_32px_rgba(33,77,68,0.06)] sm:p-4 sm:pb-12"
-              >
-                <div className="absolute left-1/2 top-2 flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full bg-red-400 opacity-60">
-                  <div className="h-1 w-1 rounded-full bg-gray-900" />
-                </div>
-
-                <div className="relative mx-auto mb-4 aspect-[4/5] max-h-[320px] w-full max-w-[250px] overflow-hidden rounded-md border border-gray-100 bg-gray-50 sm:max-h-none sm:max-w-none sm:aspect-[5/4] lg:aspect-[4/5]">
-                  <img
-                    src={getMemoryImage(activeMemory)}
-                    alt={activeMemory.title}
-                    className="h-full w-full select-none object-cover"
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      e.currentTarget.src = polaroidImg;
-                    }}
-                  />
-                  <div className="absolute bottom-2 right-2 rounded-full bg-black/40 p-2 text-xs text-white backdrop-blur-sm">
-                    {activeMemory.emoji}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${selectedCategory}-${activeMemory.id}`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3 }}
+            className="relative grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,420px)_minmax(0,1fr)] xl:gap-8"
+          >
+            <div className="rounded-[1.9rem] border border-[#EFF2EF] bg-white p-4 shadow-[0_18px_34px_rgba(33,77,68,0.06)] md:p-5">
+              <div className="relative mx-auto max-w-[320px] rotate-[-1.5deg] rounded-[1.4rem] bg-white p-3 shadow-[0_16px_36px_rgba(33,77,68,0.10)] sm:max-w-[360px] xl:max-w-none">
+                <div className="absolute left-1/2 top-2 h-3 w-3 -translate-x-1/2 rounded-full bg-[#F08E92]/70" />
+                <div className="overflow-hidden rounded-[1rem] border border-[#EEF1EE] bg-[#F7F7F4]">
+                  <div className="relative aspect-[4/5] w-full sm:aspect-[5/4] xl:aspect-[4/5]">
+                    <img
+                      src={getMemoryImage(activeMemory)}
+                      alt={activeMemory.title}
+                      className="h-full w-full object-cover"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        e.currentTarget.src = polaroidImg;
+                      }}
+                    />
+                    <div className="absolute bottom-3 right-3 rounded-full bg-black/35 p-2 text-sm text-white backdrop-blur-sm">
+                      {activeMemory.emoji}
+                    </div>
                   </div>
                 </div>
-
-                <div className="mt-3 px-1 text-center font-serif">
-                  <span className="rounded-full bg-[#EAFDF9] px-2.5 py-0.5 font-mono text-[11px] font-bold uppercase text-[#1B4D43]">
+                <div className="pt-4 text-center">
+                  <span className="rounded-full bg-[#F1FBF7] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#35534C]">
                     {activeMemory.date}
                   </span>
                 </div>
-              </motion.div>
+              </div>
+            </div>
 
-              <div className="rounded-[1.8rem] border border-[#F0F1ED] bg-white/86 p-4 shadow-[0_14px_30px_rgba(33,77,68,0.05)] sm:p-5">
-                <div className="space-y-4">
+            <div className="rounded-[1.9rem] border border-[#EFF2EF] bg-white/88 p-5 shadow-[0_16px_32px_rgba(33,77,68,0.05)] md:p-6">
+              <div className="flex h-full flex-col justify-between">
+                <div>
                   <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#B88357]">
                     Recuerdo {deckIndex + 1} de {filteredMemories.length}
                   </p>
-                  <h4 className="mt-2 font-serif text-2xl text-[#214D44]">{activeMemory.title}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-[#607772]">{activeMemory.description}</p>
+                  <h3 className="mt-3 font-serif text-3xl leading-tight text-[#214D44] md:text-[2.3rem]">
+                    {activeMemory.title}
+                  </h3>
+                  <p className="mt-4 max-w-xl text-base leading-relaxed text-[#61716B]">
+                    {activeMemory.description}
+                  </p>
 
-                  <div className="rounded-[1.3rem] border border-dashed border-[#BFDCD4] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(245,255,252,0.7))] p-4">
+                  <div className="mt-6 rounded-[1.4rem] border border-dashed border-[#D5E6DF] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(247,252,250,0.84))] p-4">
                     <button
                       onClick={(e) => toggleSecret(activeMemory.id, e)}
-                      className="inline-flex cursor-pointer items-center gap-1 rounded-full bg-teal-100 px-3 py-1 text-[10px] font-bold text-teal-700 transition-all hover:bg-teal-200"
+                      className="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-[#EAF9F4] px-3 py-1.5 text-[11px] font-bold text-[#2F8C79] transition-all hover:bg-[#DFF4EC]"
                     >
-                      <Sparkles className="h-3 w-3" />
+                      <Sparkles className="h-3.5 w-3.5" />
                       {revealedSecrets[activeMemory.id] ? "Ocultar secreto" : "Revelar secreto"}
                     </button>
 
                     <AnimatePresence>
                       {revealedSecrets[activeMemory.id] && (
                         <motion.div
-                          initial={{ opacity: 0, y: 5 }}
+                          initial={{ opacity: 0, y: 6 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 5 }}
-                          className="mt-3 rounded-lg border border-teal-100 bg-teal-50 p-3 text-left text-sm italic leading-relaxed text-[#1B4D43]"
+                          exit={{ opacity: 0, y: 6 }}
+                          className="mt-4 rounded-[1.1rem] border border-[#E0F0E9] bg-white/90 p-4 text-left text-sm italic leading-relaxed text-[#35534C]"
                         >
                           "{getSecretText(activeMemory.id)}"
                         </motion.div>
@@ -204,14 +206,16 @@ export default function Timeline({
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between gap-3 pt-1">
+                <div className="mt-6 flex items-center justify-between gap-3">
                   <button
                     onClick={handlePrevDeck}
-                    className="flex items-center gap-1.5 rounded-xl border bg-white px-3 py-2 text-xs font-semibold text-gray-600 shadow-sm hover:bg-gray-50 hover:text-gray-900"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#D9E3DF] bg-white px-4 py-2.5 text-sm font-semibold text-[#58706A] transition-all hover:border-[#C8D9D2] hover:text-[#214D44]"
                   >
+                    <ChevronLeft className="h-4 w-4" />
                     Anterior
                   </button>
-                  <div className="flex items-center gap-1 sm:hidden">
+
+                  <div className="flex items-center gap-1.5">
                     {filteredMemories.map((memory, index) => (
                       <button
                         key={memory.id}
@@ -219,27 +223,29 @@ export default function Timeline({
                         onClick={() => setDeckIndex(index)}
                         aria-label={`Ir al recuerdo ${index + 1}`}
                         className={`h-2.5 rounded-full transition-all ${
-                          deckIndex === index ? "w-6 bg-[#214D44]" : "w-2.5 bg-[#CFE3DD]"
+                          deckIndex === index ? "w-7 bg-[#214D44]" : "w-2.5 bg-[#CFE3DD]"
                         }`}
                       />
                     ))}
                   </div>
+
                   <button
                     onClick={handleNextDeck}
-                    className="flex items-center gap-1.5 rounded-xl bg-[#214D44] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#183C35]"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#214D44] px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#183C35]"
                   >
                     Siguiente
+                    <ChevronRight className="h-4 w-4" />
                   </button>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
-        </>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       ) : (
         <div className="py-10 text-center font-mono text-xs text-gray-500">
           No hay recuerdos cargados en esta categoría aún.
         </div>
       )}
-    </div>
+    </section>
   );
 }
