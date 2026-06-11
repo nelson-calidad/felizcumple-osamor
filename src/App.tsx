@@ -205,10 +205,10 @@ export default function App() {
                 Te prepare este rinconcito con nuestra cancion, la carta, los recuerdos y algunas sorpresas suaves para el final.
               </p>
               <div className="mt-4 rounded-2xl border border-[#4DB6A3]/20 bg-[#EAFDF9] px-4 py-3 text-center">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#B88357]">
-                  Para abrir este regalo
+                <p className="text-sm leading-relaxed text-[#46615A]">
+                  Hoy es tu dia, mi amor
                 </p>
-                <p className="mt-1 font-serif text-base text-[#1B4D43]">
+                <p className="mt-1 font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#1B4D43]">
                   17 de junio
                 </p>
               </div>
